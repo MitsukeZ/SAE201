@@ -53,7 +53,7 @@ public class FrameFormulaire extends JFrame implements ActionListener
 			if (this.compteur == 1)
 			{
 				this.compteur ++;
-				this.nbCuves  = this.panelInfos.getCapacite();
+				this.nbCuves  = this.panelInfos.getNbCuve();
 				this.indCuves = 0;
 				this.panelInfos.passageEtapeSupp(2);
 			}
