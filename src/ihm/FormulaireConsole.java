@@ -40,7 +40,7 @@ public class FormulaireConsole
 			System.out.print("Veuillez entrer la position des informations de la Cuve "+ i +" : ");
 			positionInfo = Clavier.lireString();
 
-			tabCuves[i-1] = Cuve.fabrique(capaciteTmp, posXTmp, posYTmp);
+			tabCuves[i-1] = Cuve.fabrique(capaciteTmp, posXTmp, posYTmp, positionInfo);
 		}
 
 		do 
