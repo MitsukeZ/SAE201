@@ -19,7 +19,7 @@ public class Generateur
 
 		for (Cuve cuve : tCuve)
 		{
-			pw.println(cuve.getIdentifiant() + "\t" + cuve.getCapacite() + "\t" + cuve.getContenu() + "\t" + cuve.getPosX() + "\t" + cuve.getPosY() + "\t" + cuve.getPosInfo() + "\t");
+			pw.println(cuve.getCapacite() + "\t" + cuve.getContenu() + "\t" + cuve.getPosX() + "\t" + cuve.getPosY() + "\t" + cuve.getPosInfo());
 		}
 
 		int[][] tabLien = new int[tCuve.length][tCuve.length];
