@@ -32,6 +32,15 @@ public class Controleur
         return metier.creerTube(cv1, cv2, epaisseur) ;
 
     }
+
+    public List<Cuve> getCuves() 
+    {
+        metier.getCuves();
+    }
+
+    public List<Tube> getTubes() {
+        metier.getTubes();
+    }
     
     public static void main(String[] args) 
     {
