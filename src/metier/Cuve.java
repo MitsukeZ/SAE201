@@ -1,3 +1,4 @@
+package metier;
 public class Cuve
 {
 	//caractère auto-incrémenté allant de A à Z
