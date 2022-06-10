@@ -1,3 +1,4 @@
+package metier;
 public class Cuve
 {
 	//caractère auto-incrémenté allant de A à Z
@@ -11,7 +12,7 @@ public class Cuve
 	private String posInfo;
 	
 
-	public Cuve(int capacite, int posX, int posY, String posInfo)
+	private Cuve(int capacite, int posX, int posY, String posInfo)
 	{
 		this.identifiant = Cuve.identifiants++;
 		
@@ -34,5 +35,34 @@ public class Cuve
 		return new Cuve ( capacite, posX, posY, posInfo);
 	}
 	
+    public char getIdentifiant() 
+	{
+        return this.identifiant;
+    }
+
+    public int getCapacite() 
+	{
+        return this.capacite;
+    }
+
+    public double getContenu() 
+	{
+        return this.contenu;
+    }
+
+    public int getPosX() 
+	{
+        return this.posX;
+    }
+
+    public int getPosY() 
+	{
+        return this.posY;
+    }
+
+    public String getPosInfo() 
+	{
+        return this.posInfo;
+    }
 
 }
