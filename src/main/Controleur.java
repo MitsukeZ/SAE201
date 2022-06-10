@@ -23,13 +23,13 @@ public class Controleur
 
     public boolean creerCuve(int capacite, int posX, int posY, String posInfo) 
     {
-        metier.creerCuve(capacite, posX, posY, posInfo);
+        return metier.creerCuve(capacite, posX, posY, posInfo);
 
     }
 
     public boolean creerTube(Cuve cv1, Cuve cv2, int epaisseur) 
     {
-        metier.creerTube(cv1, cv2, epaisseur) ;
+        return metier.creerTube(cv1, cv2, epaisseur) ;
 
     }
     
