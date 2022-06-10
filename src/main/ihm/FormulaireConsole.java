@@ -1,6 +1,10 @@
 package main.ihm;
+
 import iut.algo.Clavier;
 import java.util.ArrayList;
+
+import main.metier.*;
+import main.Controleur;
 
 public class FormulaireConsole 
 {

@@ -25,6 +25,10 @@ public class Reseau
 
         if (cuveACreer == null) {return false;}
 
+        for (Cuve c : this.lstCuve) {
+            if (c.getPosX() == posX && c.getPosY() == posY) {return false;}
+        }
+
         this.lstCuve.add(cuveACreer);
         return true;
     }
@@ -32,7 +36,7 @@ public class Reseau
     public boolean creerTube(Cuve cv1, Cuve cv2, int epaisseur) {
         Tube tubeACreer;
         
-        
+        if (!this.lstCuve.contains(cv1) && !this.lstCuve.contains(cv2)) {return false;}
         
         tubeACreer = Tube.creerTube(cv1, cv2, epaisseur);
 
@@ -44,5 +48,9 @@ public class Reseau
 
     public List<Tube> getTubes() {
         return new ArrayList<Tube>(this.lstTube);
+    }
+
+    public List<Cuve> getCuves() {
+        return new ArrayList<Cuve>(this.lstCuve);
     }
 }
