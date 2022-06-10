@@ -12,6 +12,7 @@ public class Reseau
 
     private Controleur ctrl;
     
+    
     public  Reseau(Controleur ctrl)
     {
         this.ctrl = ctrl;
@@ -58,5 +59,9 @@ public class Reseau
 
     public List<Cuve> getCuves() {
         return new ArrayList<Cuve>(this.lstCuve);
+    }
+
+    public void generer(char structure) {
+        new Generateur((Cuve[]) (this.lstCuve.toArray()), this.lstTube, structure);
     }
 }

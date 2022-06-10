@@ -1,4 +1,5 @@
 package main.metier;
+import java.util.List;
 import java.util.ArrayList;
 
 import java.io.PrintWriter;
@@ -6,7 +7,7 @@ import java.io.File;
 
 public class Generateur
 {
-	public Generateur(Cuve[] tCuve, ArrayList<Tube> tTube, char structure)
+	public Generateur(Cuve[] tCuve, List<Tube> tTube, char structure)
 	{
 		PrintWriter pw = null;
 
@@ -95,7 +96,7 @@ public class Generateur
 		tCuve[2] = Cuve.fabrique(200 ,  50, 100, "Bas"   );
 		tCuve[3] = Cuve.fabrique(700 , 100, 100, "Droite");
 
-		ArrayList<Tube> tTube = new ArrayList<Tube>();
+		List<Tube> tTube = new ArrayList<Tube>();
 
 		tTube.add(Tube.creerTube(tCuve[0], tCuve[1], 2));
 		tTube.add(Tube.creerTube(tCuve[0], tCuve[2], 6));

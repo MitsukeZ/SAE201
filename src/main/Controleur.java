@@ -43,6 +43,10 @@ public class Controleur
     public List<Tube> getTubes() {
        return metier.getTubes();
     }
+
+    public void generer(char structure) {
+        this.metier.generer(structure);
+    }
     
     public static void main(String[] args) 
     {
