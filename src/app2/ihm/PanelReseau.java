@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class PanelReseau extends JPanel
 {
 	private Controleur ctrl;
+	private ArrayList<Cuve> listeCuves;
+	private ArrayList<Tube> listeTubes;
 
 	public PanelReseau(Controleur ctrl)
 	{
@@ -11,6 +15,6 @@ public class PanelReseau extends JPanel
 
 	public void majIhm()
 	{
-		
+
 	}
 }

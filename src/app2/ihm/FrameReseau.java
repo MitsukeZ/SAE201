@@ -16,8 +16,8 @@ public class FrameReseau extends JFrame
 
 		//création des composants
 
-		this.panelReseau 	= new PanelReseau(ctrl);
-		this.panelBtnPasser = new PanelBtnPasser();
+		this.panelReseau 	= new PanelReseau   (ctrl);
+		this.panelBtnPasser = new PanelBtnPasser(ctrl);
 
 		//positionnement des composants
 
