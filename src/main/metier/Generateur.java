@@ -1,4 +1,4 @@
-package src.main.metier;
+package main.metier;
 import java.util.ArrayList;
 
 import java.io.PrintWriter;
