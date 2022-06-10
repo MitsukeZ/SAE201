@@ -1,8 +1,8 @@
 package main.ihm;
 import  main.Controleur;
-import main.metier.*;
-import javax.swing.*;
-import java.awt.GridLayout;
+import  main.metier.*;
+import  javax.swing.*;
+import  java.awt.GridLayout;
 
 public class PanelInformations extends JPanel
 {
@@ -54,21 +54,24 @@ public class PanelInformations extends JPanel
 	} 
 
 
-	public int getPosInfo ()
+	public String getPosInfo ()
 	{
-		return Integer.parseInt(this.txtPosInfo.getText()); 
+		return this.txtPosInfo.getText(); 
 	} 	
 
 	public Cuve getCuve1()
 	{
-		return this.lstCuve1.getSelectedValue();
+		return (Cuve) this.lstCuve1.getSelectedValue();
 	}
 	public Cuve getCuve2()
 	{
-		return this.lstCuve2.getSelectedValue();
+		return (Cuve) this.lstCuve2.getSelectedValue();
 	}
 
-
+	public int getEpaisseur()
+	{
+		return Integer.parseInt(this.txtEpaisseur.getText()); 
+	}
 	public void passageEtapeSupp (int nrEtape)
 	{   
 		if ( nrEtape == 2 )
@@ -92,8 +95,8 @@ public class PanelInformations extends JPanel
 		if ( nrEtape == 3 )
 		{
 			this.panelGeneral.removeAll();
-			this.lstCuve1     = new JList (this.ctrl.getCuves());
-			this.lstCuve2     = new JList (this.ctrl.getCuves());
+			this.lstCuve1     = new JList (this.ctrl.getCuves().toArray());
+			this.lstCuve2     = new JList (this.ctrl.getCuves().toArray());
 			this.txtEpaisseur = new JTextField (20);
 
 			this.panelGeneral.add(new JLabel ("Cuve 1"));
@@ -104,4 +107,14 @@ public class PanelInformations extends JPanel
 		}
 	}
 
+
+	public void remiseZero()
+	{
+		this.txtCapacite.setText("");
+		this.txtEpaisseur.setText("");
+		this.txtNbElt.setText("");
+		this.txtPosInfo.setText("");
+		this.txtPosX.setText("");
+		this.txtPosY.setText("");
+	}
 }

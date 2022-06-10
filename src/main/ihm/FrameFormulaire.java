@@ -1,6 +1,7 @@
 package main.ihm;
 import  main.Controleur;
-import java.awt.BorderLayout;
+import  main.metier.*;
+import  java.awt.BorderLayout;
 
 import javax.swing.*;
 import javax.swing.plaf.ActionMapUIResource;
@@ -10,60 +11,74 @@ import java.awt.event.*;
 public class FrameFormulaire extends JFrame implements ActionListener
 {
 	private Controleur        ctrl;
-    private JPanel            panelValider;
-    private PanelInformations panelInfos;
-    private JButton           btnValider;
-    private int               compteur;
-	
-    public FrameFormulaire (Controleur ctrl)
-    {
-        this.ctrl = ctrl;
+	private JPanel            panelValider;
+	private PanelInformations panelInfos;
+	private JButton           btnValider;
+	private int               compteur;
+	private int               nbCuves;
+	private int               indCuves;
+
+	public FrameFormulaire (Controleur ctrl)
+	{
+		this.ctrl = ctrl;
 
 		this.setTitle("Information sur les cuves");
 		this.setLocation(200,200);
 		this.setSize ( 500, 250 );
 
-        // CrÃ©ation des composants
-        this.panelValider = new JPanel();
-        this.panelInfos   = new PanelInformations(this.ctrl);
-        this.btnValider   = new JButton("Valider la saisie");
-        this.compteur = 1;
-        // Positionnement des composants
-        this.add(panelValider, BorderLayout.SOUTH);
-        this.add(panelInfos, BorderLayout.CENTER);
+		// CrÃ©ation des composants
+		this.panelValider = new JPanel();
+		this.panelInfos   = new PanelInformations(this.ctrl);
+		this.btnValider   = new JButton("Valider la saisie");
+		this.compteur = 1;
+		// Positionnement des composants
+		this.add(panelValider, BorderLayout.SOUTH);
+		this.add(panelInfos, BorderLayout.CENTER);
 
-        this.panelValider.add(this.btnValider);
-
-
-        //activation des composants
-        this.btnValider.addActionListener(this);
+		this.panelValider.add(this.btnValider);
 
 
-        this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }   
-
-    public void actionPerformed (ActionEvent e)
-    {
-        if (compteur == 1)
-        {
-            compteur ++;
-
-        }
-        if (compteur == 2)
-        {
-            compteur ++;
-            //this.creerCuve(this.panelInfos.getCapacite(), posX, posY, posInfo);
-        }
-    }
+		//activation des composants
+		this.btnValider.addActionListener(this);
 
 
-    public Cuve creerCuve( int capacite, int posX, int posY, String posInfo )
-    {
-        return this.ctrl.creerCuve(capacite, posX, posY, posInfo);
-    }
-    public int getCpt()
-    {
-        return this.compteur;
-    }
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}   
+
+	public void actionPerformed (ActionEvent e)
+	{
+		if (e.getSource() == this.btnValider)
+		{
+			if (this.compteur == 1)
+			{
+				this.compteur ++;
+				this.nbCuves  = this.panelInfos.getCapacite();
+				this.indCuves = 0;
+				this.panelInfos.passageEtapeSupp(2);
+			}
+			if (this.compteur == 2)
+			{
+				if (this.indCuves < this.nbCuves)
+				{
+					this.ctrl.creerCuve(this.panelInfos.getCapacite(), this.panelInfos.getPosX(), this.panelInfos.getPosY(), this.panelInfos.getPosInfo());
+					this.indCuves ++;
+				}
+				else
+				{
+					this.compteur ++;
+					this.panelInfos.passageEtapeSupp(3);
+				}
+			}
+			if (this.compteur == 3 )
+			{
+				this.ctrl.creerTube(this.panelInfos.getCuve1(), this.panelInfos.getCuve2(), this.panelInfos.getEpaisseur());
+			}
+		}
+	}
+
+	public int getCpt()
+	{
+		return this.compteur;
+	}
 }
