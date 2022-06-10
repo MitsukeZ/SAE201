@@ -4,6 +4,9 @@ import main.metier.*;
 import iut.algo.Clavier;
 import java.util.ArrayList;
 
+import main.Controleur;
+import main.metier.*;
+
 public class FormulaireConsole 
 {
 	public FormulaireConsole(Controleur ctrl)
@@ -40,10 +43,10 @@ public class FormulaireConsole
 
 			System.out.print("Veuillez entrer la position des informations de la Cuve "+ i +" : ");
 			positionInfo = Clavier.lireString();
-			ctrl.ajouterCuve(capaciteTmp, posXTmp, posYTmp, positionInfo);
+			ctrl.creerCuve(capaciteTmp, posXTmp, posYTmp, positionInfo);
 		}
 
-		tabCuves = ctrl.getTubes().toArray();
+		tabCuves = (Cuve[]) (ctrl.getTubes().toArray());
 
 		do 
 		{
@@ -60,7 +63,7 @@ public class FormulaireConsole
 				System.out.print("Veuillez entrer la section du tuyau : ");
 				sectionTuyau = Clavier.lire_int();
 
-				ctrl.ajouterTube(tabCuves[cuve1], tabCuves[cuve2], sectionTuyau);
+				ctrl.creerTube(tabCuves[cuve1], tabCuves[cuve2], sectionTuyau);
 			}
 		} 
 		while (message != 'N');
