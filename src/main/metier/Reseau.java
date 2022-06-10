@@ -3,11 +3,14 @@ package main.metier;
 import java.util.List;
 import java.util.ArrayList;
 
+import main.Controleur;
 
 public class Reseau 
 {
     private List<Cuve> lstCuve;
     private List<Tube> lstTube;
+
+    private Controleur ctrl;
     
     public  Reseau()
     {

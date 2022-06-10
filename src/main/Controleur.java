@@ -1,5 +1,7 @@
 package main;
 
+import main.metier.*;
+import main.ihm.*;
 
 public class Controleur
 {
