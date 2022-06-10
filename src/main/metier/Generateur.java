@@ -16,6 +16,11 @@ public class Generateur
 		}	
 		catch (Exception e){e.printStackTrace();}
 
+		for (Cuve cuve : tCuve)
+		{
+			pw.println(cuve.getIdentifiant() + "\t" + cuve.getCapacite() + "\t" + cuve.getContenu() + "\t" + cuve.getPosX() + "\t" + cuve.getPosY() + "\t" + cuve.getPosInfo() + "\t");
+		}
+
 		int[][] tabLien = new int[tCuve.length][tCuve.length];
 
 		for (Tube tube : tTube)
@@ -85,7 +90,7 @@ public class Generateur
 	{
 		Cuve[] tCuve = new Cuve[4];
 
-		tCuve[0] = Cuve.fabrique(1000, 0  ,   0, "Haut"  );
+		tCuve[0] = Cuve.fabrique(1000,   0,   0, "Haut"  );
 		tCuve[1] = Cuve.fabrique(900 , 100,   0, "Droite");
 		tCuve[2] = Cuve.fabrique(200 ,  50, 100, "Bas"   );
 		tCuve[3] = Cuve.fabrique(700 , 100, 100, "Droite");
