@@ -1,4 +1,4 @@
-package src.main.metier;
+package main.metier;
 public class Tube
 {
 	private Cuve cuve1;
