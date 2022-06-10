@@ -1,4 +1,5 @@
 package main.ihm;
+import  main.Controleur;
 import java.awt.BorderLayout;
 
 import javax.swing.*;

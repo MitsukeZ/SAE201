@@ -1,4 +1,5 @@
 package main.ihm;
+import  main.Controleur;
 import javax.swing.*;
 import java.awt.GridLayout;
 
