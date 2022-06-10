@@ -3,6 +3,9 @@ package main;
 import main.metier.*;
 import main.ihm.*;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Controleur
 {
     private Reseau            metier;
@@ -30,6 +33,15 @@ public class Controleur
     public boolean creerTube(Cuve cv1, Cuve cv2, int epaisseur) 
     {
         return metier.creerTube(cv1, cv2, epaisseur);
+    }
+
+    public List<Cuve> getCuves() 
+    {
+       return  metier.getCuves();
+    }
+
+    public List<Tube> getTubes() {
+       return metier.getTubes();
     }
     
     public static void main(String[] args) 
