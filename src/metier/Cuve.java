@@ -12,7 +12,7 @@ public class Cuve
 	private String posInfo;
 	
 
-	public Cuve(int capacite, int posX, int posY, String posInfo)
+	private Cuve(int capacite, int posX, int posY, String posInfo)
 	{
 		this.identifiant = Cuve.identifiants++;
 		
@@ -29,11 +29,40 @@ public class Cuve
 		if ( Cuve.identifiants > 'Z' )                    return null;
 		if ( capacite < 200 && capacite > 1000)           return null;
 		if ( posX < 0 || posY < 0 )                       return null;
-		if ( posInfo != "Haut"   || posInfo != "Bas" || 
-			 posInfo != "Gauche" || posInfo != "Droite" ) return null;
+		if ( posInfo != "Haut"   && posInfo != "Bas" && 
+			 posInfo != "Gauche" && posInfo != "Droite" ) return null;
 		
 		return new Cuve ( capacite, posX, posY, posInfo);
 	}
 	
+    public char getIdentifiant() 
+	{
+        return this.identifiant;
+    }
+
+    public int getCapacite() 
+	{
+        return this.capacite;
+    }
+
+    public double getContenu() 
+	{
+        return this.contenu;
+    }
+
+    public int getPosX() 
+	{
+        return this.posX;
+    }
+
+    public int getPosY() 
+	{
+        return this.posY;
+    }
+
+    public String getPosInfo() 
+	{
+        return this.posInfo;
+    }
 
 }
