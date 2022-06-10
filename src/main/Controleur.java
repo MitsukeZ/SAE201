@@ -3,6 +3,9 @@ package main;
 import main.metier.*;
 import main.ihm.*;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Controleur
 {
     private Reseau           metier;
