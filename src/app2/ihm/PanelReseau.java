@@ -6,6 +6,11 @@ public class PanelReseau extends JPanel
 
 	public PanelReseau(Controleur ctrl)
 	{
+		this.ctrl = ctrl;
+	}
+
+	public void majIhm()
+	{
 		
 	}
 }
