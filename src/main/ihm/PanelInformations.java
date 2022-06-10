@@ -1,3 +1,4 @@
+package src.main.ihm;
 import javax.swing.*;
 
 public class PanelInformations extends JPanel

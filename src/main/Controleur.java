@@ -1,3 +1,4 @@
+package src.main;
 import iut.algo.Clavier;
 
 public class Controleur

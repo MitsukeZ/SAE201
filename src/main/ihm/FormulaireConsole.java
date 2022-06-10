@@ -1,3 +1,4 @@
+package src.main.ihm;
 import iut.algo.Clavier;
 import java.util.ArrayList;
 

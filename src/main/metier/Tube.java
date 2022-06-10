@@ -1,4 +1,4 @@
-package metier;
+package src.main.metier;
 public class Tube
 {
 	private Cuve cuve1;
@@ -46,6 +46,6 @@ public class Tube
 		return this.cuve2;
 	}
 
-	
+
 
 }
