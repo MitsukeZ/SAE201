@@ -6,9 +6,10 @@ public class FormulaireConsole
 	public static void main(String[] args) 
 	{
 		//Variables
-		int nbCuves = 0, capaciteTmp, posXTmp, posYTmp;
+		int nbCuves = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, sectionTuyau;
 		String positionInfo;
 		Cuve[] tabCuves;
+		char message;
 		ArrayList<Tube> listeTubes = new ArrayList<Tube>();
 
 		//Instructions
@@ -41,5 +42,25 @@ public class FormulaireConsole
 
 			tabCuves[i-1] = Cuve.fabrique(capaciteTmp, posXTmp, posYTmp);
 		}
+
+		do 
+		{
+			System.out.print("Souhaitez-vous creer un tuyau (O/N) : ");
+			message = Clavier.lire_char();
+			if (message != 'N')
+			{
+				System.out.print("Veuillez entrer le numero de la premiere cuve a relier : ");
+				cuve1 = Clavier.lire_int();
+
+				System.out.print("Veuillez entrer le numero de la deuxieme cuve a relier : ");
+				cuve2 = Clavier.lire_int();
+
+				System.out.print("Veuillez entrer la section du tuyau : ");
+				sectionTuyau = Clavier.lire_int();
+
+				listeTubes.add(new Tube(tabCuves[cuve1], tabCuves[cuve2], sectionTuyau));
+			}
+		} 
+		while (message != 'N');
 	}
 }
