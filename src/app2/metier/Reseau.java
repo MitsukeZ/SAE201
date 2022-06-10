@@ -50,4 +50,21 @@ public class Reseau
     public List<Tube> getTubes() { return new ArrayList<Tube>(this.lstTube); }
 
     public List<Cuve> getCuves() { return new ArrayList<Cuve>(this.lstCuve); }
+
+    public void lireFichier()
+    {
+        try
+		{
+			Scanner sc = new Scanner ( new FileReader ( "tube.data" ) );
+
+			while ( sc.hasNextLine() )
+			{
+				String[] tabS = sc.nextLine().split("\t");
+				
+				String date = tabS[0].substring(6, 8) + "/" + tabS[0].substring(4, 6) + "/" + tabS[0].substring(0, 4);
+
+				alVideo.add( new Video(date, tabS[1], tabS[2], tabS[3], tabS[4]) );
+			}
+		}catch (Exception e){ e.printStackTrace(); }
+    }
 }
