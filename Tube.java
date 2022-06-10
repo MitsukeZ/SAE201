@@ -12,7 +12,7 @@ public class Tube
 		this.epaisseur = epaisseur;
 	}
 
-	public Tube creerTube(Cuve cv1, Cuve cv2)
+	public Tube creerTube(Cuve cv1, Cuve cv2, int epaisseur)
 	{
 		
 	}
