@@ -8,7 +8,7 @@ public class FrameReseau extends JFrame
 
 	public FrameReseau(Controleur ctrl)
 	{
-		this.panelReseau 	= new PanelReseau();
+		this.panelReseau 	= new PanelReseau(ctrl);
 		this.panelBtnPasser = new PanelBtnPasser();
 
 		this.setSize(700, 400);

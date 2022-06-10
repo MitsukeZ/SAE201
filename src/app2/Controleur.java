@@ -1,3 +1,5 @@
+import java.time.chrono.ThaiBuddhistChronology;
+
 public class Controleur 
 {
 	private Reseau		metier;
@@ -5,7 +7,8 @@ public class Controleur
 
 	public Controleur()
 	{
-		
+		this.metier = new Reseau(this);
+		this.ihm	= new FrameReseau(this);
 	}
 
 	public static void main(String[] args) 
