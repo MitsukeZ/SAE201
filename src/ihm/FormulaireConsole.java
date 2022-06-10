@@ -3,13 +3,13 @@ import java.util.ArrayList;
 
 public class FormulaireConsole 
 {
-	public static void main(String[] args) 
+	public FormulaireConsole(Controleur ctrl)
 	{
 		//Variables
 		int nbCuves = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, sectionTuyau;
 		String positionInfo;
 		Cuve[] tabCuves;
-		char message;
+		char message, structure;
 		ArrayList<Tube> listeTubes = new ArrayList<Tube>();
 
 		//Instructions
@@ -62,5 +62,14 @@ public class FormulaireConsole
 			}
 		} 
 		while (message != 'N');
+
+		do 
+		{
+			System.out.print("Veuillez entrer le type de structure (L pour liste, M pour matrice, O pour matrice optimisee) : ");
+			structure = Clavier.lire_char();
+		} 
+		while (structure != 'L' && structure != 'M' && structure != 'O');
+
+		ctrl.generer(tabCuves, listeTubes, structure);
 	}
 }
