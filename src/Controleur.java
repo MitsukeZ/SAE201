@@ -2,15 +2,15 @@ import iut.algo.Clavier;
 
 public class Controleur
 {
+    private Reseau           metier;
+    private Generateur       generateur;
+    private FrameFormulaire  ihm;
+
     public Controleur()
     {
-        int nbCuves;
-        
-        System.out.print("Nombre de cuves du réseau : ");
-        nbCuves = Clavier.lire_int();
-
-        for (int cpt = 0; cpt < nbCuves; cpt++)
-        System.out.print("");
+        this.metier     = new Reseau(this);
+        this.generateur = new Generateur(this);
+        this.ihm        = new FrameFormulaire(this);
     }
     
     public static void main(String[] args) 

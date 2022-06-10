@@ -24,7 +24,7 @@ public class Cuve
 		
 	}
 	
-	public Cuve fabrique ( int capacite, int posX, int posY, String posInfo )
+	public static Cuve fabrique ( int capacite, int posX, int posY, String posInfo )
 	{
 		if ( Cuve.identifiants > 'Z' )                    return null;
 		if ( capacite < 200 && capacite > 1000)           return null;
