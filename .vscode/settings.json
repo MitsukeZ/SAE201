@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/etudiant/bf211929/TP/java/paquetage_class/iut.jar"
+    ]
+}

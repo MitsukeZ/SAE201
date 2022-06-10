@@ -1,3 +1,4 @@
+package metier;
 public class Tube
 {
 	private Cuve cuve1;
