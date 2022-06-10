@@ -50,7 +50,7 @@ public class FrameFormulaire extends JFrame implements ActionListener
             compteur ++;
 
         }
-        if (compteur == 1)
+        if (compteur == 2)
         {
             compteur ++;
             //this.creerCuve(this.panelInfos.getCapacite(), posX, posY, posInfo);
