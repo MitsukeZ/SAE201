@@ -13,7 +13,7 @@ public class Generateur
 
 		try
 		{	
-			pw = new PrintWriter ( new File ( "tube.data"), "utf-8" );
+			pw = new PrintWriter ( new File ( "cuve.data"), "utf-8" );
 		}	
 		catch (Exception e){e.printStackTrace();}
 
@@ -21,6 +21,14 @@ public class Generateur
 		{
 			pw.println(cuve.getCapacite() + "\t" + cuve.getPosX() + "\t" + cuve.getPosY() + "\t" + cuve.getPosInfo());
 		}
+
+		pw.close();
+
+		try
+		{	
+			pw = new PrintWriter ( new File ( "tube.data"), "utf-8" );
+		}
+		catch (Exception e){e.printStackTrace();}
 
 		int[][] tabLien = new int[tCuve.length][tCuve.length];
 
