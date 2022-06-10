@@ -24,6 +24,7 @@ public class PanelInformations extends JPanel
 
 		// crÃ©ation des composants
 		this.txtNbElt = new JTextField(20);
+		this.txtEpaisseur = new JTextField(20);
 		this.panelGeneral = new JPanel();
 		this.panelGeneral.setLayout(new GridLayout(4,2) );
 		// Positionnement des composants
@@ -76,12 +77,11 @@ public class PanelInformations extends JPanel
 	{   
 		if ( nrEtape == 2 )
 		{
-			this.panelGeneral.removeAll();
 			this.txtCapacite = new JTextField(20);
 			this.txtPosX     = new JTextField(20);
 			this.txtPosY     = new JTextField(20);
 			this.txtPosInfo  = new JTextField(20);
-
+			this.panelGeneral.removeAll();
 			this.panelGeneral.add(new JLabel("Capacité de la cuve"));
 			this.panelGeneral.add(this.txtCapacite);
 			this.panelGeneral.add(new JLabel("Position X"));
@@ -90,6 +90,9 @@ public class PanelInformations extends JPanel
 			this.panelGeneral.add(this.txtPosY);
 			this.panelGeneral.add(new JLabel("Position du texte"));
 			this.panelGeneral.add(this.txtPosInfo);
+
+			this.panelGeneral.revalidate();
+			
 		}
 
 		if ( nrEtape == 3 )
@@ -104,6 +107,8 @@ public class PanelInformations extends JPanel
 			this.panelGeneral.add(new JLabel ("Cuve 2"));
 			this.panelGeneral.add(this.lstCuve2);
 			this.panelGeneral.add(new JLabel ("Epaisseur"));
+			this.panelGeneral.add(this.txtEpaisseur);
+			this.panelGeneral.revalidate();
 		}
 	}
 

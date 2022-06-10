@@ -57,22 +57,29 @@ public class FrameFormulaire extends JFrame implements ActionListener
 				this.indCuves = 0;
 				this.panelInfos.passageEtapeSupp(2);
 			}
-			if (this.compteur == 2)
+			else
 			{
-				if (this.indCuves < this.nbCuves)
+				if (this.compteur == 2)
 				{
-					this.ctrl.creerCuve(this.panelInfos.getCapacite(), this.panelInfos.getPosX(), this.panelInfos.getPosY(), this.panelInfos.getPosInfo());
-					this.indCuves ++;
+					if (this.indCuves < this.nbCuves)
+					{
+						this.ctrl.creerCuve(this.panelInfos.getCapacite(), this.panelInfos.getPosX(), this.panelInfos.getPosY(), this.panelInfos.getPosInfo());
+						this.indCuves ++;
+						this.panelInfos.remiseZero();
+					}
+					else
+					{
+						this.compteur ++;
+						this.panelInfos.passageEtapeSupp(3);
+					}
 				}
 				else
 				{
-					this.compteur ++;
-					this.panelInfos.passageEtapeSupp(3);
+					if (this.compteur == 3 )
+					{
+						this.ctrl.creerTube(this.panelInfos.getCuve1(), this.panelInfos.getCuve2(), this.panelInfos.getEpaisseur());
+					}
 				}
-			}
-			if (this.compteur == 3 )
-			{
-				this.ctrl.creerTube(this.panelInfos.getCuve1(), this.panelInfos.getCuve2(), this.panelInfos.getEpaisseur());
 			}
 		}
 	}
