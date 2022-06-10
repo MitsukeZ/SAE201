@@ -24,9 +24,9 @@ public class FrameFormulaire extends JFrame
 
         // Positionnement des composants
         this.add(panelValider, BorderLayout.SOUTH);
-        this.add(panelValider, BorderLayout.CENTER);
+        this.add(panelInfos, BorderLayout.CENTER);
 
-        this.panelValider()
+        this.panelValider.add(this.btnValider);
 
 
         //activation des composants
