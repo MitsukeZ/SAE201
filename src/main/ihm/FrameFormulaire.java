@@ -25,7 +25,7 @@ public class FrameFormulaire extends JFrame implements ActionListener
 
         // CrÃ©ation des composants
         this.panelValider = new JPanel();
-        this.panelInfos   = new PanelInformations(this.ctrl, this);
+        this.panelInfos   = new PanelInformations(this.ctrl);
         this.btnValider   = new JButton("Valider la saisie");
         this.compteur = 1;
         // Positionnement des composants
