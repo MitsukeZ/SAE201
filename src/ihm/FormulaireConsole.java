@@ -10,7 +10,6 @@ public class FormulaireConsole
 		String positionInfo;
 		Cuve[] tabCuves;
 		char message, structure;
-		ArrayList<Tube> listeTubes = new ArrayList<Tube>();
 
 		//Instructions
 		do
@@ -41,6 +40,7 @@ public class FormulaireConsole
 			positionInfo = Clavier.lireString();
 
 			tabCuves[i-1] = Cuve.fabrique(capaciteTmp, posXTmp, posYTmp, positionInfo);
+			ctrl.ajouterCuve(capaciteTmp, posXTmp, posYTmp, positionInfo);
 		}
 
 		do 
@@ -58,7 +58,7 @@ public class FormulaireConsole
 				System.out.print("Veuillez entrer la section du tuyau : ");
 				sectionTuyau = Clavier.lire_int();
 
-				listeTubes.add(new Tube(tabCuves[cuve1], tabCuves[cuve2], sectionTuyau));
+				ctrl.ajouterTube(tabCuves[cuve1], tabCuves[cuve2], sectionTuyau);
 			}
 		} 
 		while (message != 'N');
@@ -70,6 +70,6 @@ public class FormulaireConsole
 		} 
 		while (structure != 'L' && structure != 'M' && structure != 'O');
 
-		ctrl.generer(tabCuves, listeTubes, structure);
+		ctrl.generer(structure);
 	}
 }
