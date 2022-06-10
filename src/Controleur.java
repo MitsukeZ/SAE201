@@ -9,7 +9,7 @@ public class Controleur
     public Controleur()
     {
         this.metier     = new Reseau(this);
-        this.generateur = new Generateur();
+        this.generateur = new Generateur(this);
         this.ihm        = new FrameFormulaire(this);
     }
     
