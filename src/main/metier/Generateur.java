@@ -16,6 +16,15 @@ public class Generateur
 		}	
 		catch (Exception e){e.printStackTrace();}
 
+		int[][] tabLien = new int[tCuve.length][tCuve.length];
+
+		for (Tube tube : tTube)
+		{
+			tabLien[tube.getCuve1().getIdentifiant() - 'A'][tube.getCuve2().getIdentifiant() - 'A'] = tube.getEpaisseur();
+					
+			tabLien[tube.getCuve2().getIdentifiant() - 'A'][tube.getCuve1().getIdentifiant() - 'A'] = tube.getEpaisseur();
+		}
+
 		switch (structure)
 		{
 			case 'L':
@@ -24,7 +33,7 @@ public class Generateur
 
 				for (Tube tube : tTube)
 				{
-					
+					pw.println(tube.getCuve1().getIdentifiant() + "\t" + tube.getCuve2().getIdentifiant() + "\t" + tube.getEpaisseur());
 				}
 				
 				break;
@@ -33,28 +42,13 @@ public class Generateur
 
 				pw.println("matrice de cout");
 
-				int[][] tabLien = new int[tCuve.length][tCuve.length];
-
-				for (Tube tube : tTube)
+				for (int i = 0; i < tabLien.length; i++)
 				{
-					
-				}
-
-				for (Cuve cuve : tCuve)
-				{
-					int[] lien = new int[tCuve.length];
-
-					for (Tube tube : tTube) 
-					{
-						if (tube.getCuve1() == cuve)
-							lien[tube.getCuve2().getIdentifiant() - 'A'] = tube.getEpaisseur();
-					}
-
 					String ligne = "";
-						
-					for (int i = 0; i < lien.length; i++)
+
+					for (int j = 0; j < tabLien[0].length; j++)
 					{
-						ligne += lien[i] + "\t";
+						ligne += tabLien[i][j] + "\t";
 					}
 
 					pw.println(ligne);
@@ -66,9 +60,16 @@ public class Generateur
 
 				pw.println("matrice de cout optimisee");
 
-				for (Tube tube : tTube)
+				for (int i = 1; i < tabLien.length; i++)
 				{
-					
+					String ligne = "";
+
+					for (int j = 0; j < i; j++)
+					{
+						ligne += tabLien[i][j] + "\t";
+					}
+
+					pw.println(ligne);
 				}
 				
 				break;
