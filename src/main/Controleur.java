@@ -1,5 +1,5 @@
 package main;
-import iut.algo.Clavier;
+
 
 public class Controleur
 {
