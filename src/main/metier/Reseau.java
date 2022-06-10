@@ -1,13 +1,16 @@
-package src.main.metier;
+package main.metier;
 
 import java.util.List;
 import java.util.ArrayList;
 
+import main.Controleur;
 
 public class Reseau 
 {
     private List<Cuve> lstCuve;
     private List<Tube> lstTube;
+
+    private Controleur ctrl;
     
     public  Reseau()
     {
@@ -35,5 +38,9 @@ public class Reseau
 
         this.lstTube.add(tubeACreer);
         return true;
+    }
+
+    public List<Tube> getTubes() {
+        return new ArrayList<Tube>(this.lstTube);
     }
 }
