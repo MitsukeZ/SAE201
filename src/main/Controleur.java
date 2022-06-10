@@ -6,10 +6,17 @@ public class Controleur
     private Reseau           metier;
     private FrameFormulaire  ihm;
 
-    public Controleur()
+    public Controleur(boolean modeConsole)
     {
         this.metier     = new Reseau(this);
-        this.ihm        = new FrameFormulaire(this);
+		if (modeConsole)
+		{
+			this.ihm    = new FormulaireConsole(this);
+		}
+        else
+		{
+			this.ihm    = new FrameFormulaire(this);
+		}
     }
 
     public boolean creerCuve(int capacite, int posX, int posY, String posInfo) 
@@ -26,6 +33,13 @@ public class Controleur
     
     public static void main(String[] args) 
     {
-        new Controleur();
-    }
+		if (args.length == 0)
+		{
+        	new Controleur(false);
+		}
+		else
+		{
+			new Controleur(true);
+		}
+	}
 }
