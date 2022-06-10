@@ -1,4 +1,6 @@
 package main.ihm;
+import main.Controleur;
+import main.metier.*;
 import iut.algo.Clavier;
 import java.util.ArrayList;
 
