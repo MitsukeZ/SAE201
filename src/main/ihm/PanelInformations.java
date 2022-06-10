@@ -10,6 +10,7 @@ public class PanelInformations extends JPanel
 	private JPanel          panelGeneral;
 	private JTextField      txtNbElt;
 	private JTextField      txtCapacite;
+	private JTextField      txt;
 
 	public PanelInformations (Controleur ctrl, FrameFormulaire frame)
 	{
@@ -28,6 +29,14 @@ public class PanelInformations extends JPanel
 
 	}
 
+	public int getCapacite()
+	{
+		return Integer.parseInt(this.txtCapacite.getText());
+	}
+	public int getNbCuve()
+	{
+		return Integer.parseInt(this.txtNbElt.getText());
+	}
 
 	public void passageEtapeSupp (int nrEtape)
 	{   
@@ -42,7 +51,11 @@ public class PanelInformations extends JPanel
 
 		if ( nrEtape == 3 )
 		{
+			this.panelGeneral.removeAll();
+			this.txtCapacite = new JTextField(20);
 
+			this.panelGeneral.add(new JLabel("Capacité de la cuve"));
+			this.panelGeneral.add(this.txtCapacite);
 		}
 	}
 

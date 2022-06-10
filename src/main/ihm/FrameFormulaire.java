@@ -27,7 +27,7 @@ public class FrameFormulaire extends JFrame implements ActionListener
         this.panelValider = new JPanel();
         this.panelInfos   = new PanelInformations(this.ctrl, this);
         this.btnValider   = new JButton("Valider la saisie");
-        this.compteur = 0;
+        this.compteur = 1;
         // Positionnement des composants
         this.add(panelValider, BorderLayout.SOUTH);
         this.add(panelInfos, BorderLayout.CENTER);
@@ -45,12 +45,23 @@ public class FrameFormulaire extends JFrame implements ActionListener
 
     public void actionPerformed (ActionEvent e)
     {
-        if (compteur == 0)
+        if (compteur == 1)
         {
+            compteur ++;
 
+        }
+        if (compteur == 1)
+        {
+            compteur ++;
+            //this.creerCuve(this.panelInfos.getCapacite(), posX, posY, posInfo);
         }
     }
 
+
+    public Cuve creerCuve( int capacite, int posX, int posY, String posInfo )
+    {
+        return this.ctrl.creerCuve(capacite, posX, posY, posInfo);
+    }
     public int getCpt()
     {
         return this.compteur;
