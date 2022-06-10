@@ -42,6 +42,12 @@ public class Reseau
 
         if (tubeACreer == null) {return false;}
 
+        for (Tube t : this.lstTube) {
+            if ((t.getCuve1() == cv1 && t.getCuve2() == cv2) || (t.getCuve1() == cv2 && t.getCuve2() == cv1)) {
+                return false;
+            }
+        }
+
         this.lstTube.add(tubeACreer);
         return true;
     }
