@@ -1,12 +1,12 @@
 package main.ihm;
 import  main.Controleur;
-import javax.swing.*;
-import java.awt.GridLayout;
+import  main.metier.*;
+import  javax.swing.*;
+import  java.awt.GridLayout;
 
 public class PanelInformations extends JPanel
 {
 	private Controleur      ctrl;
-	private FrameFormulaire frameMere;
 	private JPanel          panelGeneral;
 	private JTextField      txtNbElt;
 	private JTextField      txtCapacite;
@@ -15,12 +15,12 @@ public class PanelInformations extends JPanel
 	private JTextField      txtPosInfo;
 	private JList           lstCuve1;
 	private JList           lstCuve2;
+	private JTextField      txtEpaisseur;
 
 
-	public PanelInformations (Controleur ctrl, FrameFormulaire frame)
+	public PanelInformations (Controleur ctrl)
 	{
 		this.ctrl      = ctrl;
-		this.frameMere = frame;
 
 		// crÃ©ation des composants
 		this.txtNbElt = new JTextField(20);
@@ -54,13 +54,24 @@ public class PanelInformations extends JPanel
 	} 
 
 
-	public int getPosInfo ()
+	public String getPosInfo ()
 	{
-		return Integer.parseInt(this.txtPosInfo.getText()); 
+		return this.txtPosInfo.getText(); 
 	} 	
 
+	public Cuve getCuve1()
+	{
+		return (Cuve) this.lstCuve1.getSelectedValue();
+	}
+	public Cuve getCuve2()
+	{
+		return (Cuve) this.lstCuve2.getSelectedValue();
+	}
 
-
+	public int getEpaisseur()
+	{
+		return Integer.parseInt(this.txtEpaisseur.getText()); 
+	}
 	public void passageEtapeSupp (int nrEtape)
 	{   
 		if ( nrEtape == 2 )
@@ -83,11 +94,27 @@ public class PanelInformations extends JPanel
 
 		if ( nrEtape == 3 )
 		{
-			this.lstCuve1 = new JList ();
-			this.lstCuve2 = new JList ();
+			this.panelGeneral.removeAll();
+			this.lstCuve1     = new JList (this.ctrl.getCuves().toArray());
+			this.lstCuve2     = new JList (this.ctrl.getCuves().toArray());
+			this.txtEpaisseur = new JTextField (20);
 
-
+			this.panelGeneral.add(new JLabel ("Cuve 1"));
+			this.panelGeneral.add(this.lstCuve1);
+			this.panelGeneral.add(new JLabel ("Cuve 2"));
+			this.panelGeneral.add(this.lstCuve2);
+			this.panelGeneral.add(new JLabel ("Epaisseur"));
 		}
 	}
 
+
+	public void remiseZero()
+	{
+		this.txtCapacite.setText("");
+		this.txtEpaisseur.setText("");
+		this.txtNbElt.setText("");
+		this.txtPosInfo.setText("");
+		this.txtPosX.setText("");
+		this.txtPosY.setText("");
+	}
 }
