@@ -38,11 +38,11 @@ public class Controleur
 
     public List<Cuve> getCuves() 
     {
-        metier.getCuves();
+       return  metier.getCuves();
     }
 
     public List<Tube> getTubes() {
-        metier.getTubes();
+       return metier.getTubes();
     }
     
     public static void main(String[] args) 
