@@ -1,10 +1,6 @@
 package main.ihm;
-
 import iut.algo.Clavier;
 import java.util.ArrayList;
-
-import main.metier.*;
-import main.Controleur;
 
 public class FormulaireConsole 
 {
@@ -28,7 +24,6 @@ public class FormulaireConsole
 			}
 		}
 		while (nbCuves < 0);
-		tabCuves = new Cuve[nbCuves];
 
 		for (int i = 1; i < nbCuves + 1; i++) 
 		{
@@ -43,10 +38,10 @@ public class FormulaireConsole
 
 			System.out.print("Veuillez entrer la position des informations de la Cuve "+ i +" : ");
 			positionInfo = Clavier.lireString();
-
-			tabCuves[i-1] = Cuve.fabrique(capaciteTmp, posXTmp, posYTmp, positionInfo);
 			ctrl.ajouterCuve(capaciteTmp, posXTmp, posYTmp, positionInfo);
 		}
+
+		tabCuves = ctrl.getTubes().toArray();
 
 		do 
 		{

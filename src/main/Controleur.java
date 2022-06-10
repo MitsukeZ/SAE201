@@ -8,15 +8,16 @@ import java.util.ArrayList;
 
 public class Controleur
 {
-    private Reseau           metier;
-    private FrameFormulaire  ihm;
+    private Reseau            metier;
+    private FrameFormulaire   ihm;
+    private FormulaireConsole ihmCUI;
 
     public Controleur(boolean modeConsole)
     {
         this.metier     = new Reseau(this);
 		if (modeConsole)
 		{
-			this.ihm    = new FormulaireConsole(this);
+			this.ihmCUI    = new FormulaireConsole(this);
 		}
         else
 		{
@@ -27,13 +28,11 @@ public class Controleur
     public boolean creerCuve(int capacite, int posX, int posY, String posInfo) 
     {
         return metier.creerCuve(capacite, posX, posY, posInfo);
-
     }
 
     public boolean creerTube(Cuve cv1, Cuve cv2, int epaisseur) 
     {
-        return metier.creerTube(cv1, cv2, epaisseur) ;
-
+        return metier.creerTube(cv1, cv2, epaisseur);
     }
 
     public List<Cuve> getCuves() 
