@@ -36,4 +36,8 @@ public class Reseau
         this.lstTube.add(tubeACreer);
         return true;
     }
+
+    public List<Tube> getTubes() {
+        return new ArrayList<Tube>(this.lstTube);
+    }
 }
