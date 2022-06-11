@@ -10,7 +10,7 @@ public class FormulaireConsole
 	public FormulaireConsole(Controleur ctrl)
 	{
 		//Variables
-		int nbCuves = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, epaisseur;
+		int nbCuves = 0, nbTubes = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, epaisseur, nbTubesMax;
 		String positionInfo;
 		char message, structure;
 
@@ -48,9 +48,11 @@ public class FormulaireConsole
 			}
 		}
 
+		nbTubesMax = (ctrl.getTubes().size()*(ctrl.getTubes().size()-1))/2; //Formule permettant de connaitre le nombre d'arêtes d'un graphe complet
+		                                                                    //Utile pour que l'utilisateur ne créé pas trop de tubes et soit bloqué dans la console
 		do 
 		{
-			System.out.print("Souhaitez-vous creer un tuyau (O/N) : ");
+			System.out.print("Souhaitez-vous creer un tube (O/N) : ");
 			message = Clavier.lire_char();
 			if (message != 'N')
 			{
@@ -63,10 +65,12 @@ public class FormulaireConsole
 				System.out.print("Veuillez entrer l'épaisseur du tube : ");
 				epaisseur = Clavier.lire_int();
 
-				ctrl.creerTube(ctrl.getCuves().get(cuve1), ctrl.getCuves().get(cuve2), epaisseur);
+				if (cuve1 <= 0 || cuve2 <= 0 || !ctrl.creerTube(ctrl.getCuves().get(cuve1-1), ctrl.getCuves().get(cuve2-1), epaisseur)) {
+					System.out.println("Valeurs Invalides !");
+				}
 			}
 		} 
-		while (message != 'N');
+		while (message != 'N' && nbTubes < nbTubesMax);
 
 		do 
 		{
