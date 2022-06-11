@@ -1,4 +1,4 @@
-package main.ihm;
+package main.ihm.old;
 import  main.Controleur;
 import  main.metier.*;
 import  java.awt.BorderLayout;

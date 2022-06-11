@@ -2,6 +2,7 @@ package main;
 
 import main.metier.*;
 import main.ihm.*;
+import main.ihm.FramePrincipale;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class Controleur
 {
     private Reseau            metier;
-    private FrameFormulaire   ihm;
+    private FramePrincipale  ihm;
     private FormulaireConsole ihmCUI;
 
     public Controleur(boolean modeConsole)
@@ -21,7 +22,7 @@ public class Controleur
 		}
         else
 		{
-			this.ihm    = new FrameFormulaire(this);
+			this.ihm       = new FramePrincipale(this);
 		}
     }
 

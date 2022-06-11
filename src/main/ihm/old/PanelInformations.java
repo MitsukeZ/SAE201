@@ -1,4 +1,4 @@
-package main.ihm;
+package main.ihm.old;
 import  main.Controleur;
 import  main.metier.*;
 import  javax.swing.*;
@@ -92,6 +92,8 @@ public class PanelInformations extends JPanel
 			this.panelGeneral.add(this.txtPosInfo);
 
 			this.panelGeneral.revalidate();
+
+			return;
 			
 		}
 
