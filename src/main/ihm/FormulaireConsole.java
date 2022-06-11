@@ -1,20 +1,17 @@
 package main.ihm;
-import main.Controleur;
-import main.metier.*;
+
 import iut.algo.Clavier;
 import java.util.ArrayList;
 
 import main.Controleur;
-import main.metier.*;
 
 public class FormulaireConsole 
 {
 	public FormulaireConsole(Controleur ctrl)
 	{
 		//Variables
-		int nbCuves = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, sectionTuyau;
+		int nbCuves = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, epaisseur;
 		String positionInfo;
-		Cuve[] tabCuves;
 		char message, structure;
 
 		//Instructions
@@ -23,12 +20,12 @@ public class FormulaireConsole
 			System.out.print("Veuillez entrer le nombre de Cuves a generer : ");
 			nbCuves = Clavier.lire_int();
 
-			if (nbCuves < 0) 
+			if (nbCuves <= 0) 
 			{
-				System.out.println("La valeur entree n'est pas valide");
+				System.out.println("La valeur entrée n'est pas valide");
 			}
 		}
-		while (nbCuves < 0);
+		while (nbCuves <= 0);
 
 		for (int i = 1; i < nbCuves + 1; i++) 
 		{
@@ -43,10 +40,13 @@ public class FormulaireConsole
 
 			System.out.print("Veuillez entrer la position des informations de la Cuve "+ i +" : ");
 			positionInfo = Clavier.lireString();
-			ctrl.creerCuve(capaciteTmp, posXTmp, posYTmp, positionInfo);
+			
+			if (!ctrl.creerCuve(capaciteTmp, posXTmp, posYTmp, positionInfo)) 
+			{
+				System.out.println("Les valeurs saisies sont invalides ! Veuillez réessayer.");
+				i--;
+			}
 		}
-
-		tabCuves = (Cuve[]) (ctrl.getTubes().toArray());
 
 		do 
 		{
@@ -60,10 +60,10 @@ public class FormulaireConsole
 				System.out.print("Veuillez entrer le numero de la deuxieme cuve a relier : ");
 				cuve2 = Clavier.lire_int();
 
-				System.out.print("Veuillez entrer la section du tuyau : ");
-				sectionTuyau = Clavier.lire_int();
+				System.out.print("Veuillez entrer l'épaisseur du tube : ");
+				epaisseur = Clavier.lire_int();
 
-				ctrl.creerTube(tabCuves[cuve1], tabCuves[cuve2], sectionTuyau);
+				ctrl.creerTube(ctrl.getCuves().get(cuve1), ctrl.getCuves().get(cuve2), epaisseur);
 			}
 		} 
 		while (message != 'N');

@@ -62,6 +62,6 @@ public class Reseau
     }
 
     public void generer(char structure) {
-        new Generateur((Cuve[]) (this.lstCuve.toArray()), this.lstTube, structure);
+        new Generateur(this.lstCuve, this.lstTube, structure);
     }
 }

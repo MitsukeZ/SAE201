@@ -7,7 +7,7 @@ import java.io.File;
 
 public class Generateur
 {
-	public Generateur(Cuve[] tCuve, List<Tube> tTube, char structure)
+	public Generateur(List<Cuve> tCuve, List<Tube> tTube, char structure)
 	{
 		PrintWriter pw = null;
 
@@ -30,7 +30,7 @@ public class Generateur
 		}
 		catch (Exception e){e.printStackTrace();}
 
-		int[][] tabLien = new int[tCuve.length][tCuve.length];
+		int[][] tabLien = new int[tCuve.size()][tCuve.size()];
 
 		for (Tube tube : tTube)
 		{
@@ -74,11 +74,11 @@ public class Generateur
 
 				pw.println("matrice de cout optimisee");
 
-				for (int i = 1; i < tabLien.length; i++)
+				for (int i = 0; i < tabLien.length; i++)
 				{
 					String ligne = "";
 
-					for (int j = 0; j < i; j++)
+					for (int j = 0; j <= i; j++)
 					{
 						ligne += tabLien[i][j] + "\t";
 					}
@@ -97,6 +97,7 @@ public class Generateur
 
 	public static void main(String[] args)
 	{
+		/*
 		Cuve[] tCuve = new Cuve[4];
 
 		tCuve[0] = Cuve.fabrique(1000,   0,   0, "Haut"  );
@@ -112,5 +113,6 @@ public class Generateur
 		tTube.add(Tube.creerTube(tCuve[1], tCuve[3], 8));
 
 		new Generateur(tCuve, tTube, 'M');
+		*/
 	}
 }
