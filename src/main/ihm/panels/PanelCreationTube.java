@@ -23,10 +23,10 @@ public class PanelCreationTube extends JPanel
     
         this.setLayout(new GridLayout(0, 2));
 
-        this.add(new JLabel("Numéro de la première cuve :"));
+        this.add(new JLabel("Numéro de la première cuve (à partir de 1) :"));
         this.add(this.txtCuve1);
 
-        this.add(new JLabel("Numéro de la seconde  cuve :"));
+        this.add(new JLabel("Numéro de la seconde  cuve (à partir de 1) :"));
         this.add(this.txtCuve2);
 
         this.add(new JLabel("Épaisseur du tube :"));
