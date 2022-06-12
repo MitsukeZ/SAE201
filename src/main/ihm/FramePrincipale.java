@@ -12,6 +12,9 @@ import java.awt.BorderLayout;
 
 public class FramePrincipale extends JFrame 
 {
+    public static final int MENU_TUBE  = 1;
+    public static final int GENERATION = 3;
+    
     private Controleur ctrl;
     private int etape;
 
@@ -19,9 +22,10 @@ public class FramePrincipale extends JFrame
     private int compteur;
 
     //Panels
-    private PanelValider   panelValider;
-    private PanelNbCuves   panelNbCuves;
-    private PanelCreerCuve panelCreerCuves;
+    private PanelValider           panelValider;
+    private PanelNbCuves           panelNbCuves;
+    private PanelCreerCuve         panelCreerCuves;
+    private PanelChoixCreationTube panelChoixCreation;
     
     public FramePrincipale(Controleur ctrl) 
     {
@@ -50,6 +54,8 @@ public class FramePrincipale extends JFrame
         switch (this.etape)
         {
             case 0: this.setTitle("Création des cuves"); break;
+            case 2: this.setTitle("Choix d'une action"); break;
+            case 3: this.setTitle("Création d'un tube"); break;
         }
     }
 
@@ -60,7 +66,6 @@ public class FramePrincipale extends JFrame
         switch (this.etape) 
         {
             case 0: 
-                System.out.println("t guez");
                 this.panelNbCuves = new PanelNbCuves("");    
                 this.add(this.panelNbCuves, BorderLayout.CENTER); 
                 break;
@@ -68,6 +73,11 @@ public class FramePrincipale extends JFrame
                 this.panelCreerCuves = new PanelCreerCuve("", this.compteur);
                 this.add(this.panelCreerCuves);
                 break;
+            case 2:
+                this.panelChoixCreation = new PanelChoixCreationTube(this);
+                this.add(this.panelChoixCreation);
+                this.revalidate();
+                return;
             default:
                 this.add(new JLabel("FINITO"), BorderLayout.CENTER);
                 break;
@@ -130,5 +140,17 @@ public class FramePrincipale extends JFrame
         
         this.add(this.panelValider, BorderLayout.SOUTH);
         this.revalidate();
+    }
+
+    public void generer(char structure)
+    {
+        this.ctrl.generer(structure);
+    }
+
+    public void setEtape(int etape)
+    {
+        if (etape < -1 || etape > 3) {return;}
+
+        this.etape = etape;
     }
 }
