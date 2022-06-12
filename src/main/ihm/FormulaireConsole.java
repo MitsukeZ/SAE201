@@ -7,8 +7,12 @@ import main.Controleur;
 
 public class FormulaireConsole 
 {
+	private Controleur ctrl;
+	
 	public FormulaireConsole(Controleur ctrl)
 	{
+		this.ctrl = ctrl;
+		
 		//Variables
 		int nbCuves = 0, nbTubes = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, epaisseur, nbTubesMax;
 		String positionInfo;
@@ -41,7 +45,7 @@ public class FormulaireConsole
 			System.out.print("Veuillez entrer la position des informations de la Cuve "+ i +" : ");
 			positionInfo = Clavier.lireString();
 			
-			if (!ctrl.creerCuve(capaciteTmp, posXTmp, posYTmp, positionInfo)) 
+			if (!this.ctrl.creerCuve(capaciteTmp, posXTmp, posYTmp, positionInfo)) 
 			{
 				System.out.println("Les valeurs saisies sont invalides ! Veuillez réessayer.");
 				i--;
@@ -65,7 +69,7 @@ public class FormulaireConsole
 				System.out.print("Veuillez entrer l'épaisseur du tube : ");
 				epaisseur = Clavier.lire_int();
 
-				if (cuve1 <= 0 || cuve2 <= 0 || !ctrl.creerTube(ctrl.getCuves().get(cuve1-1), ctrl.getCuves().get(cuve2-1), epaisseur)) {
+				if (cuve1 <= 0 || cuve2 <= 0 || !this.ctrl.creerTube(this.ctrl.getCuves().get(cuve1-1), this.ctrl.getCuves().get(cuve2-1), epaisseur)) {
 					System.out.println("Valeurs Invalides !");
 				}
 			}
@@ -79,6 +83,6 @@ public class FormulaireConsole
 		} 
 		while (structure != 'L' && structure != 'M' && structure != 'O');
 
-		ctrl.generer(structure);
+		this.ctrl.generer(structure);
 	}
 }
