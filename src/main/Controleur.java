@@ -5,7 +5,6 @@ import main.ihm.*;
 import main.ihm.FramePrincipale;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class Controleur
 {

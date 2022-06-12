@@ -29,7 +29,7 @@ public class FormulaireConsole
 
 		for (int i = 1; i < nbCuves + 1; i++) 
 		{
-			System.out.print("Veuillez entrer la capacite de la Cuve "+ i +" : ");
+			System.out.print("Veuillez entrer la capacite de la Cuve "+ i +"   : ");
 			capaciteTmp = Clavier.lire_int();
 
 			System.out.print("Veuillez entrer la position X de la Cuve "+ i +" : ");
@@ -48,7 +48,7 @@ public class FormulaireConsole
 			}
 		}
 
-		nbTubesMax = (ctrl.getTubes().size()*(ctrl.getTubes().size()-1))/2; //Formule permettant de connaitre le nombre d'arêtes d'un graphe complet
+		nbTubesMax = (nbCuves*(nbCuves-1))/2; //Formule permettant de connaitre le nombre d'arêtes d'un graphe complet
 		                                                                    //Utile pour que l'utilisateur ne créé pas trop de tubes et soit bloqué dans la console
 		do 
 		{

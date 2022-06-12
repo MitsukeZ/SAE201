@@ -16,15 +16,19 @@ public class FramePrincipale extends JFrame
     private int etape;
 
     private int nbCuves;
+    private int compteur;
 
     //Panels
-    private PanelValider panelValider;
-    private PanelNbCuves panelNbCuves;
+    private PanelValider   panelValider;
+    private PanelNbCuves   panelNbCuves;
+    private PanelCreerCuve panelCreerCuves;
     
     public FramePrincipale(Controleur ctrl) 
     {
-        this.etape = -1;
-        this.ctrl  = ctrl;
+        this.etape    = -1;
+        this.compteur = 1;
+        
+        this.ctrl     = ctrl;
         
         Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
         
@@ -60,6 +64,10 @@ public class FramePrincipale extends JFrame
                 this.panelNbCuves = new PanelNbCuves("");    
                 this.add(this.panelNbCuves, BorderLayout.CENTER); 
                 break;
+            case 1:
+                this.panelCreerCuves = new PanelCreerCuve("", this.compteur);
+                this.add(this.panelCreerCuves);
+                break;
             default:
                 this.add(new JLabel("FINITO"), BorderLayout.CENTER);
                 break;
@@ -72,9 +80,22 @@ public class FramePrincipale extends JFrame
 
     public boolean verification()
     {
+        boolean condition;
+        
         switch (this.etape) 
         {
             case 0: this.nbCuves = this.panelNbCuves.getNbCuves(); return this.nbCuves > -1;
+            
+            case 1: condition =  (this.panelCreerCuves.getCapacite() != -1 &&
+                                  this.panelCreerCuves.getPosX()     != -1 &&
+                                  this.panelCreerCuves.getPosY()     != -1 &&
+                                  this.ctrl.creerCuve(this.panelCreerCuves.getCapacite(), 
+                                                      this.panelCreerCuves.getPosX(), 
+                                                      this.panelCreerCuves.getPosY(), 
+                                                      this.panelCreerCuves.getPosInfo()));
+                    if (condition) {this.compteur++;} else {return false;}
+                    if (this.compteur <= this.nbCuves) {this.etape--;}
+                    return condition;
         }
         
         
@@ -100,14 +121,14 @@ public class FramePrincipale extends JFrame
                 this.panelNbCuves = new PanelNbCuves("Valeur Invalide !");    
                 this.add(this.panelNbCuves, BorderLayout.CENTER); 
                 break;
+            case 1:
+                this.panelCreerCuves = new PanelCreerCuve("Valeurs Invalides !", this.compteur);
+                this.add(this.panelCreerCuves);
+                break;
         }
 
         
         this.add(this.panelValider, BorderLayout.SOUTH);
         this.revalidate();
-    }
-
-    public static void main(String[] args) {
-        new FramePrincipale(null);
     }
 }
