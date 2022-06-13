@@ -78,6 +78,17 @@ public class PanelReseau extends JPanel
 		
 	}
 
+	public static void main(String[] args) 
+	{  
+        PanelReseau m = new PanelReseau(ctrl);  
+        JFrame f = new JFrame();  
+        f.add(m);  
+        f.setSize(2000,2000);  
+        //f.setLayout(null);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);  
+    }  
+
 }
 
 /*------------------------------------ */
