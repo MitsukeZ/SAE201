@@ -5,6 +5,7 @@ import app2.metier.*;
 import app2.ihm.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,14 +13,17 @@ import java.awt.Graphics;
 public class PanelReseau extends JPanel
 {
 	private Controleur ctrl;
-	private ArrayList<Cuve> listeCuves;
-	private ArrayList<Tube> listeTubes;
+	private List<Cuve> listeCuves;
+	private List<Tube> listeTubes;
 
 	public PanelReseau(Controleur ctrl)
 	{
-		//this.ctrl       = ctrl;
-		this.listeCuves = new ArrayList<Cuve>() = this.ctrl.getCuves();
-		this.listeTubes = new ArrayList<Tube>() = this.ctrl.getTubes();
+		this.ctrl       = ctrl;
+		this.listeCuves = new ArrayList<Cuve>();
+		this.listeCuves = this.ctrl.getCuves();
+
+		this.listeTubes = new ArrayList<Tube>();
+		this.listeTubes = this.ctrl.getTubes();
 	}
 
 	public void paint(Graphics g)
@@ -38,7 +42,7 @@ public class PanelReseau extends JPanel
 		for ( Cuve c : this.listeCuves)
 		{
 			g.setColor(this.getColor(c));
-			g.fillOval(c.getPosX(), c.getPosY(), (c.getContenu()/5), (c.getContenu()/5));
+			g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
 
 		}
 

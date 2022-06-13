@@ -8,12 +8,15 @@ import app2.Controleur;
 
 public class PanelBtnPasser extends JPanel implements ActionListener
 {
-	private JButton btnPasser;
-	private JLabel  lblNTour;
-	private int 	nbTour = 1;
+	private JButton    btnPasser;
+	private JLabel     lblNTour;
+	private int 	   nbTour = 1;
+	private Controleur ctrl;
 
 	public PanelBtnPasser(Controleur ctrl)
 	{
+		this.ctrl = ctrl;
+
 		this.setLayout(new FlowLayout());
 
 		//création des composants
@@ -28,9 +31,9 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 		this.btnPasser.addActionListener(this);
 	}
 
-	public void ActionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent e)
 	{
-		ctrl.passerAuTourSuivant();
+		this.ctrl.passerAuTourSuivant();
 		this.lblNTour.setText("Tour numero " + this.nbTour);
 	}
 }

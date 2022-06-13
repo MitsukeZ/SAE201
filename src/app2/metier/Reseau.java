@@ -2,6 +2,7 @@ package app2.metier;
 
 import java.util.List;
 import java.util.Scanner;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 import app2.Controleur;
@@ -20,7 +21,7 @@ public class Reseau
 		this.lstCuve = new ArrayList<Cuve>();
 		this.lstTube = new ArrayList<Tube>();
 
-		this.lireFichier();
+		//this.lireFichier();
 	}
 
 	public boolean creerCuve(int capacite, int posX, int posY, String posInfo)
@@ -66,7 +67,10 @@ public class Reseau
 
 				if ( !(tabS[0].equals("liste d'adjacence") || tabS[0].equals("matrice de cout") || tabS[0].equals("matrice de cout optimisee")) )
 				{
-					this.lstCuve.add(creerCuve(tabS[0], tabS[1], tabS[2], tabS[3]));
+					this.lstCuve.add(Cuve.fabrique( Integer.parseInt(tabS[0]), 
+												    Integer.parseInt(tabS[1]), 
+												 	Integer.parseInt(tabS[2]), 
+												 	tabS[3] ) );
 				}
 				else
 				{
