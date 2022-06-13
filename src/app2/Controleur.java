@@ -11,6 +11,11 @@ public class Controleur
 		this.ihm	= new FrameReseau(this);
 	}
 
+	public void passerAuTourSuivant()
+	{
+		this.metier.passerAuTourSuivant();
+	}
+
 	public static void main(String[] args) 
 	{
 		new Controleur();	

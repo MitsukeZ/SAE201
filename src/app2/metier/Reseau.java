@@ -87,4 +87,16 @@ public class Reseau
 			}
 		}catch (Exception e){ e.printStackTrace(); }
 	}
+
+	/*-------------------------------*/
+	/*--Methodes de l'application 2--*/
+	/*-------------------------------*/
+
+	public void passerAuTourSuivant()
+	{
+		for (Tube tubeTmp : this.lstTube) 
+		{
+			tubeTmp.transvaser();
+		}
+	}
 }
