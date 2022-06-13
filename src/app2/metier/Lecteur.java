@@ -25,7 +25,7 @@ public class Lecteur
 
 		try
 		{
-			Scanner sc = new Scanner ( new FileReader ( "tuve.data" ) );
+			Scanner sc = new Scanner ( new FileReader ( "tube.data" ) );
 
 			String structure = sc.nextLine();
 
@@ -37,7 +37,7 @@ public class Lecteur
 
 				if (structure.equals("liste d'adjacence"))
 				{
-					ctrl.creerTube(ctrl.getCuves().get('A' - tabS[0].charAt(0)), ctrl.getCuves().get('A' - tabS[1].charAt(0)), Double.parseDouble(tabS[2]) );
+					ctrl.creerTube(ctrl.getCuves().get(tabS[0].charAt(0) - 'A'), ctrl.getCuves().get(tabS[1].charAt(0) - 'A'), Double.parseDouble(tabS[2]) );
 				}
 				else
 				{

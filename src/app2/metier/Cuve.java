@@ -26,11 +26,13 @@ public class Cuve
 	
 	public static Cuve fabrique ( int capacite, int posX, int posY, String posInfo )
 	{
-		if ( Cuve.identifiants > 'Z' )                    return null;
-		if ( capacite < 200 && capacite > 1000)           return null;
-		if ( posX < 0 || posY < 0 )                       return null;
-		if ( posInfo != "Haut"   && posInfo != "Bas" && 
-			 posInfo != "Gauche" && posInfo != "Droite" ) return null;
+		if ( Cuve.identifiants > 'Z' )                                return null;
+		if ( capacite < 200 || capacite > 1000)                       return null;
+		if ( posX < 0 || posY < 0 )                                   return null;
+		if ( posInfo == null )                                        return null;
+		posInfo = posInfo.toUpperCase();
+		if ( !posInfo.equals("HAUT")   && !posInfo.equals("BAS") && 
+		     !posInfo.equals("GAUCHE") && !posInfo.equals("DROITE") ) return null;
 		
 		return new Cuve ( capacite, posX, posY, posInfo);
 	}
