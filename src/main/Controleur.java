@@ -9,7 +9,7 @@ import java.util.List;
 public class Controleur
 {
     private Reseau            metier;
-    private FramePrincipale  ihm;
+    private FramePrincipale   ihm;
     private FormulaireConsole ihmCUI;
 
     public Controleur(boolean modeConsole)
