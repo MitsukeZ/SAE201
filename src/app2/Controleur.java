@@ -9,12 +9,13 @@ public class Controleur
 {
     private Reseau        metier;
     private FrameReseau   ihm;
+    private Lecteur       lecteur;
 
     public Controleur()
     {
         this.metier     = new Reseau(this);
 		this.ihm        = new FrameReseau(this);
-		
+		this.lecteur    = new Lecteur(this);
     }
 
     public boolean creerCuve(int capacite, int posX, int posY, String posInfo) 

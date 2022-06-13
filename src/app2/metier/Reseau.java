@@ -41,7 +41,7 @@ public class Reseau
 	{
 		Tube tubeACreer;
 		
-		if (!this.lstCuve.contains(cv1) && !this.lstCuve.contains(cv2)) {return false;}
+		if (!this.lstCuve.contains(cv1) || !this.lstCuve.contains(cv2)) {return false;}
 		
 		tubeACreer = Tube.creerTube(cv1, cv2, epaisseur);
 
@@ -54,46 +54,6 @@ public class Reseau
 	public List<Tube> getTubes() { return new ArrayList<Tube>(this.lstTube); }
 
 	public List<Cuve> getCuves() { return new ArrayList<Cuve>(this.lstCuve); }
-
-	public void lireFichier()
-	{
-		try
-		{
-			Scanner sc = new Scanner ( new FileReader ( "tube.data" ) );
-
-			while ( sc.hasNextLine() )
-			{
-				String[] tabS = sc.nextLine().split("\t");
-
-				if ( !(tabS[0].equals("liste d'adjacence") || tabS[0].equals("matrice de cout") || tabS[0].equals("matrice de cout optimisee")) )
-				{
-					this.lstCuve.add(Cuve.fabrique( Integer.parseInt(tabS[0]), 
-												    Integer.parseInt(tabS[1]), 
-												 	Integer.parseInt(tabS[2]), 
-												 	tabS[3] ) );
-				}
-				else
-				{
-					String structure = tabS[0];
-
-					if (structure.equals("liste d'adjacence"))
-					{
-						
-					}
-	
-					if (structure.equals("matrice de cout"))
-					{
-						
-					}
-	
-					if (structure.equals("matrice de cout optimisee"))
-					{
-						
-					}
-				}
-			}
-		}catch (Exception e){ e.printStackTrace(); }
-	}
 
 	/*-------------------------------*/
 	/*--Methodes de l'application 2--*/
