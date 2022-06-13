@@ -98,7 +98,8 @@ public class FramePrincipale extends JFrame
             case 4:
                 this.panelChoixStructure = new PanelChoixStructure(this);
                 this.add(this.panelChoixStructure);
-                break;
+                this.revalidate();
+                return;
             default:
                 this.add(new JLabel("Fichiers générés, vous pouvez quitter le programme", JLabel.CENTER), BorderLayout.CENTER);
                 this.revalidate();
@@ -108,6 +109,7 @@ public class FramePrincipale extends JFrame
         
         this.add(this.panelValider, BorderLayout.SOUTH);
         this.revalidate();
+        this.repaint();
     }
 
     public boolean verification()
