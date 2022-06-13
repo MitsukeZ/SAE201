@@ -44,7 +44,6 @@ public class PanelReseau extends JPanel
 
 	}
 
-
 	public Color getColor (Cuve c)
 	{
 		
