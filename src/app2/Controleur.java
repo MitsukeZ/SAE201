@@ -10,7 +10,7 @@ public class Controleur
     private Reseau        metier;
     private FrameReseau   ihm;
 
-    public Controleur(boolean modeConsole)
+    public Controleur()
     {
         this.metier     = new Reseau(this);
 		this.ihm        = new FrameReseau(this);
@@ -39,10 +39,6 @@ public class Controleur
     public void passerAuTourSuivant()
     {
        this.metier.passerAuTourSuivant(); 
-    }
-
-    public void generer(char structure) {
-        this.metier.generer(structure);
     }
 
 	public static void main(String[] args) 
