@@ -45,8 +45,8 @@ public class PanelCreationTube extends JPanel
         catch (Exception e) {return -1;}
     }
 
-    public int getEpaisseur() {
-        try {return Integer.parseInt(this.txtEpaisseur.getText());}
+    public double getEpaisseur() {
+        try {return Double.valueOf(this.txtEpaisseur.getText());}
         catch (Exception e) {return -1;}
     }
 }

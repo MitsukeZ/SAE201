@@ -34,7 +34,7 @@ public class Reseau
         return true;
     }
 
-    public boolean creerTube(Cuve cv1, Cuve cv2, int epaisseur) {
+    public boolean creerTube(Cuve cv1, Cuve cv2, double epaisseur) {
         Tube tubeACreer;
         
         if (!this.lstCuve.contains(cv1) && !this.lstCuve.contains(cv2)) {return false;}
