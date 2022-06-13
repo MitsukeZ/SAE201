@@ -41,30 +41,12 @@ public class Controleur
        this.metier.passerAuTourSuivant(); 
     }
 
-<<<<<<< HEAD
     public void generer(char structure) {
         this.metier.generer(structure);
     }
-    
-    public static void main(String[] args) 
-    {
-		if (args.length == 0)
-		{
-        	new Controleur(false);
-		}
-		else
-		{
-			new Controleur(true);
-		}
-=======
-	public void passerAuTourSuivant()
-	{
-		this.metier.passerAuTourSuivant();
-	}
 
 	public static void main(String[] args) 
 	{
 		new Controleur();	
->>>>>>> 1d0a54b35902b0f7e0aa0566d5e1bf194fc64adf
 	}
 }

@@ -1,5 +1,6 @@
 package app2.ihm;
 
+import app2.Controleur;
 import app2.metier.*;
 import app2.ihm.*;
 

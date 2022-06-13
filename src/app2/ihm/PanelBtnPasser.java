@@ -1,6 +1,10 @@
+package app2.ihm;
+
 import javax.swing.*;
 import java.awt.FlowLayout;
 import java.awt.event.*;
+
+import app2.Controleur;
 
 public class PanelBtnPasser extends JPanel implements ActionListener
 {
