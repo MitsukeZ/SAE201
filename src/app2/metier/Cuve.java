@@ -65,4 +65,17 @@ public class Cuve
         return this.posInfo;
     }
 
+	public int getQuantiteLibre ()
+	{
+		return this.capacite - ((int) (this.contenu));
+	}
+
+	public void remplir (double i)
+	{
+		this.contenu += i;
+	}
+	public void vider (double i)
+	{
+		this.contenu -= i;
+	}
 }

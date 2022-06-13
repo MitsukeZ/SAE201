@@ -19,6 +19,8 @@ public class Reseau
 		
 		this.lstCuve = new ArrayList<Cuve>();
 		this.lstTube = new ArrayList<Tube>();
+
+		this.lireFichier();
 	}
 
 	public boolean creerCuve(int capacite, int posX, int posY, String posInfo)
@@ -87,5 +89,17 @@ public class Reseau
 				}
 			}
 		}catch (Exception e){ e.printStackTrace(); }
+	}
+
+	/*-------------------------------*/
+	/*--Methodes de l'application 2--*/
+	/*-------------------------------*/
+
+	public void passerAuTourSuivant()
+	{
+		for (Tube tubeTmp : this.lstTube) 
+		{
+			tubeTmp.transvaser();
+		}
 	}
 }

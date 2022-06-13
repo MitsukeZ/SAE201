@@ -6,13 +6,14 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 {
 	private JButton btnPasser;
 	private JLabel  lblNTour;
+	private int 	nbTour = 1;
 
 	public PanelBtnPasser(Controleur ctrl)
 	{
 		this.setLayout(new FlowLayout());
 
 		//création des composants
-		this.lblNTour  = new JLabel ("Tour numero 1");
+		this.lblNTour  = new JLabel ("Tour numero " + this.nbTour);
 		this.btnPasser = new JButton("Passer au tour suivant");
 
 		//positionnement des composants
@@ -26,5 +27,6 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 	public void ActionPerformed(ActionEvent e)
 	{
 		ctrl.passerAuTourSuivant();
+		this.lblNTour.setText("Tour numero " + this.nbTour);
 	}
 }

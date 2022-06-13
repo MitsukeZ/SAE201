@@ -14,7 +14,8 @@ public class FormulaireConsole
 		this.ctrl = ctrl;
 		
 		//Variables
-		int nbCuves = 0, nbTubes = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, epaisseur, nbTubesMax;
+		int nbCuves = 0, nbTubes = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, nbTubesMax;
+		double epaisseur;
 		String positionInfo;
 		char message, structure;
 
@@ -66,8 +67,8 @@ public class FormulaireConsole
 				System.out.print("Veuillez entrer le numero de la deuxieme cuve a relier : ");
 				cuve2 = Clavier.lire_int();
 
-				System.out.print("Veuillez entrer l'épaisseur du tube : ");
-				epaisseur = Clavier.lire_int();
+				System.out.print("Veuillez entrer l'épaisseur du tube (utiliser un . pour separer les decimaux) : ");
+				epaisseur = Clavier.lire_double();
 
 				if (cuve1 <= 0 || cuve2 <= 0 || !this.ctrl.creerTube(this.ctrl.getCuves().get(cuve1-1), this.ctrl.getCuves().get(cuve2-1), epaisseur)) {
 					System.out.println("Valeurs Invalides !");

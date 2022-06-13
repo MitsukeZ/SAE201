@@ -4,16 +4,16 @@ public class Tube
 	private Cuve cuve1;
 	private Cuve cuve2;	
 
-	private int epaisseur;
+	private double epaisseur;
 
-	private Tube (Cuve cv1, Cuve cv2, int epaisseur)
+	private Tube (Cuve cv1, Cuve cv2, double epaisseur)
 	{
 		this.cuve1     = cv1;
 		this.cuve2     = cv2;
 		this.epaisseur = epaisseur;
 	}
 
-	public static Tube creerTube(Cuve cv1, Cuve cv2, int epaisseur)
+	public static Tube creerTube(Cuve cv1, Cuve cv2, double epaisseur)
 	{
 		if (epaisseur > 10 || epaisseur < 2)
 		{
@@ -31,7 +31,7 @@ public class Tube
 		return new Tube(cv1, cv2, epaisseur);
 	}
 
-	public int getEpaisseur ()
+	public double getEpaisseur ()
 	{
 		return this.epaisseur;
 	}
