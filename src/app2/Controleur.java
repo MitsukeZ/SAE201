@@ -23,7 +23,7 @@ public class Controleur
         return metier.creerCuve(capacite, posX, posY, posInfo);
     }
 
-    public boolean creerTube(Cuve cv1, Cuve cv2, int epaisseur) 
+    public boolean creerTube(Cuve cv1, Cuve cv2, double epaisseur) 
     {
         return metier.creerTube(cv1, cv2, epaisseur);
     }
