@@ -1,3 +1,7 @@
+package app2.metier;
+
+import app2.*;
+
 import java.util.List;
 import java.util.Scanner;
 import java.io.FileReader;
