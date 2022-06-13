@@ -26,24 +26,21 @@ public class PanelReseau extends JPanel
 	{
 		super.paint(g);
 
-		for ( Cuve c : this.listeCuves)
-		{
-			g.setColor(this.getColor(c));
-			g.fillOval(c.getPosX(), c.getPosY(), c.getContenu(), c.getContenu());
-		}
 
 		for (Tube t : this.listeTubes)
 		{
 			g.setColor(Color.GRAY);
 
-			g.drawLine(130+40, 130+40,400+30 , 80+30); 
-
-			
-		
-		
+			g.drawLine(t.getCuve1().getPosX(), t.getCuve1().getPosY(), t.getCuve2().getPosX() , t.getCuve2().getPosY()); 
 
 		}
 
+		for ( Cuve c : this.listeCuves)
+		{
+			g.setColor(this.getColor(c));
+			g.fillOval(c.getPosX(), c.getPosY(), (c.getContenu()/5), (c.getContenu()/5));
+
+		}
 
 	}
 
