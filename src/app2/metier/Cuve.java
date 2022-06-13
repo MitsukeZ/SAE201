@@ -1,4 +1,4 @@
-package main.metier;
+package app2.metier;
 public class Cuve
 {
 	//caractère auto-incrémenté allant de A à Z

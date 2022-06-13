@@ -1,4 +1,5 @@
-package main.metier;
+package app2.metier;
+
 public class Tube
 {
 	private Cuve cuve1;
