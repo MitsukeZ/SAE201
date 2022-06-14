@@ -39,7 +39,7 @@ public class PanelReseau extends JPanel
 	{
 		super.paint(g);
 
-		g.drawString("Réseau",20,20);  // Ecrire du texte
+		g.drawString("Réseau",20,20); 
 		
 		for (Tube t : this.ctrl.getTubes())
 		{
@@ -56,6 +56,15 @@ public class PanelReseau extends JPanel
 			g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getCapacite()/10), (int) (c.getCapacite()/10));
 			System.out.println(c.toString());
 			
+			switch (c.getPosInfo()) 
+			{
+				case "HAUT"   -> g.drawString(c.getIdentifiant() + "\n" + c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY()-10)); 
+				case "BAS"    -> g.drawString(c.getIdentifiant() + "\n" + c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY())+(c.getCapacite()/10)+10);
+				case "GAUCHE" -> g.drawString(c.getIdentifiant() + "\n" + c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/10)-20), (c.getPosY()+10));
+				case "DROITE" -> g.drawString(c.getIdentifiant() + "\n" + c.getContenu() + "/" + c.getCapacite(),(c.getPosX())+(c.getCapacite()/10),    (c.getPosY()+20));
+					
+			}
+			
 		}
 
 	}
@@ -64,13 +73,13 @@ public class PanelReseau extends JPanel
 	{
 		
 		double contenu = c.getContenu();		
-		Color[] tabColor = new Color[500]; //on crée un tableau de Color pour avoir les nuancés de rouge en fonction du contenu du la cuve
+		Color[] tabColor = new Color[512]; //on crée un tableau de Color pour avoir les nuancés de rouge en fonction du contenu du la cuve
 		int r, g,  b ;                     //nous sert à initialiser les dégradés de rouge
 		r = g = b = 255;                   //initialisation à 255 pour commencer par la couleur blanche
 
 		for (int cpt = 0; cpt <= 255; cpt++)
 		{
-			System.out.println("rouge:" + r + "  vert:" + g + "  bleu:" + b);
+			//System.out.println("rouge:" + r + "  vert:" + g + "  bleu:" + b);
 			tabColor[cpt] = new Color (r , g , b);
 			if (g > 0 && b > 0)
 			{
@@ -81,7 +90,7 @@ public class PanelReseau extends JPanel
 
 		for (int cpt = 256; cpt < tabColor.length ; cpt++)
 		{
-			System.out.println("rouge:" + r + "  vert:" + g + "  bleu:" + b);
+			//System.out.println("rouge:" + r + "  vert:" + g + "  bleu:" + b);
 			tabColor[cpt] = new Color (r , g , b);
 			if (r > 0)
 				r--;

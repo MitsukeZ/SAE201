@@ -4,6 +4,7 @@ import app2.ihm.*;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
+import java.awt.Dimension;
 
 import app2.Controleur;
 
@@ -15,7 +16,12 @@ public class FrameReseau extends JFrame
 
 	public FrameReseau(Controleur ctrl)
 	{
-		this.setSize(700, 400);
+		Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		
+		int x = (int) tailleEcran.getWidth ();
+		int y = (int) tailleEcran.getHeight();
+
+		this.setSize(x, y);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
