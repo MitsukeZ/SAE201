@@ -70,13 +70,7 @@ public class PanelReseau extends JPanel
 			r--;
 		}
 
-		
 		return new Color(tabColor[(int)contenu].getRGB()/2);
-	}
-
-	public void majIhm()
-	{
-		
 	}
 
 }
