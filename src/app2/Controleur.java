@@ -40,6 +40,7 @@ public class Controleur
     public void passerAuTourSuivant()
     {
        this.metier.passerAuTourSuivant(); 
+
     }
 
 	public static void main(String[] args) 

@@ -11,7 +11,7 @@ public class Cuve
 	private int    posY;
 	private String posInfo;
 	
-
+	//constructeur privé qui oblige à passer par la factory
 	private Cuve(int capacite, int posX, int posY, String posInfo)
 	{
 		this.identifiant = Cuve.identifiants++;
@@ -24,19 +24,21 @@ public class Cuve
 		
 	}
 	
+	//factory qui permet de créer des objets Cuve null si les conditions ne sont pas remplis
 	public static Cuve fabrique ( int capacite, int posX, int posY, String posInfo )
 	{
-		if ( Cuve.identifiants > 'Z' )                                return null;
-		if ( capacite < 200 || capacite > 1000)                       return null;
-		if ( posX < 0 || posY < 0 )                                   return null;
-		if ( posInfo == null )                                        return null;
+		if ( Cuve.identifiants > 'Z' )                                return null;								//cas si le nombre de cuves est supérieur à 26
+		if ( capacite < 200 || capacite > 1000)                       return null;								//cas si la capacité de la cuve ne sont pas bonnes
+		if ( posX < 0 || posY < 0 )                                   return null; 								//cas si la position n'est pas possible sur l'écran
+		if ( posInfo == null )                                        return null;								//cas si la position des informations ne sont pas entrés
 		posInfo = posInfo.toUpperCase();
 		if ( !posInfo.equals("HAUT")   && !posInfo.equals("BAS") && 
-		     !posInfo.equals("GAUCHE") && !posInfo.equals("DROITE") ) return null;
+		     !posInfo.equals("GAUCHE") && !posInfo.equals("DROITE") ) return null;			 //cas si la position des informations ne fait pas partie de HAUT, BAS, GAUCHE, DROITE
 		
 		return new Cuve ( capacite, posX, posY, posInfo);
 	}
-	
+
+	//accesseurs
     public char getIdentifiant() 
 	{
         return this.identifiant;
@@ -67,6 +69,9 @@ public class Cuve
         return this.posInfo;
     }
 
+
+
+	//methodes destniné a transvaser les valeurs
 	public int getQuantiteLibre ()
 	{
 		return this.capacite - ((int) (this.contenu));
@@ -80,4 +85,13 @@ public class Cuve
 	{
 		this.contenu -= i;
 	}
+
+	public String toString()
+	{
+		return  "Identifiant    : "     + this.identifiant                            + "\n" +
+				"Capacité       : "     + this.capacite                               + "\n" +
+				"Contenu        : "     + this.contenu     							  + "\n" +
+				"Position       : (x: " + this.posX    + "; y:" + this.posY + ")" + "\n" +
+				"PosInformation : "     + this.posInfo ;
+	} 
 }
