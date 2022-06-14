@@ -16,6 +16,8 @@ public class PanelReseau extends JPanel
 	private List<Cuve> listeCuves;
 	private List<Tube> listeTubes;
 
+	private Color[] tabColor;		// nouveau
+
 	public PanelReseau(Controleur ctrl)
 	{
 		this.ctrl       = ctrl;
@@ -32,6 +34,18 @@ public class PanelReseau extends JPanel
 
 
 		System.out.println(this.afficher());
+
+		// nouveau
+
+		this.tabColor = new Color[500];
+
+		for (int i = 0; i < this.tabColor.length; i++)
+		{
+			if (i < 250)
+				tabColor[i] = new Color( Color.HSBtoRGB(0.0f, (float)(0.004*i), 1.0f) );
+			else
+				tabColor[i] = new Color( Color.HSBtoRGB(0.0f, 1.0f, (float)(1.0 - 0.004* (i - 250))) );
+		}
 		
 	}
 
@@ -82,8 +96,20 @@ public class PanelReseau extends JPanel
 
 	}
 
+
+
 	public Color getColor (Cuve c)
 	{
+		int contenu = (int) c.getContenu();
+
+		if (contenu == 0)
+			return this.tabColor[0];
+		else
+			return this.tabColor[(contenu / 2) - 1];
+
+		return null;
+
+		/*
 		
 		double contenu = c.getContenu();		
 		Color[] tabColor = new Color[501]; //on crée un tableau de Color pour avoir les nuancés de rouge en fonction du contenu du la cuve
@@ -110,7 +136,11 @@ public class PanelReseau extends JPanel
 		}
 		
 		return new Color(tabColor[(int)contenu].getRGB());
+
+		*/
 	}
+
+
 
 	public String afficher()
 	{
