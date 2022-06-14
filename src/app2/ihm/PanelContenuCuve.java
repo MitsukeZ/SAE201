@@ -56,7 +56,7 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 		this.add (this.lblValInvalide);
 		if ( this.ctrl.remplirCuve (this.txtCuve.getText(), this.txtContenu.getText() ))
 		{
-			
+			this.ctrl.majIhm();
 		}
 		else
 		{

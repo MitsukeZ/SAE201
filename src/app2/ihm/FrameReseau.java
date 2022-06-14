@@ -41,11 +41,6 @@ public class FrameReseau extends JFrame
 
 	}
 
-	public void majIHM()
-	{
-		this.repaint();
-	}
-
 	public void majIhm()
 	{
 		this.panelReseau.majIhm();
