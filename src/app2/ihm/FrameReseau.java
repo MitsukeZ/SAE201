@@ -1,9 +1,7 @@
 package app2.ihm;
 
-import app2.ihm.*;
 import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.Graphics;
 import java.awt.Dimension;
 
 import app2.Controleur;
