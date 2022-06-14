@@ -7,61 +7,66 @@ import main.Controleur;
 
 public class Reseau 
 {
-    private List<Cuve> lstCuve;
-    private List<Tube> lstTube;
+	private List<Cuve> lstCuve;
+	private List<Tube> lstTube;
 
-    private Controleur ctrl;
-    
-    
-    public  Reseau(Controleur ctrl)
-    {
-        this.ctrl = ctrl;
-        
-        this.lstCuve = new ArrayList<Cuve>();
-        this.lstTube = new ArrayList<Tube>();
-    }
+	private Controleur ctrl;
 
-    public boolean creerCuve(int capacite, int posX, int posY, String posInfo) {
-        Cuve cuveACreer = Cuve.fabrique(capacite, posX, posY, posInfo);
+	//la classe réseau simule l'ensemble des cuves et des tubes d'où la création de 2 arraylist pour les cuves et les tubes
+	public Reseau(Controleur ctrl)
+	{
+		this.ctrl = ctrl;
+		
+		this.lstCuve = new ArrayList<Cuve>();
+		this.lstTube = new ArrayList<Tube>();
+	}
 
-        if (cuveACreer == null) {return false;}
+	//cette méthode permet de créer une cuve si c'est impossible alors la méthode retourne false
+	public boolean creerCuve(int capacite, int posX, int posY, String posInfo) 
+	{
+		Cuve cuveACreer = Cuve.fabrique(capacite, posX, posY, posInfo);
 
-        for (Cuve c : this.lstCuve) {
-            if (c.getPosX() == posX && c.getPosY() == posY) {return false;}
-        }
+		if (cuveACreer == null) {return false;}															//on vérifie si la cuve a put être crée
 
-        this.lstCuve.add(cuveACreer);
-        return true;
-    }
+		for (Cuve c : this.lstCuve) {
+			if (c.getPosX() == posX && c.getPosY() == posY) {return false;}								//si on peu crée la cuve on vérifie qu'elle n'est pas situé au même endroit qu'une autre
+		}
 
-    public boolean creerTube(Cuve cv1, Cuve cv2, double epaisseur) {
-        Tube tubeACreer;
-        
-        if (!this.lstCuve.contains(cv1) && !this.lstCuve.contains(cv2)) {return false;}
-        
-        tubeACreer = Tube.creerTube(cv1, cv2, epaisseur);
+		this.lstCuve.add(cuveACreer);																	//si oui on l'ajoute à la liste des cuves
+		return true;
+	}
 
-        if (tubeACreer == null) {return false;}
+	public boolean creerTube(Cuve cv1, Cuve cv2, double epaisseur) 
+	{
+		Tube tubeACreer;
+		
+		if (!this.lstCuve.contains(cv1) && !this.lstCuve.contains(cv2)) {return false;}					//on vérifie si les cuves qu'on veut lier existe
+		
+		tubeACreer = Tube.creerTube(cv1, cv2, epaisseur);
 
-        for (Tube t : this.lstTube) {
-            if ((t.getCuve1() == cv1 && t.getCuve2() == cv2) || (t.getCuve1() == cv2 && t.getCuve2() == cv1)) {
-                return false;
-            }
-        }
+		if (tubeACreer == null) {return false;}															//si le tube n'a pas à être créé
 
-        this.lstTube.add(tubeACreer);
-        return true;
-    }
+		for (Tube t : this.lstTube) 																	
+		{	
+			if ((t.getCuve1() == cv1 && t.getCuve2() == cv2) || (t.getCuve1() == cv2 && t.getCuve2() == cv1)) {
+				return false;
+			}
+		}
 
-    public List<Tube> getTubes() {
-        return new ArrayList<Tube>(this.lstTube);
-    }
+		this.lstTube.add(tubeACreer);
+		return true;
+	}
 
-    public List<Cuve> getCuves() {
-        return new ArrayList<Cuve>(this.lstCuve);
-    }
+	//accesseurs
+	public List<Tube> getTubes() {
+		return new ArrayList<Tube>(this.lstTube);
+	}
 
-    public void generer(char structure) {
-        new Generateur(this.lstCuve, this.lstTube, structure);
-    }
+	public List<Cuve> getCuves() {
+		return new ArrayList<Cuve>(this.lstCuve);
+	}
+
+	public void generer(char structure) {
+		new Generateur(this.lstCuve, this.lstTube, structure);
+	}
 }
