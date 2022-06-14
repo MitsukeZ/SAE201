@@ -11,11 +11,13 @@ public class Generateur
 	{
 		PrintWriter pw = null;
 
+		/*-- Création du fichier des cuves --*/
+		
 		try
 		{	
 			pw = new PrintWriter ( new File ( "cuve.data"), "utf-8" );
 		}	
-		catch (Exception e){e.printStackTrace();}
+		catch (Exception e){e.printStackTrace(); return;}
 
 		for (Cuve cuve : tCuve)
 		{
@@ -24,14 +26,18 @@ public class Generateur
 
 		pw.close();
 
+		/*-- Création du fichier des tubes  --*/
+		
 		try
 		{	
 			pw = new PrintWriter ( new File ( "tube.data"), "utf-8" );
 		}
-		catch (Exception e){e.printStackTrace();}
+		catch (Exception e){e.printStackTrace(); return;}
 
 		double[][] tabLien = new double[tCuve.size()][tCuve.size()];
 
+		//Génération de la matrice des coûts
+		
 		for (Tube tube : tTube)
 		{
 			tabLien[tube.getCuve1().getIdentifiant() - 'A'][tube.getCuve2().getIdentifiant() - 'A'] = tube.getEpaisseur();
@@ -39,6 +45,8 @@ public class Generateur
 			tabLien[tube.getCuve2().getIdentifiant() - 'A'][tube.getCuve1().getIdentifiant() - 'A'] = tube.getEpaisseur();
 		}
 
+		//Écriture dans le fichier tube.data selon la structure choisie
+		
 		switch (structure)
 		{
 			case 'L':
