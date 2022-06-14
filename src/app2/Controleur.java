@@ -43,6 +43,11 @@ public class Controleur
 
     }
 
+    public void repaint()
+    {
+        this.ihm.repaint();
+    }
+
 	public static void main(String[] args) 
 	{
 		new Controleur();	

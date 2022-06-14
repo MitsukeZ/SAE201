@@ -37,6 +37,7 @@ public class FrameReseau extends JFrame
 		this.add(panelBtnPasser, BorderLayout.SOUTH);
 		
 		this.setVisible(true);
+
 	}
 
 
