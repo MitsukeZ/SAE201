@@ -80,4 +80,13 @@ public class Cuve
 	{
 		this.contenu -= i;
 	}
+
+	public String toString()
+	{
+		return  "Identifiant    : "     + this.identifiant                            + "\n" +
+				"Capacité       : "     + this.capacite                               + "\n" +
+				"Contenu        : "     + this.contenu     							  + "\n" +
+				"Position       : (x: " + this.posX    + "; y:" + this.posY + ")" + "\n" +
+				"PosInformation : "     + this.posInfo ;
+	} 
 }
