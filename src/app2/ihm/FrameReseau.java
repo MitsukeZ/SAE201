@@ -18,7 +18,7 @@ public class FrameReseau extends JFrame
 	{
 		Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		
-		int x = (int) tailleEcran.getWidth ();
+		int x = (int) tailleEcran.getWidth ();		
 		int y = (int) tailleEcran.getHeight();
 
 		this.setSize(x, y);
