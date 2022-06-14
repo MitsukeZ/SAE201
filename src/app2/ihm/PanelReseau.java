@@ -119,7 +119,7 @@ public class PanelReseau extends JPanel
 }
 
 /*------------------------------------ */
-/*Crée le liens entre les cuve         */
+/*Crée le lien entre les cuves         */
 /*  
 	on crée d'abord la ligne en partant du centre de la première cuve :
 	x1 = X de cuve 1 + son rayon
@@ -128,8 +128,9 @@ public class PanelReseau extends JPanel
 	x2 = X de cuve 2 + son rayon
 	y2 = Y de cuve 2 plus son rayon
 	
-	g.drawLine(130+40, 130+40,400+30 , 80+30); 
-
+	g.drawLine(130+40, 130+40,400+30 , 80+30);
+	 
+	puis on construit les cuves 
 	g.setColor(Color.RED);
 
 	g.fillOval(130, 130, 80, 80);
