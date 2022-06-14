@@ -39,5 +39,8 @@ public class FrameReseau extends JFrame
 		this.setVisible(true);
 	}
 
-
+	public void majIhm()
+	{
+		this.panelReseau.majIhm();
+	}
 }

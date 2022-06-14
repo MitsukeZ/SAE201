@@ -39,8 +39,8 @@ public class Controleur
 
     public void passerAuTourSuivant()
     {
-       this.metier.passerAuTourSuivant(); 
-
+    	this.metier.passerAuTourSuivant(); 
+		this.ihm.majIhm();
     }
 
 	public static void main(String[] args) 

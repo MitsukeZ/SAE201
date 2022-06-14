@@ -89,6 +89,11 @@ public class PanelReseau extends JPanel
 
 	}
 
+	public void update(Graphics g)
+	{
+		this.paint(g);
+	}
+
 
 
 	public Color getColor (Cuve c)
@@ -99,8 +104,6 @@ public class PanelReseau extends JPanel
 			return this.tabColor[0];
 		else
 			return this.tabColor[(contenu / 2) - 1];
-
-		return null;
 
 		/*
 		
@@ -146,6 +149,11 @@ public class PanelReseau extends JPanel
 		}
 
 		return sRet;
+	}
+
+	public void majIhm()
+	{
+		this.repaint();
 	}
 }
 
