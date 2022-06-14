@@ -19,20 +19,7 @@ public class PanelReseau extends JPanel
 
 	public PanelReseau(Controleur ctrl)
 	{
-		this.ctrl       = ctrl;
-		this.listeCuves = new ArrayList<Cuve>();
-		
-		for (Cuve c: this.ctrl.getCuves())
-			this.listeCuves.add(c);
-
-
-		this.listeTubes = new ArrayList<Tube>();
-
-		for (Tube t: this.ctrl.getTubes())
-			this.listeTubes.add(t);
-
-
-		System.out.println(this.afficher());
+		this.ctrl = ctrl;
 
 		// nouveau
 
