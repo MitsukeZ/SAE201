@@ -1,5 +1,6 @@
 ./Controleur.java
 ./metier/Cuve.java
+./metier/Lecteur.java
 ./metier/Tube.java
 ./metier/Reseau.java
 ./ihm/PanelReseau.java

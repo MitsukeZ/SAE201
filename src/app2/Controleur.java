@@ -9,12 +9,13 @@ public class Controleur
 {
     private Reseau        metier;
     private FrameReseau   ihm;
+    private Lecteur       lecteur;
 
     public Controleur()
     {
         this.metier     = new Reseau(this);
 		this.ihm        = new FrameReseau(this);
-		
+		this.lecteur    = new Lecteur(this);
     }
 
     public boolean creerCuve(int capacite, int posX, int posY, String posInfo) 
@@ -22,7 +23,7 @@ public class Controleur
         return metier.creerCuve(capacite, posX, posY, posInfo);
     }
 
-    public boolean creerTube(Cuve cv1, Cuve cv2, int epaisseur) 
+    public boolean creerTube(Cuve cv1, Cuve cv2, double epaisseur) 
     {
         return metier.creerTube(cv1, cv2, epaisseur);
     }
