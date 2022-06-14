@@ -17,12 +17,14 @@ public class PanelCreationTube extends JPanel
     
     public PanelCreationTube(String msgErreur)
     {
+        //Création des composants
         this.txtCuve1     = new JTextField();
         this.txtCuve2     = new JTextField();
         this.txtEpaisseur = new JTextField(); 
     
         this.setLayout(new GridLayout(0, 2));
 
+        //Ajout des composants
         this.add(new JLabel("Numéro de la première cuve (à partir de 1) :"));
         this.add(this.txtCuve1);
 

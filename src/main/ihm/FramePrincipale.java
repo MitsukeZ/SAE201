@@ -13,9 +13,11 @@ import java.awt.BorderLayout;
 
 public class FramePrincipale extends JFrame 
 {
+    //Indice des menus, de -1 à 3
     public static final int MENU_TUBE  = 1;
     public static final int GENERATION = 3;
     
+    //Attributs
     private Controleur ctrl;
     private int etape;
 
@@ -33,24 +35,25 @@ public class FramePrincipale extends JFrame
     
     public FramePrincipale(Controleur ctrl) 
     {
+        //Initialisation des attributs
         this.etape    = -1;
         this.compteur = 1;
         this.cptTubes = 0;
         
         this.ctrl     = ctrl;
-        
-        Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
-        
-        this.setSize(800, 400);
-
         this.panelValider = new PanelValider(this);
         
+        //Propriétés de la Frame
+        this.setSize(800, 400);
+
         //Fenêtre centrée sur l'écran
+        Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation((int) (tailleEcran.getWidth()/2-400) , (int) (tailleEcran.getHeight()/2-200));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.maj();
 
+        //Activation de la frame
         this.setVisible(true);
     }
 
@@ -117,6 +120,7 @@ public class FramePrincipale extends JFrame
         boolean condition;
         Cuve cuve1, cuve2;
         
+        //Vérifications des valeurs nécessaires pour passer à l'étape suivante
         switch (this.etape) 
         {
             case 0: this.nbCuves = this.panelNbCuves.getNbCuves(); return this.nbCuves > -1;
@@ -153,6 +157,7 @@ public class FramePrincipale extends JFrame
 
     public void maj() 
     {
+        //Passe à l'étape suivante et affiche le contenu adéquat
         this.etape++;
         this.setTitre();
         this.setPanelsAdequats();
@@ -162,6 +167,7 @@ public class FramePrincipale extends JFrame
     {
         this.getContentPane().removeAll();
         
+        //Recréation des panels avec les messages d'erreur
         switch (this.etape) 
         {
             case 0: 

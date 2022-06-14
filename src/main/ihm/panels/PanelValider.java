@@ -16,9 +16,11 @@ public class PanelValider extends JPanel implements ActionListener
     public PanelValider(FramePrincipale frame) {
         this.frame = frame;
 
+        //Création des composants
         this.btnValider = new JButton("Valider");
         this.btnValider.addActionListener(this);
 
+        //Ajout des composants
         this.add(this.btnValider);
     }
 

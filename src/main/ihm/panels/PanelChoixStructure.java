@@ -25,6 +25,7 @@ public class PanelChoixStructure extends JPanel implements ActionListener
         
         this.setLayout(new GridLayout(4,1));
 
+        //Création des composants
         this.btnAdjacence = new JButton("Liste d'adjacence"        );
         this.btnMatrice   = new JButton("Matrice de coût"          );
         this.btnMatOpti   = new JButton("Matrice de coût optimisée");
@@ -33,6 +34,7 @@ public class PanelChoixStructure extends JPanel implements ActionListener
         this.btnMatrice  .addActionListener(this);
         this.btnMatOpti  .addActionListener(this);
 
+        //Ajout des composants
         this.add(new JLabel("Choisissez une option :"));
         this.add(this.btnAdjacence);
         this.add(this.btnMatrice);

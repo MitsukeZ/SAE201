@@ -21,6 +21,7 @@ public class PanelCreerCuve extends JPanel
     {
         this.msgErreur = msgErreur;
 
+        //Création des composants
         this.txtCapacite = new JTextField();
         this.txtPosX     = new JTextField();
         this.txtPosY     = new JTextField();
@@ -28,6 +29,7 @@ public class PanelCreerCuve extends JPanel
 
         this.setLayout(new GridLayout(0, 2, 20, 20));
 
+        //Ajout des composants
         this.add(new JLabel("Capacité de la cuve " + numCuve + " :"));
         this.add(this.txtCapacite);
 

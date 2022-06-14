@@ -15,10 +15,12 @@ public class PanelNbCuves extends JPanel
     {
         this.msgErreur = msgErreur;
 
+        //Création des composants
         this.txtNbCuves = new JTextField();
         
         this.setLayout(new GridLayout(0, 2, 50, 50));
 
+        //Ajout des composants
         this.add(new JLabel("Nombre de cuves :"));
         this.add(this.txtNbCuves);
 

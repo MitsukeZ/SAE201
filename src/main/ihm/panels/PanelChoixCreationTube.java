@@ -23,12 +23,14 @@ public class PanelChoixCreationTube extends JPanel implements ActionListener
         
         this.setLayout(new GridLayout(5,1));
 
+        //Création des composants
         this.btnCreerTube      = new JButton("Créer un tube");
         this.btnGenererFichier = new JButton("Générer les fichiers");
 
         this.btnCreerTube.addActionListener(this);
         this.btnGenererFichier.addActionListener(this);
 
+        //Ajout des composants
         this.add(new JLabel("Choisissez une option : ", JLabel.CENTER));
         this.add(this.btnCreerTube);
         this.add(this.btnGenererFichier);
