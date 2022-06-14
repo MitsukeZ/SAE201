@@ -123,7 +123,7 @@ public class FramePrincipale extends JFrame
         //Vérifications des valeurs nécessaires pour passer à l'étape suivante
         switch (this.etape) 
         {
-            case 0: this.nbCuves = this.panelNbCuves.getNbCuves(); return this.nbCuves > -1;
+            case 0: this.nbCuves = this.panelNbCuves.getNbCuves(); return this.nbCuves > -1 && this.nbCuves <= 26;
             
             case 1: condition =  (this.panelCreerCuves.getCapacite() != -1 &&
                                   this.panelCreerCuves.getPosX()     != -1 &&
