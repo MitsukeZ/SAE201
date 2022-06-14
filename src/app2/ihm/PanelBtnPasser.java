@@ -37,8 +37,6 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 		{
 			this.ctrl.passerAuTourSuivant();
 			this.lblNTour.setText("Tour numero " + ++this.nbTour);
-			this.ctrl.majIHM();
-
 		}
 		
 	}
