@@ -47,6 +47,11 @@ public class Controleur
     {
         return this.metier.remplirCuve(s1,s2);
     }
+    
+    public void repaint()
+    {
+        this.ihm.repaint();
+    }
 
 	public static void main(String[] args) 
 	{

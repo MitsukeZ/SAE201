@@ -2,10 +2,7 @@ package app2.ihm;
 
 import app2.Controleur;
 import app2.metier.*;
-import app2.ihm.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -99,8 +96,6 @@ public class PanelReseau extends JPanel
 			return this.tabColor[0];
 		else
 			return this.tabColor[(contenu / 2) - 1];
-
-		return null;
 
 		/*
 		

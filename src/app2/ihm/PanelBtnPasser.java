@@ -33,7 +33,13 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		this.ctrl.passerAuTourSuivant();
-		this.lblNTour.setText("Tour numero " + ++this.nbTour);
+		if ( e.getSource() == this.btnPasser)
+		{
+			this.ctrl.passerAuTourSuivant();
+			this.lblNTour.setText("Tour numero " + ++this.nbTour);
+			this.ctrl.repaint();
+
+		}
+		
 	}
 }
