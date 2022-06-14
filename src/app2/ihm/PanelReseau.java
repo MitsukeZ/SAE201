@@ -8,13 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class PanelReseau extends JPanel
 {
 	private Controleur ctrl;
-	private List<Cuve> listeCuves;
-	private List<Tube> listeTubes;
 
 	private Color[] tabColor;		// nouveau
 
@@ -53,8 +52,12 @@ public class PanelReseau extends JPanel
 	{
 		super.paint(g);
 
+		//création Font 
+		g.setFont(new Font("name", (int) Font.BOLD, 18));
+
 		g.drawString("Réseau",20,20); 
-		
+
+		//dessin des tubes
 		for (Tube t : this.ctrl.getTubes())
 		{
 			g.setColor(Color.GRAY);
@@ -62,8 +65,10 @@ public class PanelReseau extends JPanel
 			g.drawLine((t.getCuve1().getPosX()+(t.getCuve1().getCapacite()/10)/2), (t.getCuve1().getPosY()+(t.getCuve2().getCapacite()/10)/2), 
 					   (t.getCuve2().getPosX()+(t.getCuve2().getCapacite()/10)/2), (t.getCuve2().getPosY()+(t.getCuve2().getCapacite()/10)/2));
 			
-			//g.drawString(t.getEpaisseur(), (t.getCuve2().getPosX() + 50), (t.getCuve1().getPosY()+50));
-			 
+			//étiquettes des épaisseurs des tubes
+			g.drawString(""+t.getEpaisseur(), ((t.getCuve2().getPosX() + t.getCuve1().getPosX())/2), ((t.getCuve2().getPosY() + t.getCuve1().getPosY()))/2);
+			
+			//dessin des épaisseurs des tubes
 			for (int cpt = 1; cpt < t.getEpaisseur(); cpt++)
 			{
 				g.drawLine( (t.getCuve1().getPosX()+(t.getCuve1().getCapacite()/10)/2)+cpt, (t.getCuve1().getPosY()+(t.getCuve2().getCapacite()/10)/2)+cpt, 
@@ -75,21 +80,22 @@ public class PanelReseau extends JPanel
 
 		for ( Cuve c : this.ctrl.getCuves())
 		{
-			
+			//dessin de l'intérieur des cuves
 			g.setColor(this.getColor(c));
 			g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getCapacite()/10), (int) (c.getCapacite()/10));
 
+			//dessins de l'exterieur des cuves en contour noir
 			g.setColor(Color.BLACK);
 			g.drawOval(c.getPosX(), c.getPosY(), (int) (c.getCapacite()/10), (int) (c.getCapacite()/10));
 			
-			
+			//placement des étiquettes des tubes en fonction de l'info du positionnement
 			switch (c.getPosInfo()) 
 			{
-				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY()-(c.getCapacite()/10))); 
+				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY()-10)); 
 				case "BAS"    -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY())+(c.getCapacite()/10)+10);
-				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/10)-20), (c.getPosY()+10));
-				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX())+(c.getCapacite()/10),    (c.getPosY()+20));
-					
+				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/5)-50),  (c.getPosY()+20));
+				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX())+(c.getCapacite()/10),    (c.getPosY()+40));
+				
 			}
 			
 		}
@@ -146,7 +152,7 @@ public class PanelReseau extends JPanel
 	{
 		String sRet="";
 
-		for ( Cuve c : this.listeCuves)
+		for ( Cuve c : this.ctrl.getCuves())
 		{
 			sRet += c.toString() + "\n";
 
@@ -157,7 +163,7 @@ public class PanelReseau extends JPanel
 }
 
 /*------------------------------------ */
-/*Crée le liens entre les cuve         */
+/*Crée le lien entre les cuves         */
 /*  
 	on crée d'abord la ligne en partant du centre de la première cuve :
 	x1 = X de cuve 1 + son rayon
@@ -166,8 +172,9 @@ public class PanelReseau extends JPanel
 	x2 = X de cuve 2 + son rayon
 	y2 = Y de cuve 2 plus son rayon
 	
-	g.drawLine(130+40, 130+40,400+30 , 80+30); 
-
+	g.drawLine(130+40, 130+40,400+30 , 80+30);
+	 
+	puis on construit les cuves 
 	g.setColor(Color.RED);
 
 	g.fillOval(130, 130, 80, 80);
