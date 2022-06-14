@@ -72,9 +72,9 @@ public class Cuve
 
 
 	//methodes destniné a transvaser les valeurs
-	public int getQuantiteLibre ()
+	public double getQuantiteLibre ()
 	{
-		return this.capacite - ((int) (this.contenu));
+		return this.capacite - ((double) (this.contenu));
 	}
 
 	public void remplir (double i)

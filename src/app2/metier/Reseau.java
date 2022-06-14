@@ -65,4 +65,42 @@ public class Reseau
 			tubeTmp.transvaser();
 		}
 	}
+
+	public boolean remplirCuve(String s1, String s2)
+	{
+		if (!s2.matches("[0-9]+"))
+		{
+			return false;
+		}
+		double quantite = Double.parseDouble(s2);
+		char   cuve     = s1.toUpperCase().charAt(0);
+
+		if (cuve < 'A' || (int) (cuve - 'A') > lstCuve.size() )
+		{
+			return false;
+		}
+
+		Cuve cuveEnQuestion = null;
+		for (Cuve cuveBoucle : lstCuve) 
+		{
+			if (cuveBoucle.getIdentifiant() == cuve )
+			{
+				cuveEnQuestion = cuveBoucle;
+			}	
+		}
+
+		if (cuveEnQuestion == null)
+		{
+			return false;
+		}
+		if (cuveEnQuestion.getQuantiteLibre() < quantite)
+		{
+			cuveEnQuestion.remplir(cuveEnQuestion.getQuantiteLibre());
+		}
+		else
+		{
+			cuveEnQuestion.remplir(quantite);
+		}
+		return true;
+	}
 }

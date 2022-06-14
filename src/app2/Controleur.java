@@ -43,8 +43,15 @@ public class Controleur
 
     }
 
+    public boolean remplirCuve(String s1, String s2)
+    {
+        return this.metier.remplirCuve(s1,s2);
+    }
+
 	public static void main(String[] args) 
 	{
 		new Controleur();	
 	}
+
+
 }
