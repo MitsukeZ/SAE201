@@ -20,30 +20,42 @@ public class PanelReseau extends JPanel
 	{
 		this.ctrl       = ctrl;
 		this.listeCuves = new ArrayList<Cuve>();
-		this.listeCuves = this.ctrl.getCuves();
+		
+		for (Cuve c: this.ctrl.getCuves())
+			this.listeCuves.add(c);
+
 
 		this.listeTubes = new ArrayList<Tube>();
-		this.listeTubes = this.ctrl.getTubes();
+
+		for (Tube t: this.ctrl.getTubes())
+			this.listeTubes.add(t);
+
+
+		System.out.println(this.afficher());
+		
 	}
 
 	public void paint(Graphics g)
 	{
 		super.paint(g);
 
-
-		for (Tube t : this.listeTubes)
+		g.drawString("Réseau",20,20);  // Ecrire du texte
+		
+		for (Tube t : this.ctrl.getTubes())
 		{
 			g.setColor(Color.GRAY);
 
-			g.drawLine(t.getCuve1().getPosX(), t.getCuve1().getPosY(), t.getCuve2().getPosX() , t.getCuve2().getPosY()); 
+			g.drawLine((t.getCuve1().getPosX()+(t.getCuve1().getCapacite()/10)/2), (t.getCuve1().getPosY()+(t.getCuve2().getCapacite()/10)/2), 
+					   (t.getCuve2().getPosX()+(t.getCuve2().getCapacite()/10)/2), (t.getCuve2().getPosY()+(t.getCuve2().getCapacite()/10)/2)); 
 
 		}
 
-		for ( Cuve c : this.listeCuves)
+		for ( Cuve c : this.ctrl.getCuves())
 		{
 			g.setColor(this.getColor(c));
-			g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
-
+			g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getCapacite()/10), (int) (c.getCapacite()/10));
+			System.out.println(c.toString());
+			
 		}
 
 	}
@@ -53,25 +65,43 @@ public class PanelReseau extends JPanel
 		
 		double contenu = c.getContenu();		
 		Color[] tabColor = new Color[500]; //on crée un tableau de Color pour avoir les nuancés de rouge en fonction du contenu du la cuve
-		float r, g,  b ;                   //nous sert à initialiser les dégradés de rouge
+		int r, g,  b ;                     //nous sert à initialiser les dégradés de rouge
 		r = g = b = 255;                   //initialisation à 255 pour commencer par la couleur blanche
 
 		for (int cpt = 0; cpt <= 255; cpt++)
 		{
+			System.out.println("rouge:" + r + "  vert:" + g + "  bleu:" + b);
 			tabColor[cpt] = new Color (r , g , b);
-			g--;
-			b--;
+			if (g > 0 && b > 0)
+			{
+				g--;
+				b--;
+			}
 		}
 
 		for (int cpt = 256; cpt < tabColor.length ; cpt++)
 		{
+			System.out.println("rouge:" + r + "  vert:" + g + "  bleu:" + b);
 			tabColor[cpt] = new Color (r , g , b);
-			r--;
+			if (r > 0)
+				r--;
 		}
-
+		
 		return new Color(tabColor[(int)contenu].getRGB()/2);
 	}
 
+	public String afficher()
+	{
+		String sRet="";
+
+		for ( Cuve c : this.listeCuves)
+		{
+			sRet += c.toString() + "\n";
+
+		}
+
+		return sRet;
+	}
 }
 
 /*------------------------------------ */
