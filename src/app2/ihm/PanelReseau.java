@@ -8,31 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class PanelReseau extends JPanel
 {
 	private Controleur ctrl;
-	private List<Cuve> listeCuves;
-	private List<Tube> listeTubes;
 
 	public PanelReseau(Controleur ctrl)
 	{
 		this.ctrl       = ctrl;
-		this.listeCuves = new ArrayList<Cuve>();
-		
-		for (Cuve c: this.ctrl.getCuves())
-			this.listeCuves.add(c);
-
-
-		this.listeTubes = new ArrayList<Tube>();
-
-		for (Tube t: this.ctrl.getTubes())
-			this.listeTubes.add(t);
-
-
-		System.out.println(this.afficher());
-		
 	}
 
 	public void paint(Graphics g)
@@ -40,7 +25,8 @@ public class PanelReseau extends JPanel
 		super.paint(g);
 
 		g.drawString("Réseau",20,20); 
-		
+
+		//dessin des tubes
 		for (Tube t : this.ctrl.getTubes())
 		{
 			g.setColor(Color.GRAY);
@@ -48,8 +34,11 @@ public class PanelReseau extends JPanel
 			g.drawLine((t.getCuve1().getPosX()+(t.getCuve1().getCapacite()/10)/2), (t.getCuve1().getPosY()+(t.getCuve2().getCapacite()/10)/2), 
 					   (t.getCuve2().getPosX()+(t.getCuve2().getCapacite()/10)/2), (t.getCuve2().getPosY()+(t.getCuve2().getCapacite()/10)/2));
 			
+			//étiquettes des épaisseurs des tubes
+			g.setFont(new Font("name", (int) Font.BOLD, 18));
 			g.drawString(""+t.getEpaisseur(), ((t.getCuve2().getPosX() + t.getCuve1().getPosX())/2), ((t.getCuve2().getPosY() + t.getCuve1().getPosY()))/2);
-			 
+			
+			//dessin des épaisseurs des tubes
 			for (int cpt = 1; cpt < t.getEpaisseur(); cpt++)
 			{
 				g.drawLine( (t.getCuve1().getPosX()+(t.getCuve1().getCapacite()/10)/2)+cpt, (t.getCuve1().getPosY()+(t.getCuve2().getCapacite()/10)/2)+cpt, 
@@ -61,20 +50,21 @@ public class PanelReseau extends JPanel
 
 		for ( Cuve c : this.ctrl.getCuves())
 		{
-			
+			//dessin de l'intérieur des cuves
 			g.setColor(this.getColor(c));
 			g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getCapacite()/10), (int) (c.getCapacite()/10));
 
+			//dessins de l'exterieur des cuves en contour noir
 			g.setColor(Color.BLACK);
 			g.drawOval(c.getPosX(), c.getPosY(), (int) (c.getCapacite()/10), (int) (c.getCapacite()/10));
 			
-			
+			//placement des étiquettes des tubes en fonction de l'info du positionnement
 			switch (c.getPosInfo()) 
 			{
 				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY()-10)); 
 				case "BAS"    -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY())+(c.getCapacite()/10)+10);
-				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/10)-20), (c.getPosY()+10));
-				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX())+(c.getCapacite()/10),    (c.getPosY()+20));
+				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/5)-50), (c.getPosY()+20));
+				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX())+(c.getCapacite()/10),    (c.getPosY()+40));
 				
 			}
 			
@@ -116,7 +106,7 @@ public class PanelReseau extends JPanel
 	{
 		String sRet="";
 
-		for ( Cuve c : this.listeCuves)
+		for ( Cuve c : this.ctrl.getCuves())
 		{
 			sRet += c.toString() + "\n";
 
