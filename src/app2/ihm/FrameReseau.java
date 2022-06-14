@@ -41,5 +41,10 @@ public class FrameReseau extends JFrame
 
 	}
 
+	public void majIHM()
+	{
+		this.repaint();
+	}
+
 
 }

@@ -48,9 +48,9 @@ public class Controleur
         return this.metier.remplirCuve(s1,s2);
     }
     
-    public void repaint()
+    public void majIHM()
     {
-        this.ihm.repaint();
+        this.ihm.majIHM();
     }
 
 	public static void main(String[] args) 
