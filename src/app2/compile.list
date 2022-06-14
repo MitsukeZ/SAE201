@@ -6,3 +6,4 @@
 ./ihm/PanelReseau.java
 ./ihm/PanelBtnPasser.java
 ./ihm/FrameReseau.java
+./ihm/PanelContenuCuve.java

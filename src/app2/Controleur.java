@@ -43,8 +43,20 @@ public class Controleur
 		this.ihm.majIhm();
     }
 
+    public boolean remplirCuve(String s1, String s2)
+    {
+        return this.metier.remplirCuve(s1,s2);
+    }
+    
+    public void majIHM()
+    {
+        this.ihm.majIHM();
+    }
+
 	public static void main(String[] args) 
 	{
 		new Controleur();	
 	}
+
+
 }

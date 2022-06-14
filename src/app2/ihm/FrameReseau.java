@@ -1,9 +1,7 @@
 package app2.ihm;
 
-import app2.ihm.*;
 import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.Graphics;
 import java.awt.Dimension;
 
 import app2.Controleur;
@@ -11,8 +9,9 @@ import app2.Controleur;
 
 public class FrameReseau extends JFrame
 {
-	private PanelReseau    panelReseau;
-	private PanelBtnPasser panelBtnPasser;
+	private PanelReseau      panelReseau;
+	private PanelBtnPasser   panelBtnPasser;
+	private PanelContenuCuve panelContenuCuve;
 
 	public FrameReseau(Controleur ctrl)
 	{
@@ -28,15 +27,23 @@ public class FrameReseau extends JFrame
 
 		//création des composants
 
-		this.panelReseau 	= new PanelReseau   (ctrl);
-		this.panelBtnPasser = new PanelBtnPasser(ctrl);
+		this.panelReseau 	  = new PanelReseau     (ctrl);
+		this.panelBtnPasser   = new PanelBtnPasser  (ctrl);
+		this.panelContenuCuve = new PanelContenuCuve(ctrl);
 
 		//positionnement des composants
 
-		this.add(panelReseau   , BorderLayout.CENTER);
-		this.add(panelBtnPasser, BorderLayout.SOUTH);
+		this.add(this.panelReseau     , BorderLayout.CENTER);
+		this.add(this.panelBtnPasser  , BorderLayout.SOUTH);
+		this.add(this.panelContenuCuve, BorderLayout.EAST);
 		
 		this.setVisible(true);
+
+	}
+
+	public void majIHM()
+	{
+		this.repaint();
 	}
 
 	public void majIhm()
