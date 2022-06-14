@@ -48,7 +48,7 @@ public class PanelReseau extends JPanel
 			g.drawLine((t.getCuve1().getPosX()+(t.getCuve1().getCapacite()/10)/2), (t.getCuve1().getPosY()+(t.getCuve2().getCapacite()/10)/2), 
 					   (t.getCuve2().getPosX()+(t.getCuve2().getCapacite()/10)/2), (t.getCuve2().getPosY()+(t.getCuve2().getCapacite()/10)/2));
 			
-			//g.drawString(t.getEpaisseur(), (t.getCuve2().getPosX() + 50), (t.getCuve1().getPosY()+50));
+			g.drawString(""+t.getEpaisseur(), ((t.getCuve2().getPosX() + t.getCuve1().getPosX())/2), ((t.getCuve2().getPosY() + t.getCuve1().getPosY()))/2);
 			 
 			for (int cpt = 1; cpt < t.getEpaisseur(); cpt++)
 			{
@@ -71,11 +71,11 @@ public class PanelReseau extends JPanel
 			
 			switch (c.getPosInfo()) 
 			{
-				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY()-(c.getCapacite()/10))); 
+				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY()-10)); 
 				case "BAS"    -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY())+(c.getCapacite()/10)+10);
 				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/10)-20), (c.getPosY()+10));
 				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX())+(c.getCapacite()/10),    (c.getPosY()+20));
-					
+				
 			}
 			
 		}
