@@ -24,6 +24,9 @@ public class PanelReseau extends JPanel
 	{
 		super.paint(g);
 
+		//création Font 
+		g.setFont(new Font("name", (int) Font.BOLD, 18));
+
 		g.drawString("Réseau",20,20); 
 
 		//dessin des tubes
@@ -35,7 +38,6 @@ public class PanelReseau extends JPanel
 					   (t.getCuve2().getPosX()+(t.getCuve2().getCapacite()/10)/2), (t.getCuve2().getPosY()+(t.getCuve2().getCapacite()/10)/2));
 			
 			//étiquettes des épaisseurs des tubes
-			g.setFont(new Font("name", (int) Font.BOLD, 18));
 			g.drawString(""+t.getEpaisseur(), ((t.getCuve2().getPosX() + t.getCuve1().getPosX())/2), ((t.getCuve2().getPosY() + t.getCuve1().getPosY()))/2);
 			
 			//dessin des épaisseurs des tubes
@@ -63,7 +65,7 @@ public class PanelReseau extends JPanel
 			{
 				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY()-10)); 
 				case "BAS"    -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY())+(c.getCapacite()/10)+10);
-				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/5)-50), (c.getPosY()+20));
+				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/5)-50),  (c.getPosY()+20));
 				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX())+(c.getCapacite()/10),    (c.getPosY()+40));
 				
 			}
