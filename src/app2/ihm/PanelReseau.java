@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.BasicStroke;
 
 public class PanelReseau extends JPanel
 {
@@ -35,9 +37,11 @@ public class PanelReseau extends JPanel
 		
 	}
 
-	public void paint(Graphics g)
+	public void paint(Graphics gr)
 	{
-		super.paint(g);
+		super.paint(gr);
+
+		Graphics2D g = (Graphics2D) gr;
 
 		//création Font 
 		g.setFont(new Font("name", (int) Font.BOLD, 18));
@@ -47,8 +51,10 @@ public class PanelReseau extends JPanel
 		//dessin des tubes
 		for (Tube t : this.ctrl.getTubes())
 		{
+			
+			
 			g.setColor(Color.GRAY);
-
+			g.setStroke(new BasicStroke((float) (t.getEpaisseur())));
 			g.drawLine(PanelReseau.DECALAGE_X + (t.getCuve1().getPosX() + (int) ((t.getCuve1().getCapacite()/10)/2)), 
 					   PanelReseau.DECALAGE_Y + (t.getCuve1().getPosY() + (int) ((t.getCuve1().getCapacite()/10)/2)), 
 					   PanelReseau.DECALAGE_X + (t.getCuve2().getPosX() + (int) ((t.getCuve2().getCapacite()/10)/2)), 
@@ -57,18 +63,10 @@ public class PanelReseau extends JPanel
 			//étiquettes des épaisseurs des tubes
 			g.drawString(""+t.getEpaisseur(), PanelReseau.DECALAGE_X + ((t.getCuve2().getPosX() + t.getCuve1().getPosX())/2), 
 			                                  PanelReseau.DECALAGE_Y + ((t.getCuve2().getPosY() + t.getCuve1().getPosY())/2));
-			
-			//dessin des épaisseurs des tubes
-			for (int cpt = 1; cpt < t.getEpaisseur(); cpt++)
-			{
-				g.drawLine(PanelReseau.DECALAGE_X + (t.getCuve1().getPosX() + (int) ((t.getCuve1().getCapacite()/10)/2) + cpt), 
-				           PanelReseau.DECALAGE_Y + (t.getCuve1().getPosY() + (int) ((t.getCuve1().getCapacite()/10)/2) + cpt), 
-						   PanelReseau.DECALAGE_X + (t.getCuve2().getPosX() + (int) ((t.getCuve2().getCapacite()/10)/2) + cpt), 
-						   PanelReseau.DECALAGE_Y + (t.getCuve2().getPosY() + (int) ((t.getCuve2().getCapacite()/10)/2) + cpt));
-			}
 
 		}
 		
+		g.setStroke(new BasicStroke(1));
 		
 		for ( Cuve c : this.ctrl.getCuves())
 		{

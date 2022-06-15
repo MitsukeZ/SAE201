@@ -33,7 +33,7 @@ public class FrameReseau extends JFrame
 
 		//positionnement des composants
 
-		this.add(this.panelReseau     , BorderLayout.CENTER);
+		this.add(new JScrollPane(this.panelReseau)     , BorderLayout.CENTER);
 		this.add(this.panelBtnPasser  , BorderLayout.SOUTH);
 		this.add(this.panelContenuCuve, BorderLayout.EAST);
 		
