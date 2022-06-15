@@ -73,6 +73,7 @@ public class PanelReseau extends JPanel implements Scrollable
 		for ( Cuve c : this.ctrl.getCuves())
 		{
 			//dessin de l'intérieur des cuves
+			System.out.println("Paint cuve " + c.getIdentifiant());
 			g.setColor(this.getColor(c));
 			g.fillOval(PanelReseau.DECALAGE_X + c.getPosX(), 
 			           PanelReseau.DECALAGE_Y + c.getPosY(), 
@@ -89,10 +90,10 @@ public class PanelReseau extends JPanel implements Scrollable
 			//placement des étiquettes des tubes en fonction de l'info du positionnement
 			switch (c.getPosInfo()) 
 			{
-				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), PanelReseau.DECALAGE_X +  c.getPosX(),                          PanelReseau.DECALAGE_Y + (c.getPosY()-10)); 
-				case "BAS"    -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), PanelReseau.DECALAGE_X +  c.getPosX(),                          PanelReseau.DECALAGE_Y + (c.getPosY())+(c.getCapacite()/10)+10);
-				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), PanelReseau.DECALAGE_X + (c.getPosX()-(c.getCapacite()/5)-50),  PanelReseau.DECALAGE_Y + (c.getPosY()+20));
-				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), PanelReseau.DECALAGE_X + (c.getPosX())+(c.getCapacite()/10),    PanelReseau.DECALAGE_Y + (c.getPosY()+40));
+				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ String.format("%6.2f", c.getContenu()) + "/" + c.getCapacite(), PanelReseau.DECALAGE_X +  c.getPosX(),                          PanelReseau.DECALAGE_Y + (c.getPosY()-10)); 
+				case "BAS"    -> g.drawString(c.getIdentifiant() +"   "+ String.format("%6.2f", c.getContenu()) + "/" + c.getCapacite(), PanelReseau.DECALAGE_X +  c.getPosX(),                          PanelReseau.DECALAGE_Y + (c.getPosY())+(c.getCapacite()/10)+10);
+				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ String.format("%6.2f", c.getContenu()) + "/" + c.getCapacite(), PanelReseau.DECALAGE_X + (c.getPosX()-(c.getCapacite()/5)-50),  PanelReseau.DECALAGE_Y + (c.getPosY()+20));
+				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ String.format("%6.2f", c.getContenu()) + "/" + c.getCapacite(), PanelReseau.DECALAGE_X + (c.getPosX())+(c.getCapacite()/10),    PanelReseau.DECALAGE_Y + (c.getPosY()+40));
 				
 			}
 			
@@ -109,7 +110,10 @@ public class PanelReseau extends JPanel implements Scrollable
 
 	public Color getColor (Cuve c)
 	{
+		
+		System.out.println("Contenu avant le cast " + c.getContenu() );	
 		int contenu = (int) c.getContenu();
+		System.out.println("Contenu de la cuve " + c.getIdentifiant() + " : " + contenu);
 
 		if (contenu == 0)
 			return this.tabColor[0];
