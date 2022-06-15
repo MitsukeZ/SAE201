@@ -66,18 +66,10 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 		this.add(panelHaut, BorderLayout.NORTH);
 		
 		if (!this.ctrl.remplirCuve (this.txtCuve.getText(), this.txtContenu.getText() ))
-		{
 			this.add(this.lblValInvalide, JLabel.NORTH);
-		}
 		
 		this.revalidate();
 		this.repaint();
 		this.ctrl.majIhm();
-
-		
-
-		
-		
-		
 	}
 }
