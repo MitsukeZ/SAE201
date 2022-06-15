@@ -57,10 +57,10 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 		if ( this.ctrl.remplirCuve (this.txtCuve.getText(), this.txtContenu.getText() ))
 		{
 			this.ctrl.majIhm();
+			this.remove (this.lblValInvalide);
 		}
 		else
 		{
-			this.remove (this.lblValInvalide);
 			this.revalidate();
 		}
 	}
