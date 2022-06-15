@@ -2,3 +2,8 @@
 900	1000	0	DROITE
 200	500	700	BAS
 700	700	700	DROITE
+liste d'adjacence
+A	B	2.0
+A	C	6.0
+C	B	4.0
+B	D	8.0

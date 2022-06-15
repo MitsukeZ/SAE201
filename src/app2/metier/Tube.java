@@ -50,49 +50,27 @@ public class Tube
 		return this.cuve2;
 	}
 
-	//classe permettant de transvaser une quantite de la valeur epaisseur de la plus grosse cuve à la plus petite 
-	public boolean transvaser()
+	//méthode permettant de transvaser une quantite de la valeur epaisseur de la plus grosse cuve à la plus petite 
+	public boolean transvaser(double valeur)
 	{
 		Cuve grande;
 		Cuve petite;
 
-		grande = this.cuve1;
-		petite = this.cuve2;
-		if (this.cuve2.getContenu() > this.cuve1.getContenu())								//vérification permettant de voir quelle cuve est la plus grande 
-		{
-			grande = this.cuve2;
-			petite = this.cuve1;
-		}
-		if (grande.getContenu() != petite.getContenu())										//vérification si les deux cuves ont la meme contenance
-		{
-			if (petite.getQuantiteLibre() > this.epaisseur)									//vérification si la quantité libre de la petite cuve est plus grande que le contenu qu'elle va recevoir
-			{
-				if (grande.getContenu() > this.epaisseur)									//vérification si le contenu de la grande cuve est plus grand que le contenu qu'on va lui enlever
-				{
-					petite.remplir(this.epaisseur);
-					grande.vider  (this.epaisseur);
-				}
-				else																		//si le contenu de la grande cuve n'est pas plus grand que le contenu qu'on va lui enlever alors on enlève le contenu de la grande
-				{
-					petite.remplir(grande.getContenu());
-					grande.vider  (grande.getContenu());
-				}
-			}
-			else
-			{
-				if (grande.getContenu() > petite.getQuantiteLibre())						//vérification si la quantité libre de la petite cuve est plus petite que le contenu de la grande qu'elle va recevoir en sachant que les deux sont plus petits que l'épaisseur du fichier est faux
-				{
-					grande.vider  (petite.getQuantiteLibre());
-					petite.remplir(petite.getQuantiteLibre());
-				}
-				else
-				{
-					petite.remplir(grande.getContenu());
-					grande.vider  (grande.getContenu());
-				}			
-			}
-			return true;
-		}
-		return false;
+		if (this.cuve1.getContenu() == this.cuve2.getContenu()) {return false;}
+
+		grande = (this.cuve1.getContenu() < this.cuve2.getContenu() ? this.cuve2 : this.cuve1);
+		petite = (this.cuve1.getContenu() < this.cuve2.getContenu() ? this.cuve1 : this.cuve2);
+		
+		if (this.epaisseur                            < valeur) {valeur = this.epaisseur;                           }
+		if (grande.getContenu()                       < valeur) {valeur = grande.getContenu();                      }
+		if (petite.getQuantiteLibre()                 < valeur) {valeur = petite.getQuantiteLibre();                }
+		if (grande.getContenu() - petite.getContenu() < valeur) {valeur = grande.getContenu() - petite.getContenu();}
+		
+		petite.remplir(valeur);
+		grande.vider(valeur);
+		
+		return true;
 	}
+
+	public boolean contains(Cuve c) {return cuve1 == c || cuve2 == c;}
 }

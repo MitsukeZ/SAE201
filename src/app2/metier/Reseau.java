@@ -1,8 +1,6 @@
 package app2.metier;
 
 import java.util.List;
-import java.util.Scanner;
-import java.io.FileReader;
 import java.util.ArrayList;
 
 import app2.Controleur;
@@ -60,9 +58,24 @@ public class Reseau
 
 	public void passerAuTourSuivant()
 	{
-		for (Tube tubeTmp : this.lstTube) 
-		{
-			tubeTmp.transvaser();
+		List<Cuve> cuvesNonVides  = new ArrayList<Cuve>();
+		List<Tube> tubesAUtiliser = new ArrayList<Tube>();
+		
+		//Détection des cuves contenant du liquide
+		for (Cuve c: this.lstCuve) {
+			if (c.getContenu() > 0) {cuvesNonVides.add(c);}
+		}
+		
+		//Détection des tubes de ces cuves
+		for (Cuve c: cuvesNonVides) {
+			for (Tube t: this.lstTube) {
+				if (t.contains(c)) {tubesAUtiliser.add(t);}
+			}
+		}
+		
+		//Transvaser
+		for (Tube t: tubesAUtiliser) {
+			t.transvaser(t.getEpaisseur());
 		}
 	}
 
