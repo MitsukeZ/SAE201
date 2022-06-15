@@ -60,14 +60,10 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 	}
 
 	public void actionPerformed(ActionEvent e)
-	{
-		System.out.println("btncliceuh");
-		
+	{		
 		this.removeAll();
-
-		
+	
 		this.add(panelHaut, BorderLayout.NORTH);
-		
 		
 		if (!this.ctrl.remplirCuve (this.txtCuve.getText(), this.txtContenu.getText() ))
 		{
