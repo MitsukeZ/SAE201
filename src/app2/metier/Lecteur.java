@@ -9,12 +9,8 @@ import java.util.ArrayList;
 
 public class Lecteur
 {
-	private Controleur ctrl;
-
 	public Lecteur(Controleur ctrl)
 	{
-		this.ctrl = ctrl;
-
 		try
 		{
 			Scanner sc = new Scanner ( new FileReader ( "cuve.data" ) );
