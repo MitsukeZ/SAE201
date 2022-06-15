@@ -69,7 +69,7 @@ public class Reseau
 		//Détection des tubes de ces cuves
 		for (Cuve c: cuvesNonVides) {
 			for (Tube t: this.lstTube) {
-				if (t.contains(c)) {tubesAUtiliser.add(t);}
+				if (t.contains(c) && !tubesAUtiliser.contains(t)) {tubesAUtiliser.add(t);}
 			}
 		}
 		
