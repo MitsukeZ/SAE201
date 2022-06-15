@@ -53,6 +53,9 @@ public class Controleur
         this.ihm.majIhm();
     }
 
+    public int getPosXMax() {return this.metier.getPosXMax();}
+    public int getPosYMax() {return this.metier.getPosYMax();}
+
 	public static void main(String[] args) 
 	{
 		new Controleur();	

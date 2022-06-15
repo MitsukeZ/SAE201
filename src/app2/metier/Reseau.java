@@ -117,4 +117,24 @@ public class Reseau
 		}
 		return true;
 	}
+
+	public int getPosXMax() {
+		int max = 0;
+		
+		for (Cuve c: this.lstCuve) {
+			if (c.getPosX() > max) {max = c.getPosX();}
+		}
+
+		return max;
+	}
+
+	public int getPosYMax() {
+		int max = 0;
+		
+		for (Cuve c: this.lstCuve) {
+			if (c.getPosY() > max) {max = c.getPosY();}
+		}
+
+		return max;
+	}
 }

@@ -71,4 +71,6 @@ public class Reseau
 	public void generer(char structure) {
 		new Generateur(this.lstCuve, this.lstTube, structure);
 	}
+
+	
 }

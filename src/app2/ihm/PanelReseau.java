@@ -9,8 +9,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.BasicStroke;
+import java.awt.Dimension;
+import java.awt.Rectangle;
 
-public class PanelReseau extends JPanel
+public class PanelReseau extends JPanel implements Scrollable
 {
 	private static final int DECALAGE_X = 25;
 	private static final int DECALAGE_Y = 100;
@@ -164,7 +166,38 @@ public class PanelReseau extends JPanel
 	{
 		this.repaint();
 	}
+
+	//Méthodes de l'interface Scrollable
+	//Cette interface permet de mettre un panel avec une méthode paint dans un JScrollPane 
+	
+	public Dimension getPreferredSize() {
+		return new Dimension(this.ctrl.getPosXMax() + 300,
+		                     this.ctrl.getPosYMax() + 300);
+	}
+	
+	public Dimension getPreferredScrollableViewportSize() {
+		return new Dimension(1280, 720);
+	}
+
+	public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
+		return 128;
+	}
+
+	public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
+		return 128;
+	}
+
+	public boolean getScrollableTracksViewportWidth() {
+		return getPreferredSize().width
+						<= getParent().getSize().width;
+	}
+
+	public boolean getScrollableTracksViewportHeight() {
+		return getPreferredSize().height
+						<= getParent().getSize().height;
+	}
 }
+
 
 /*------------------------------------ */
 /*Crée le lien entre les cuves         */
