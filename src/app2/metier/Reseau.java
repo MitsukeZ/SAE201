@@ -66,14 +66,15 @@ public class Reseau
 		}
 	}
 
-	public boolean remplirCuve(String s1, String s2)
+	public boolean remplirCuve(String cuveRecherchee, String qte)
 	{
-		if (!s2.matches("[0-9]+"))
+		if (!qte.matches("[0-9]+"))
 		{
 			return false;
 		}
-		double quantite = Double.parseDouble(s2);
-		char   cuve     = s1.toUpperCase().charAt(0);
+
+		double quantite = Double.parseDouble(qte);
+		char   cuve     = cuveRecherchee.toUpperCase().charAt(0);
 
 		if (cuve < 'A' || (int) (cuve - 'A') > lstCuve.size() )
 		{

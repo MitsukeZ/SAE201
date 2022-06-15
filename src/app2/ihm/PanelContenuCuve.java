@@ -16,6 +16,8 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 	private JButton    btnValider ;
 	private JLabel     lblValInvalide;
 
+	private JPanel     panelHaut;
+
 	public PanelContenuCuve(Controleur ctrl)
 	{
 		this.ctrl = ctrl;
@@ -24,10 +26,14 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 		this.txtContenu    = new JTextField(3);
 		this.txtCuve       = new JTextField(3);
 		this.btnValider    = new JButton("Valider");
+		this.panelHaut     = new JPanel();
+		
 		JLabel lblTitre    = new JLabel("Remplissage manuel :");
-		JPanel panelHaut   = new JPanel();
 		JPanel panelDroite = new JPanel();
 		JPanel panelGauche = new JPanel();
+		
+		
+		this.lblValInvalide = new JLabel("Valeurs Invalides");
 
 		lblTitre.setForeground(Color.WHITE);
 		//positionnement des composants
@@ -39,11 +45,14 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 		panelGauche.add (this.txtContenu);
 
 		panelDroite.add (this.btnValider);
-		panelHaut.setBackground(new Color(58,58,58));
+		
+		this.panelHaut.setBackground(new Color(58,58,58));
+		
+		this.panelHaut.add(lblTitre);
+		this.panelHaut.add(panelGauche   );
+		this.panelHaut.add(panelDroite   );
+
 		this.add(panelHaut, BorderLayout.NORTH);
-		panelHaut.add(lblTitre);
-		panelHaut.add(panelGauche   );
-		panelHaut.add(panelDroite   );
 
 
 		//activation des composants
@@ -52,16 +61,27 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		this.lblValInvalide = new JLabel("Valeurs Invalides");
-		this.add (this.lblValInvalide);
-		if ( this.ctrl.remplirCuve (this.txtCuve.getText(), this.txtContenu.getText() ))
+		System.out.println("btncliceuh");
+		
+		this.removeAll();
+
+		
+		this.add(panelHaut, BorderLayout.NORTH);
+		
+		
+		if (!this.ctrl.remplirCuve (this.txtCuve.getText(), this.txtContenu.getText() ))
 		{
-			this.ctrl.majIhm();
-			this.remove (this.lblValInvalide);
+			this.add(this.lblValInvalide, JLabel.NORTH);
 		}
-		else
-		{
-			this.revalidate();
-		}
+		
+		this.revalidate();
+		this.repaint();
+		this.ctrl.majIhm();
+
+		
+
+		
+		
+		
 	}
 }
