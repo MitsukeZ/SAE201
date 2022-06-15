@@ -9,34 +9,28 @@ import java.util.ArrayList;
 
 public class Lecteur
 {
-	private Controleur ctrl;
-
 	public Lecteur(Controleur ctrl)
 	{
-		this.ctrl = ctrl;
-
-		try
-		{
-			Scanner sc = new Scanner ( new FileReader ( "cuve.data" ) );
-
-			while ( sc.hasNextLine() )
-			{
-				String[] tabS = sc.nextLine().split("\t");
-
-				ctrl.creerCuve(Integer.parseInt(tabS[0]), Integer.parseInt(tabS[1]), Integer.parseInt(tabS[2]), tabS[3]);
-			}
-		}catch (Exception e){ e.printStackTrace(); }
-
 		try
 		{
 			Scanner sc = new Scanner ( new FileReader ( "tube.data" ) );
 
-			String structure = sc.nextLine();
+			String structure = "";
 
 			int ligne = 0;
 
 			while ( sc.hasNextLine() )
 			{
+				while ( ! (structure.equals("liste d'adjacence") || structure.equals("matrice de cout") || structure.equals("matrice de cout optimisee")))
+				{
+					String[] tabS = sc.nextLine().split("\t");
+
+					if (tabS[0].equals("liste d'adjacence") || tabS[0].equals("matrice de cout") || tabS[0].equals("matrice de cout optimisee"))
+						structure = tabS[0];
+					else
+						ctrl.creerCuve(Integer.parseInt(tabS[0]), Integer.parseInt(tabS[1]), Integer.parseInt(tabS[2]), tabS[3]);
+				}
+
 				String[] tabS = sc.nextLine().split("\t");
 
 				if (structure.equals("liste d'adjacence"))
@@ -54,6 +48,7 @@ public class Lecteur
 
 				ligne++;
 			}
+
 		}catch (Exception e){ e.printStackTrace(); }
 	}
 }
