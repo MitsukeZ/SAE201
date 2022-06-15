@@ -74,6 +74,6 @@ public class Tube implements Comparable<Tube>
 
 	public boolean contains(Cuve c) {return cuve1 == c || cuve2 == c;}
 
-	public int compareTo(Tube t) {return (int) (this.getCuve1().getContenu()+this.getCuve2().getContenu() -
-		                                        t   .getCuve1().getContenu()+t   .getCuve2().getContenu());}
+	public int compareTo(Tube t) {return (int) ((this.getCuve1().getContenu()+this.getCuve2().getContenu()) -
+		                                        (t   .getCuve1().getContenu()+t   .getCuve2().getContenu()));}
 }
