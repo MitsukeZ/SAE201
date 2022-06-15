@@ -13,18 +13,6 @@ public class Lecteur
 	{
 		try
 		{
-			Scanner sc = new Scanner ( new FileReader ( "cuve.data" ) );
-
-			while ( sc.hasNextLine() )
-			{
-				String[] tabS = sc.nextLine().split("\t");
-
-				ctrl.creerCuve(Integer.parseInt(tabS[0]), Integer.parseInt(tabS[1]), Integer.parseInt(tabS[2]), tabS[3]);
-			}
-		}catch (Exception e){ e.printStackTrace(); }
-
-		try
-		{
 			Scanner sc = new Scanner ( new FileReader ( "tube.data" ) );
 
 			String structure = "";
