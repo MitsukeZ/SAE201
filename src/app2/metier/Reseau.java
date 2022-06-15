@@ -2,6 +2,8 @@ package app2.metier;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import app2.Controleur;
 
@@ -73,6 +75,8 @@ public class Reseau
 			}
 		}
 		
+		Collections.sort(tubesAUtiliser);
+
 		//Transvaser
 		for (Tube t: tubesAUtiliser) {
 			t.transvaser(t.getEpaisseur());

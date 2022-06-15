@@ -1,6 +1,6 @@
 package app2.metier;
 
-public class Tube
+public class Tube implements Comparable<Tube>
 {
 	//le tube connait les deux cuves qu'il relit pour simplifier la création du fichier par le générateur
 	private Cuve cuve1;
@@ -64,7 +64,7 @@ public class Tube
 		if (this.epaisseur                            < valeur) {valeur = this.epaisseur;                           }
 		if (grande.getContenu()                       < valeur) {valeur = grande.getContenu();                      }
 		if (petite.getQuantiteLibre()                 < valeur) {valeur = petite.getQuantiteLibre();                }
-		if (grande.getContenu() - petite.getContenu() < valeur) {valeur = grande.getContenu() - petite.getContenu();}
+		if (grande.getContenu() - petite.getContenu() < valeur) {valeur = (grande.getContenu() - petite.getContenu())/2;}
 		
 		petite.remplir(valeur);
 		grande.vider(valeur);
@@ -73,4 +73,7 @@ public class Tube
 	}
 
 	public boolean contains(Cuve c) {return cuve1 == c || cuve2 == c;}
+
+	public int compareTo(Tube t) {return (int) (this.getCuve1().getContenu()+this.getCuve2().getContenu() -
+		                                        t   .getCuve1().getContenu()+t   .getCuve2().getContenu());}
 }

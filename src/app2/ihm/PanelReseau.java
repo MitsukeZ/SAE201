@@ -73,7 +73,6 @@ public class PanelReseau extends JPanel implements Scrollable
 		for ( Cuve c : this.ctrl.getCuves())
 		{
 			//dessin de l'intérieur des cuves
-			System.out.println("Paint cuve " + c.getIdentifiant());
 			g.setColor(this.getColor(c));
 			g.fillOval(PanelReseau.DECALAGE_X + c.getPosX(), 
 			           PanelReseau.DECALAGE_Y + c.getPosY(), 
@@ -111,9 +110,7 @@ public class PanelReseau extends JPanel implements Scrollable
 	public Color getColor (Cuve c)
 	{
 		
-		System.out.println("Contenu avant le cast " + c.getContenu() );	
 		int contenu = (int) c.getContenu();
-		System.out.println("Contenu de la cuve " + c.getIdentifiant() + " : " + contenu);
 
 		if (contenu == 0)
 			return this.tabColor[0];
