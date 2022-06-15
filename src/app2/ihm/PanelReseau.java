@@ -10,6 +10,9 @@ import java.awt.Graphics;
 
 public class PanelReseau extends JPanel
 {
+	private static final int DECALAGE_X = 25;
+	private static final int DECALAGE_Y = 100;
+	
 	private Controleur ctrl;
 
 	private Color[] tabColor;		// nouveau
@@ -46,44 +49,55 @@ public class PanelReseau extends JPanel
 		{
 			g.setColor(Color.GRAY);
 
-			g.drawLine((t.getCuve1().getPosX()+(t.getCuve1().getCapacite()/10)/2), (t.getCuve1().getPosY()+(t.getCuve2().getCapacite()/10)/2), 
-					   (t.getCuve2().getPosX()+(t.getCuve2().getCapacite()/10)/2), (t.getCuve2().getPosY()+(t.getCuve2().getCapacite()/10)/2));
+			g.drawLine(PanelReseau.DECALAGE_X + (t.getCuve1().getPosX() + (int) ((t.getCuve1().getCapacite()/10)/2)), 
+					   PanelReseau.DECALAGE_Y + (t.getCuve1().getPosY() + (int) ((t.getCuve1().getCapacite()/10)/2)), 
+					   PanelReseau.DECALAGE_X + (t.getCuve2().getPosX() + (int) ((t.getCuve2().getCapacite()/10)/2)), 
+					   PanelReseau.DECALAGE_Y + (t.getCuve2().getPosY() + (int) ((t.getCuve2().getCapacite()/10)/2)));
 			
 			//étiquettes des épaisseurs des tubes
-			g.drawString(""+t.getEpaisseur(), ((t.getCuve2().getPosX() + t.getCuve1().getPosX())/2), ((t.getCuve2().getPosY() + t.getCuve1().getPosY()))/2);
+			g.drawString(""+t.getEpaisseur(), PanelReseau.DECALAGE_X + ((t.getCuve2().getPosX() + t.getCuve1().getPosX())/2), 
+			                                  PanelReseau.DECALAGE_Y + ((t.getCuve2().getPosY() + t.getCuve1().getPosY())/2));
 			
 			//dessin des épaisseurs des tubes
 			for (int cpt = 1; cpt < t.getEpaisseur(); cpt++)
 			{
-				g.drawLine( (t.getCuve1().getPosX()+(t.getCuve1().getCapacite()/10)/2)+cpt, (t.getCuve1().getPosY()+(t.getCuve2().getCapacite()/10)/2)+cpt, 
-					   		(t.getCuve2().getPosX()+(t.getCuve2().getCapacite()/10)/2)+cpt, (t.getCuve2().getPosY()+(t.getCuve2().getCapacite()/10)/2)+cpt);
+				g.drawLine(PanelReseau.DECALAGE_X + (t.getCuve1().getPosX() + (int) ((t.getCuve1().getCapacite()/10)/2) + cpt), 
+				           PanelReseau.DECALAGE_Y + (t.getCuve1().getPosY() + (int) ((t.getCuve1().getCapacite()/10)/2) + cpt), 
+						   PanelReseau.DECALAGE_X + (t.getCuve2().getPosX() + (int) ((t.getCuve2().getCapacite()/10)/2) + cpt), 
+						   PanelReseau.DECALAGE_Y + (t.getCuve2().getPosY() + (int) ((t.getCuve2().getCapacite()/10)/2) + cpt));
 			}
 
 		}
 		
-
+		
 		for ( Cuve c : this.ctrl.getCuves())
 		{
 			//dessin de l'intérieur des cuves
 			g.setColor(this.getColor(c));
-			g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getCapacite()/10), (int) (c.getCapacite()/10));
+			g.fillOval(PanelReseau.DECALAGE_X + c.getPosX(), 
+			           PanelReseau.DECALAGE_Y + c.getPosY(), 
+					   (int) (c.getCapacite()/10), 
+					   (int) (c.getCapacite()/10));
 
 			//dessins de l'exterieur des cuves en contour noir
 			g.setColor(Color.BLACK);
-			g.drawOval(c.getPosX(), c.getPosY(), (int) (c.getCapacite()/10), (int) (c.getCapacite()/10));
+			g.drawOval(PanelReseau.DECALAGE_X + c.getPosX(), 
+					   PanelReseau.DECALAGE_Y + c.getPosY(), 
+					   (int) (c.getCapacite()/10), 
+					   (int) (c.getCapacite()/10));
 			
 			//placement des étiquettes des tubes en fonction de l'info du positionnement
 			switch (c.getPosInfo()) 
 			{
-				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY()-10)); 
-				case "BAS"    -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), c.getPosX(),                          (c.getPosY())+(c.getCapacite()/10)+10);
-				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX()-(c.getCapacite()/5)-50),  (c.getPosY()+20));
-				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(),(c.getPosX())+(c.getCapacite()/10),    (c.getPosY()+40));
+				case "HAUT"   -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), PanelReseau.DECALAGE_X +  c.getPosX(),                          PanelReseau.DECALAGE_Y + (c.getPosY()-10)); 
+				case "BAS"    -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), PanelReseau.DECALAGE_X +  c.getPosX(),                          PanelReseau.DECALAGE_Y + (c.getPosY())+(c.getCapacite()/10)+10);
+				case "GAUCHE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), PanelReseau.DECALAGE_X + (c.getPosX()-(c.getCapacite()/5)-50),  PanelReseau.DECALAGE_Y + (c.getPosY()+20));
+				case "DROITE" -> g.drawString(c.getIdentifiant() +"   "+ c.getContenu() + "/" + c.getCapacite(), PanelReseau.DECALAGE_X + (c.getPosX())+(c.getCapacite()/10),    PanelReseau.DECALAGE_Y + (c.getPosY()+40));
 				
 			}
 			
 		}
-
+		
 	}
 
 	public void update(Graphics g)
