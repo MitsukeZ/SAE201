@@ -15,7 +15,7 @@ public class Generateur
 		
 		try
 		{	
-			pw = new PrintWriter ( new File ( "cuve.data"), "utf-8" );
+			pw = new PrintWriter ( new File ( "reseau.data"), "utf-8" );
 		}	
 		catch (Exception e){e.printStackTrace(); return;}
 
@@ -24,15 +24,7 @@ public class Generateur
 			pw.println(cuve.getCapacite() + "\t" + cuve.getPosX() + "\t" + cuve.getPosY() + "\t" + cuve.getPosInfo());
 		}
 
-		pw.close();
-
 		/*-- Création du fichier des tubes  --*/
-		
-		try
-		{	
-			pw = new PrintWriter ( new File ( "tube.data"), "utf-8" );
-		}
-		catch (Exception e){e.printStackTrace(); return;}
 
 		double[][] tabLien = new double[tCuve.size()][tCuve.size()];
 

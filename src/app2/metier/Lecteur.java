@@ -13,7 +13,7 @@ public class Lecteur
 	{
 		try
 		{
-			Scanner sc = new Scanner ( new FileReader ( "tube.data" ) );
+			Scanner sc = new Scanner ( new FileReader ( "reseau.data" ) );
 
 			String structure = "";
 
