@@ -13,7 +13,7 @@ public class Controleur
 
     public Controleur()
     {
-        this.metier     = new Reseau(this);
+        this.metier     = new Reseau     ();
 		this.ihm        = new FrameReseau(this);
     }
 

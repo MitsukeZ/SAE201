@@ -11,13 +11,9 @@ public class Reseau
 {
 	private List<Cuve> lstCuve;
 	private List<Tube> lstTube;
-
-	private Controleur ctrl;
 	
-	public  Reseau(Controleur ctrl)
+	public  Reseau()
 	{
-		this.ctrl = ctrl;
-		
 		this.lstCuve = new ArrayList<Cuve>();
 		this.lstTube = new ArrayList<Tube>();
 
