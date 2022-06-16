@@ -19,11 +19,12 @@ public class FramePrincipale extends JFrame
     
     //Attributs
     private Controleur ctrl;
-    private int etape;
+    private int        etape;
 
-    private int nbCuves;
-    private int compteur;
-    private int cptTubes;
+    private int        nbCuves;
+    private int        compteur;
+    private int        cptTubes;
+    private String     msgErreur;
 
     //Panels
     private PanelValider           panelValider;
@@ -39,6 +40,7 @@ public class FramePrincipale extends JFrame
         this.etape    = -1;
         this.compteur = 1;
         this.cptTubes = 0;
+        this.msgErreur= "";
         
         this.ctrl     = ctrl;
         this.panelValider = new PanelValider(this);
@@ -171,15 +173,15 @@ public class FramePrincipale extends JFrame
         switch (this.etape) 
         {
             case 0: 
-                this.panelNbCuves = new PanelNbCuves("Valeur Invalide !");    
+                this.panelNbCuves = new PanelNbCuves("Valeur Invalide ! Car : " + this.msgErreur);    
                 this.add(this.panelNbCuves, BorderLayout.CENTER); 
                 break;
             case 1:
-                this.panelCreerCuves = new PanelCreerCuve("Valeurs Invalides !", this.compteur);
+                this.panelCreerCuves = new PanelCreerCuve("Valeurs Invalides ! Car : " + this.msgErreur, this.compteur);
                 this.add(this.panelCreerCuves);
                 break;
             case 3:
-                this.panelCreationTube = new PanelCreationTube("Valeurs Invalides !");
+                this.panelCreationTube = new PanelCreationTube("Valeurs Invalides ! Car : " + this.msgErreur);
                 this.add(this.panelCreationTube);
                 break;
         }
@@ -199,5 +201,10 @@ public class FramePrincipale extends JFrame
         if (etape < -1 || etape > 3) {return;}
 
         this.etape = etape;
+    }
+
+    public void setErreur (String e)
+    {
+        this.msgErreur = e;
     }
 }

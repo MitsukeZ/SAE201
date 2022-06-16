@@ -14,7 +14,7 @@ public class Controleur
 
     public Controleur(boolean modeConsole)
     {
-        this.metier     = new Reseau();
+        this.metier     = new Reseau(this);
 		if (modeConsole)
 		{
 			this.ihmCUI    = new FormulaireConsole(this);
@@ -47,6 +47,11 @@ public class Controleur
     public void generer(char structure) {
         this.metier.generer(structure);
     }
+
+    public void setMesgErreur(String s)
+    {
+        this.ihm.setErreur(s);
+    }
     
     public static void main(String[] args) 
     {
@@ -59,6 +64,7 @@ public class Controleur
 			new Controleur(true);
 		}
 	}
+
 
     
 }
