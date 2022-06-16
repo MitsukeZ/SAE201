@@ -13,6 +13,8 @@ import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
+import javax.swing.Scrollable;
+
 public class PanelReseau extends JPanel implements Scrollable
 {
 	private static final int DECALAGE_X = 25;
