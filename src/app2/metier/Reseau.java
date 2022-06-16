@@ -2,7 +2,6 @@ package app2.metier;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class Reseau 
