@@ -3,7 +3,7 @@ package app2.ihm;
 import app2.Controleur;
 import app2.metier.*;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
