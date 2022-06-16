@@ -9,12 +9,18 @@ import app2.Controleur;
 
 public class FrameReseau extends JFrame
 {
+	private Controleur ctrl;
+	
 	private PanelReseau      panelReseau;
 	private PanelBtnPasser   panelBtnPasser;
 	private PanelContenuCuve panelContenuCuve;
 
+	private JScrollPane      scrollPane;
+
 	public FrameReseau(Controleur ctrl)
 	{
+		this.ctrl = ctrl;
+		
 		Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		
 		int x = (int) tailleEcran.getWidth ();		
@@ -26,14 +32,15 @@ public class FrameReseau extends JFrame
 		this.setLayout(new BorderLayout());
 
 		//création des composants
-
-		this.panelReseau 	  = new PanelReseau     (ctrl);
+		this.panelReseau      = new PanelReseau     (ctrl);
 		this.panelBtnPasser   = new PanelBtnPasser  (ctrl);
 		this.panelContenuCuve = new PanelContenuCuve(ctrl);
 
+		this.scrollPane = new JScrollPane(this.panelReseau);
+
 		//positionnement des composants
 
-		this.add(new JScrollPane(this.panelReseau)     , BorderLayout.CENTER);
+		this.add(this.scrollPane      , BorderLayout.CENTER);
 		this.add(this.panelBtnPasser  , BorderLayout.SOUTH);
 		this.add(this.panelContenuCuve, BorderLayout.EAST);
 		
@@ -44,5 +51,16 @@ public class FrameReseau extends JFrame
 	public void majIhm()
 	{
 		this.panelReseau.majIhm();
+	}
+
+	public void reconstruction()
+	{
+		System.out.println("Reconstruction Incoming !");
+		
+		/* Cette méthode est appelée quand l'on ouvre un fichier, afin que le JScrollPane s'adapte au réseau généré */
+		this.scrollPane.revalidate();
+		this.repaint();
+
+		System.out.println("finito");
 	}
 }

@@ -7,13 +7,17 @@ import java.util.Scanner;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import javax.swing.JFileChooser;
+
 public class Lecteur
 {
-	public Lecteur(Controleur ctrl)
+	private JFileChooser jfc;
+	
+	public Lecteur(Controleur ctrl, String cheminFichier)
 	{
 		try
 		{
-			Scanner sc = new Scanner ( new FileReader ( "reseau.data" ) );
+			Scanner sc = new Scanner ( new FileReader ( cheminFichier ) );
 
 			String structure = "";
 

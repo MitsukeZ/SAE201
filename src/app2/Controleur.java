@@ -15,7 +15,6 @@ public class Controleur
     {
         this.metier     = new Reseau(this);
 		this.ihm        = new FrameReseau(this);
-		this.lecteur    = new Lecteur(this);
     }
 
     public boolean creerCuve(int capacite, int posX, int posY, String posInfo) 
@@ -55,6 +54,12 @@ public class Controleur
 
     public int getPosXMax() {return this.metier.getPosXMax();}
     public int getPosYMax() {return this.metier.getPosYMax();}
+
+    public void ouvrirFichier(String cheminFichier)
+    {
+        this.lecteur = new Lecteur(this, cheminFichier);
+        this.ihm.reconstruction();
+    }
 
 	public static void main(String[] args) 
 	{
