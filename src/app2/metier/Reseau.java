@@ -83,9 +83,11 @@ public class Reseau
 			return false;
 		}
 
-		double quantite = Double.parseDouble(qte);
-		char   cuve     = cuveRecherchee.toUpperCase().charAt(0);
-
+		double quantite;
+		char   cuve = cuveRecherchee.toUpperCase().charAt(0);
+		
+		try {quantite = Double.valueOf(qte);} catch (Exception e) {return false;}
+		
 		if (cuve < 'A' || (int) (cuve - 'A') > lstCuve.size() )
 		{
 			return false;
@@ -104,6 +106,8 @@ public class Reseau
 		{
 			return false;
 		}
+
+		if (quantite < 0) {return false;}
 		if (cuveEnQuestion.getQuantiteLibre() < quantite)
 		{
 			cuveEnQuestion.remplir(cuveEnQuestion.getQuantiteLibre());
