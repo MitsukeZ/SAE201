@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-import app2.Controleur;
-
 public class Reseau 
 {
 	private List<Cuve> lstCuve;
