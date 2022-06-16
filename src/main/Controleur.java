@@ -14,7 +14,7 @@ public class Controleur
 
     public Controleur(boolean modeConsole)
     {
-        this.metier     = new Reseau(this);
+        this.metier     = new Reseau();
 		if (modeConsole)
 		{
 			this.ihmCUI    = new FormulaireConsole(this);

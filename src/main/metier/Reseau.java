@@ -11,13 +11,10 @@ public class Reseau
 	private List<Cuve> lstCuve;
 	private List<Tube> lstTube;
 
-	private Controleur ctrl;
 
 	//la classe réseau simule l'ensemble des cuves et des tubes d'où la création de 2 arraylist pour les cuves et les tubes
-	public Reseau(Controleur ctrl)
-	{
-		this.ctrl = ctrl;
-		
+	public Reseau()
+	{		
 		this.lstCuve = new ArrayList<Cuve>();
 		this.lstTube = new ArrayList<Tube>();
 	}
