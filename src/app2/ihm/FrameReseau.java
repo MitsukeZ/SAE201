@@ -55,12 +55,9 @@ public class FrameReseau extends JFrame
 
 	public void reconstruction()
 	{
-		System.out.println("Reconstruction Incoming !");
-		
 		/* Cette méthode est appelée quand l'on ouvre un fichier, afin que le JScrollPane s'adapte au réseau généré */
+		this.panelBtnPasser.reset();
 		this.scrollPane.revalidate();
 		this.repaint();
-
-		System.out.println("finito");
 	}
 }

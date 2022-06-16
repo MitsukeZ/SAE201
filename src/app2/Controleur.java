@@ -17,6 +17,7 @@ public class Controleur
 		this.ihm        = new FrameReseau(this);
     }
 
+    //Méthodes du métier
     public boolean creerCuve(int capacite, int posX, int posY, String posInfo) 
     {
         return metier.creerCuve(capacite, posX, posY, posInfo);
@@ -27,14 +28,10 @@ public class Controleur
         return metier.creerTube(cv1, cv2, epaisseur);
     }
 
-    public List<Cuve> getCuves() 
-    {
-       return  metier.getCuves();
-    }
-
-    public List<Tube> getTubes() {
-       return metier.getTubes();
-    }
+    public List<Cuve> getCuves  () {return this.metier.getCuves();  }
+    public List<Tube> getTubes  () {return this.metier.getTubes();  }
+    public int        getPosXMax() {return this.metier.getPosXMax();}
+    public int        getPosYMax() {return this.metier.getPosYMax();}
 
     public void passerAuTourSuivant()
     {
@@ -42,21 +39,15 @@ public class Controleur
 		this.ihm.majIhm();
     }
 
-    public boolean remplirCuve(String s1, String s2)
-    {
-        return this.metier.remplirCuve(s1,s2);
-    }
+    public boolean remplirCuve(String s1, String s2) {return this.metier.remplirCuve(s1,s2);}
     
-    public void majIhm()
-    {
-        this.ihm.majIhm();
-    }
-
-    public int getPosXMax() {return this.metier.getPosXMax();}
-    public int getPosYMax() {return this.metier.getPosYMax();}
-
+    //Méthodes de l'IHM
+    public void majIhm() {this.ihm.majIhm();}
+    
+    //Méthodes du lecteur
     public void ouvrirFichier(String cheminFichier)
     {
+        this.metier  = new Reseau();
         this.lecteur = new Lecteur(this, cheminFichier);
         this.ihm.reconstruction();
     }

@@ -3,8 +3,8 @@ package app2.metier;
 public class Tube implements Comparable<Tube>
 {
 	//le tube connait les deux cuves qu'il relit pour simplifier la création du fichier par le générateur
-	private Cuve cuve1;
-	private Cuve cuve2;	
+	private Cuve   cuve1;
+	private Cuve   cuve2;	
 
 	private double epaisseur;
 
@@ -18,37 +18,17 @@ public class Tube implements Comparable<Tube>
 	//Une farbrique est utile dans le cas présent car on peut prévoir l'incapacité de créer un tube
 	public static Tube creerTube(Cuve cv1, Cuve cv2, double epaisseur)
 	{
-		if (epaisseur > 10 || epaisseur < 2)								//gestion du cas ou l'épaisseur ne rentre pas dans les standards
-		{
-			return null;
-		}
+		if (epaisseur > 10 || epaisseur < 2) {return null;}				    //gestion du cas ou l'épaisseur ne rentre pas dans les standards
+		if (cv1 == null    || cv2 == null  ) {return null;}					//gestion du cas ou l'une des cuve n'existe pas
+		if (cv1 == cv2                     ) {return null;}					//gestion du cas ou les deux cuves sont les memes 
 
-		if (cv1 == null || cv2 == null )									//gestion du cas ou l'une des cuve n'existe pas
-		{
-			return null;
-		}
-		if (cv1 == cv2) 													//gestion du cas ou les deux cuves sont les memes 
-		{
-			return null;
-		}
 		return new Tube(cv1, cv2, epaisseur);
 	}
 
 	//accesseurs de la classe
-	public double getEpaisseur ()
-	{
-		return this.epaisseur;
-	}
-
-	public Cuve getCuve1()
-	{
-		return this.cuve1;
-	}
-
-	public Cuve getCuve2()
-	{
-		return this.cuve2;
-	}
+	public double getEpaisseur() {return this.epaisseur;}
+	public Cuve   getCuve1    () {return this.cuve1;    }
+	public Cuve   getCuve2    () {return this.cuve2;    }
 
 	//méthode permettant de transvaser une quantite de la valeur epaisseur de la plus grosse cuve à la plus petite 
 	public boolean transvaser(double valeur)
@@ -67,7 +47,7 @@ public class Tube implements Comparable<Tube>
 		if (grande.getContenu() - petite.getContenu() < valeur) {valeur = (grande.getContenu() - petite.getContenu())/2;}
 		
 		petite.remplir(valeur);
-		grande.vider(valeur);
+		grande.vider  (valeur);
 		
 		return true;
 	}

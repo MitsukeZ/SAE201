@@ -58,9 +58,7 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 				String nomFichier = fichier.getName();
 
 				if (nomFichier.substring(nomFichier.lastIndexOf(".")).equals(".data")) {
-					System.out.println("toi guez");
 					this.ctrl.ouvrirFichier(fichier.getAbsolutePath());
-					this.nbTour = 1;
 					this.fichierOuvert = true;
 				}
 			}
@@ -81,5 +79,11 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 
 		
 		
+	}
+
+	public void reset() 
+	{
+		this.nbTour = 0;
+		this.lblNTour.setText("Tour numero " + ++this.nbTour);
 	}
 }
