@@ -1,10 +1,9 @@
-package main;
-
-import main.metier.*;
-import main.ihm.*;
-import main.ihm.FramePrincipale;
+package app1;
 
 import java.util.List;
+
+import app1.ihm.*;
+import app1.metier.*;
 
 public class Controleur
 {

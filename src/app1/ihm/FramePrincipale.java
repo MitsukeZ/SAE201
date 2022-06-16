@@ -1,11 +1,11 @@
-package main.ihm;
+package app1.ihm;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import main.Controleur;
-import main.ihm.panels.*;
-import main.metier.Cuve;
+import app1.Controleur;
+import app1.ihm.panels.*;
+import app1.metier.Cuve;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;

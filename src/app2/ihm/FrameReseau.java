@@ -9,8 +9,6 @@ import app2.Controleur;
 
 public class FrameReseau extends JFrame
 {
-	private Controleur ctrl;
-	
 	private PanelReseau      panelReseau;
 	private PanelBtnPasser   panelBtnPasser;
 	private PanelContenuCuve panelContenuCuve;
@@ -18,25 +16,23 @@ public class FrameReseau extends JFrame
 	private JScrollPane      scrollPane;
 
 	public FrameReseau(Controleur ctrl)
-	{
-		this.ctrl = ctrl;
-		
+	{		
 		Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		
 		int x = (int) tailleEcran.getWidth ();		
 		int y = (int) tailleEcran.getHeight();
 
-		this.setSize(x, y);
-		this.setLocationRelativeTo(null);
+		//Propriétés de la Frame
+		this.setSize                 (x, y);
+		this.setLocationRelativeTo   (null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLayout(new BorderLayout());
 
 		//création des composants
 		this.panelReseau      = new PanelReseau     (ctrl);
 		this.panelBtnPasser   = new PanelBtnPasser  (ctrl);
 		this.panelContenuCuve = new PanelContenuCuve(ctrl);
 
-		this.scrollPane = new JScrollPane(this.panelReseau);
+		this.scrollPane       = new JScrollPane(this.panelReseau);
 
 		//positionnement des composants
 

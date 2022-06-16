@@ -1,4 +1,4 @@
-package main.metier;
+package app1.metier;
 public class Tube
 {
 	//le tube connait les deux cuves qu'il relit pour simplifier la création du fichier par le générateur

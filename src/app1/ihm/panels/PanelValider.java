@@ -1,12 +1,12 @@
-package main.ihm.panels;
+package app1.ihm.panels;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import app1.ihm.FramePrincipale;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import main.ihm.FramePrincipale;
 
 public class PanelValider extends JPanel implements ActionListener
 {

@@ -1,4 +1,4 @@
-package main.ihm.panels;
+package app1.ihm.panels;
 
 import javax.swing.JLabel;
 import javax.swing.JList;

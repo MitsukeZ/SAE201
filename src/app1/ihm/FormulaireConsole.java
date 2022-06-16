@@ -1,9 +1,9 @@
-package main.ihm;
+package app1.ihm;
 
 import iut.algo.Clavier;
 import java.util.ArrayList;
 
-import main.Controleur;
+import app1.Controleur;
 
 public class FormulaireConsole 
 {

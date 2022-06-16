@@ -64,8 +64,6 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 			}
 
 			return;
-
-			
 		}
 
 		if (!this.fichierOuvert) {return;}
@@ -76,9 +74,6 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 			this.lblNTour.setText("Tour numero " + ++this.nbTour);
 			return;
 		}
-
-		
-		
 	}
 
 	public void reset() 

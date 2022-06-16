@@ -1,4 +1,4 @@
-package main.metier;
+package app1.metier;
 
 import java.util.List;
 

@@ -21,15 +21,11 @@ public class PanelReseau extends JPanel implements Scrollable
 	private static final int DECALAGE_Y = 100;
 	
 	private Controleur ctrl;
-
-	private Color[] tabColor;		// nouveau
+	private Color[] tabColor;		
 
 	public PanelReseau(Controleur ctrl)
 	{
-		this.ctrl = ctrl;
-
-		// nouveau
-
+		this.ctrl     = ctrl;
 		this.tabColor = new Color[500];
 
 		for (int i = 0; i < this.tabColor.length; i++)
@@ -45,6 +41,27 @@ public class PanelReseau extends JPanel implements Scrollable
 	public void paint(Graphics gr)
 	{
 		super.paint(gr);
+
+		/*------------------------------------ */
+		/*Crée le lien entre les cuves         */
+		/*  
+			on crée d'abord la ligne en partant du centre de la première cuve :
+			x1 = X de cuve 1 + son rayon
+			y1 = Y de cuve 1 + son rayon
+
+			x2 = X de cuve 2 + son rayon
+			y2 = Y de cuve 2 plus son rayon
+			
+			g.drawLine(130+40, 130+40,400+30 , 80+30);
+			
+			puis on construit les cuves 
+			g.setColor(this.getColor(c);
+
+			g.fillOval(130, 130, 80, 80);
+			g.fillOval(400, 80, 60, 60); 
+		*/
+
+		/*-------------------------------------*/
 
 		Graphics2D g = (Graphics2D) gr;
 
@@ -103,12 +120,7 @@ public class PanelReseau extends JPanel implements Scrollable
 		
 	}
 
-	public void update(Graphics g)
-	{
-		this.paint(g);
-	}
-
-
+	public void update(Graphics g) {this.paint(g);}
 
 	public Color getColor (Cuve c)
 	{
@@ -119,39 +131,7 @@ public class PanelReseau extends JPanel implements Scrollable
 			return this.tabColor[0];
 		else
 			return this.tabColor[(contenu / 2) - 1];
-
-		/*
-		
-		double contenu = c.getContenu();		
-		Color[] tabColor = new Color[501]; //on crée un tableau de Color pour avoir les nuancés de rouge en fonction du contenu du la cuve
-		int r, g,  b ;                     //nous sert à initialiser les dégradés de rouge
-		r = g = b = 255;                   //initialisation à 255 pour commencer par la couleur blanche
-
-		for (int cpt = 0; cpt < 255; cpt++)
-		{
-			//System.out.println("rouge:" + r + "  vert:" + g + "  bleu:" + b);
-			tabColor[cpt] = new Color (r , g , b);
-			if (g > 0 && b > 0)
-			{
-				g--;
-				b--;
-			}
-		}
-
-		for (int cpt = 255; cpt < tabColor.length ; cpt++)
-		{
-			//System.out.println("rouge:" + r + "  vert:" + g + "  bleu:" + b);
-			tabColor[cpt] = new Color (r , g , b);
-			if (r > 0)
-				r--;
-		}
-		
-		return new Color(tabColor[(int)contenu].getRGB());
-
-		*/
 	}
-
-
 
 	public String afficher()
 	{
@@ -201,25 +181,3 @@ public class PanelReseau extends JPanel implements Scrollable
 						<= getParent().getSize().height;
 	}
 }
-
-
-/*------------------------------------ */
-/*Crée le lien entre les cuves         */
-/*  
-	on crée d'abord la ligne en partant du centre de la première cuve :
-	x1 = X de cuve 1 + son rayon
-	y1 = Y de cuve 1 + son rayon
-
-	x2 = X de cuve 2 + son rayon
-	y2 = Y de cuve 2 plus son rayon
-	
-	g.drawLine(130+40, 130+40,400+30 , 80+30);
-	 
-	puis on construit les cuves 
-	g.setColor(Color.RED);
-
-	g.fillOval(130, 130, 80, 80);
-	g.fillOval(400, 80, 60, 60); 
-*/
-
-/*-------------------------------------*/

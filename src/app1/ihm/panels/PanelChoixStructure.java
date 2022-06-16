@@ -1,9 +1,9 @@
-package main.ihm.panels;
+package app1.ihm.panels;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import main.ihm.FramePrincipale;
+import app1.ihm.FramePrincipale;
 
 import javax.swing.JLabel;
 

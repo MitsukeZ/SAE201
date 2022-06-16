@@ -1,10 +1,11 @@
-package main.metier;
+package app1.metier;
 
 import java.util.List;
+
+import app1.Controleur;
+
 import java.util.ArrayList;
 import java.math.*;
-
-import main.Controleur;
 
 public class Reseau 
 {

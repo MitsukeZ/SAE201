@@ -1,9 +1,9 @@
-package main.ihm.panels;
+package app1.ihm.panels;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import main.metier.*;
+import app1.metier.*;
 
 import javax.swing.JLabel;
 
