@@ -48,6 +48,7 @@ public class Controleur
 	public void ouvrirFichier(String cheminFichier)
 	{
 		this.metier  = new Reseau();
+		Cuve.resetID();
 		this.lecteur = new Lecteur(this, cheminFichier);
 		this.ihm.reconstruction();
 	}

@@ -64,4 +64,6 @@ public class Cuve
 				"Position       : (x: " + this.posX    + "; y:" + this.posY + ")"     + "\n" +
 				"PosInformation : "     + this.posInfo ;
 	} 
+
+	public static void resetID() {Cuve.identifiants = 'A';}
 }
