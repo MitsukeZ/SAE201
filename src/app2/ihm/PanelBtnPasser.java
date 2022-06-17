@@ -32,7 +32,7 @@ public class PanelBtnPasser extends JPanel implements ActionListener
 		this.btnPasser = new JButton("Passer au tour suivant");
 		this.btnOuvrir = new JButton("Ouvrir un fichier");
 
-		this.jfc = new JFileChooser();
+		this.jfc = new JFileChooser(new File("./"));
 
 		this.fichierOuvert = false;
 
