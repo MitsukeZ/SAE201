@@ -1,0 +1,9 @@
+Pour lancer l'application 1 :
+ *se mettre dans le repertoire src : `cd src`
+ *puis compiler le compile.list : `javac @compile.list`
+ *puis lancer le controleur de l'app 1 : `java app1.Controleur`
+ 
+Pour lancer l'application 2 :
+ *se mettre dans le repertoire src : `cd src`
+ *puis compiler le compile.list : `javac @compile.list`
+ *puis lancer le controleur de l'app 2 : `java app2.Controleur`
