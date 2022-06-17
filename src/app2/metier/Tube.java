@@ -4,7 +4,7 @@ public class Tube implements Comparable<Tube>
 {
 	//le tube connait les deux cuves qu'il relit pour simplifier la création du fichier par le générateur
 	private Cuve   cuve1;
-	private Cuve   cuve2;	
+	private Cuve   cuve2;
 
 	private double epaisseur;
 
@@ -40,15 +40,15 @@ public class Tube implements Comparable<Tube>
 
 		grande = (this.cuve1.getContenu() < this.cuve2.getContenu() ? this.cuve2 : this.cuve1);
 		petite = (this.cuve1.getContenu() < this.cuve2.getContenu() ? this.cuve1 : this.cuve2);
-		
+
 		if (this.epaisseur                            < valeur) {valeur = this.epaisseur;                               }
 		if (grande.getContenu()                       < valeur) {valeur = grande.getContenu();                          }
 		if (petite.getQuantiteLibre()                 < valeur) {valeur = petite.getQuantiteLibre();                    }
 		if (grande.getContenu() - petite.getContenu() < valeur) {valeur = (grande.getContenu() - petite.getContenu())/2;}
-		
+
 		petite.remplir(valeur);
 		grande.vider  (valeur);
-		
+
 		return true;
 	}
 

@@ -27,12 +27,11 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 		this.txtCuve       = new JTextField(3);
 		this.btnValider    = new JButton("Valider");
 		this.panelHaut     = new JPanel();
-		
+
 		JLabel lblTitre    = new JLabel("Remplissage manuel :");
 		JPanel panelDroite = new JPanel();
 		JPanel panelGauche = new JPanel();
-		
-		
+
 		this.lblValInvalide = new JLabel("Valeurs Invalides");
 
 		lblTitre.setForeground(Color.WHITE);
@@ -45,9 +44,9 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 		panelGauche.add (this.txtContenu);
 
 		panelDroite.add (this.btnValider);
-		
+
 		this.panelHaut.setBackground(new Color(58,58,58));
-		
+
 		this.panelHaut.add(lblTitre);
 		this.panelHaut.add(panelGauche   );
 		this.panelHaut.add(panelDroite   );
@@ -60,14 +59,14 @@ public class PanelContenuCuve extends JPanel implements ActionListener
 	}
 
 	public void actionPerformed(ActionEvent e)
-	{		
+	{
 		this.removeAll();
-	
+
 		this.add(panelHaut, BorderLayout.NORTH);
-		
+
 		if (!this.ctrl.remplirCuve (this.txtCuve.getText(), this.txtContenu.getText() ))
 			this.add(this.lblValInvalide, JLabel.NORTH);
-		
+
 		this.revalidate();
 		this.repaint();
 		this.ctrl.majIhm();

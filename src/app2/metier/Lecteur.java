@@ -19,7 +19,7 @@ public class Lecteur
 		//Informations de la cuve
 		int    capacite, posX, posY;
 		String posInfo;
-		
+
 		this.ctrl = ctrl;
 
 		//Création d'un Scanner pour le fichier
@@ -57,25 +57,25 @@ public class Lecteur
 		}
 
 		if (structure.isEmpty()) {return;}
-		
+
 		//Création des tubes
 		if (structure.equals("liste d'adjacence")) {this.lireListeAdjacence(sc, cptCuves);}
 		else                                       {this.lireMatrice       (sc, cptCuves);}
 	}
-	
+
 	public void lireListeAdjacence(Scanner sc, int cptCuves) 
 	{
 		String[] ligne;
 		char     idCuve1, idCuve2;
 		double   epaisseur;
 		int      indexCuve1, indexCuve2;
-		
+
 		while (sc.hasNextLine()) 
 		{
 			ligne = sc.nextLine().split("\t");
 
 			if (ligne.length != 3) {continue;}
-			
+
 			//Récupération des informations
 			try 
 			{
@@ -88,17 +88,15 @@ public class Lecteur
 			//Vérification de la validité des cuves
 			indexCuve1 = idCuve1 - 'A';
 			indexCuve2 = idCuve2 - 'A';
-			
+
 			if (indexCuve1 >= cptCuves) {continue;}
 			if (indexCuve2 >= cptCuves) {continue;}
 
 			//Création du tube
 			this.ctrl.creerTube(this.ctrl.getCuves().get(indexCuve1), 
 			                    this.ctrl.getCuves().get(indexCuve2), epaisseur);
-
 		}
 	}
-
 
 	public void lireMatrice(Scanner sc, int cptCuves) 
 	{
@@ -115,7 +113,7 @@ public class Lecteur
 				//Vérification de la validité des valeurs
 				if  (cpt >= ligne.length)                                         {break;   }
 				try {epaisseur = Double.valueOf(ligne[cpt]);} catch (Exception e) {continue;}
-				
+
 				if (!ligne[cpt].equals("0"))
 				{
 					this.ctrl.creerTube(this.ctrl.getCuves().get(numLigne), 
@@ -126,7 +124,5 @@ public class Lecteur
 
 			if (numLigne >= cptCuves) {break;}
 		}
-		
 	}
-
 }

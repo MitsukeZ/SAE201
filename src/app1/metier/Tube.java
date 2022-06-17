@@ -19,21 +19,16 @@ public class Tube
 	public static Tube creerTube(Cuve cv1, Cuve cv2, double epaisseur)
 	{
 		if (epaisseur > 10 || epaisseur < 2)								//gestion du cas ou l'épaisseur ne rentre pas dans les standards
-		{
 			return null;
-		}
 
 		if (cv1 == null || cv2 == null )									//gestion du cas ou l'une des cuve n'existe pas 
-		{
 			return null;
-		}
+
 		if (cv1 == cv2) 													//gestion du cas ou les deux cuves sont les memes
-		{
 			return null;
-		}
+
 		return new Tube(cv1, cv2, epaisseur);
 	}
-
 
 	//accesseurs de la classe
 	public double getEpaisseur ()
@@ -50,7 +45,4 @@ public class Tube
 	{
 		return this.cuve2;
 	}
-
-
-
 }

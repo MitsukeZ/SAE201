@@ -13,198 +13,196 @@ import java.awt.BorderLayout;
 
 public class FramePrincipale extends JFrame 
 {
-    //Indice des menus, de -1 à 3
-    public static final int MENU_TUBE  = 1;
-    public static final int GENERATION = 3;
-    
-    //Attributs
-    private Controleur ctrl;
-    private int        etape;
+	//Indice des menus, de -1 à 3
+	public static final int MENU_TUBE  = 1;
+	public static final int GENERATION = 3;
 
-    private int        nbCuves;
-    private int        compteur;
-    private int        cptTubes;
-    private String     msgErreur;
+	//Attributs
+	private Controleur ctrl;
+	private int        etape;
 
-    //Panels
-    private PanelValider           panelValider;
-    private PanelNbCuves           panelNbCuves;
-    private PanelCreerCuve         panelCreerCuves;
-    private PanelChoixCreationTube panelChoixCreation;
-    private PanelCreationTube      panelCreationTube;
-    private PanelChoixStructure    panelChoixStructure;
-    
-    public FramePrincipale(Controleur ctrl) 
-    {
-        //Initialisation des attributs
-        this.etape    = -1;
-        this.compteur = 1;
-        this.cptTubes = 0;
-        this.msgErreur= "";
-        
-        this.ctrl     = ctrl;
-        this.panelValider = new PanelValider(this);
-        
-        //Propriétés de la Frame
-        this.setSize(800, 400);
+	private int        nbCuves;
+	private int        compteur;
+	private int        cptTubes;
+	private String     msgErreur;
 
-        //Fenêtre centrée sur l'écran
-        Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation((int) (tailleEcran.getWidth()/2-400) , (int) (tailleEcran.getHeight()/2-200));
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//Panels
+	private PanelValider           panelValider;
+	private PanelNbCuves           panelNbCuves;
+	private PanelCreerCuve         panelCreerCuves;
+	private PanelChoixCreationTube panelChoixCreation;
+	private PanelCreationTube      panelCreationTube;
+	private PanelChoixStructure    panelChoixStructure;
 
-        this.maj();
+	public FramePrincipale(Controleur ctrl) 
+	{
+		//Initialisation des attributs
+		this.etape    = -1;
+		this.compteur = 1;
+		this.cptTubes = 0;
+		this.msgErreur= "";
 
-        //Activation de la frame
-        this.setVisible(true);
-    }
+		this.ctrl     = ctrl;
+		this.panelValider = new PanelValider(this);
 
-    public void setTitre()
-    {
-        switch (this.etape)
-        {
-            case 0: this.setTitle("Création des cuves"   ); break;
-            case 2: this.setTitle("Choix d'une action"   ); break;
-            case 3: this.setTitle("Création d'un tube"   ); break;
-            case 4: this.setTitle("Choix d'une structure"); break;
-        }
-    }
+		//Propriétés de la Frame
+		this.setSize(800, 400);
 
-    public void setPanelsAdequats()
-    {
-        this.getContentPane().removeAll();
-        
-        switch (this.etape) 
-        {
-            case 0: 
-                this.panelNbCuves = new PanelNbCuves("");    
-                this.add(this.panelNbCuves, BorderLayout.CENTER); 
-                break;
-            case 1:
-                this.panelCreerCuves = new PanelCreerCuve("", this.compteur);
-                this.add(this.panelCreerCuves, BorderLayout.CENTER);
-                break;
-            case 2:
-                this.panelChoixCreation = new PanelChoixCreationTube(this);
-                this.add(this.panelChoixCreation);
-                this.revalidate();
-                return;
-            case 3:
-                if (this.cptTubes > (this.nbCuves*(this.nbCuves-1))/2) 
-                {
-                    this.setEtape(FramePrincipale.MENU_TUBE); 
-                    this.maj(); 
-                    return;
-                }
+		//Fenêtre centrée sur l'écran
+		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation((int) (tailleEcran.getWidth()/2-400) , (int) (tailleEcran.getHeight()/2-200));
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-                this.panelCreationTube = new PanelCreationTube("");
-                this.add(this.panelCreationTube, BorderLayout.CENTER);
-                break;
-            case 4:
-                this.panelChoixStructure = new PanelChoixStructure(this);
-                this.add(this.panelChoixStructure);
-                this.revalidate();
-                return;
-            default:
-                this.add(new JLabel("Fichiers générés, vous pouvez quitter le programme", JLabel.CENTER), BorderLayout.CENTER);
-                this.revalidate();
-                return;
-        }
+		this.maj();
 
-        
-        this.add(this.panelValider, BorderLayout.SOUTH);
-        this.revalidate();
-        this.repaint();
-    }
+		//Activation de la frame
+		this.setVisible(true);
+	}
 
-    public boolean verification()
-    {
-        boolean condition;
-        Cuve cuve1, cuve2;
-        
-        //Vérifications des valeurs nécessaires pour passer à l'étape suivante
-        switch (this.etape) 
-        {
-            case 0: this.nbCuves = this.panelNbCuves.getNbCuves(); return this.nbCuves > -1 && this.nbCuves <= 26;
-            
-            case 1: condition =  (this.panelCreerCuves.getCapacite() != -1 &&
-                                  this.panelCreerCuves.getPosX()     != -1 &&
-                                  this.panelCreerCuves.getPosY()     != -1 &&
-                                  this.ctrl.creerCuve(this.panelCreerCuves.getCapacite(), 
-                                                      this.panelCreerCuves.getPosX(), 
-                                                      this.panelCreerCuves.getPosY(), 
-                                                      this.panelCreerCuves.getPosInfo()));
-                    if (condition) {this.compteur++;} else {return false;}
-                    if (this.compteur <= this.nbCuves) {this.etape--;}
-                    return condition;
-            case 3: 
-                try {cuve1 = this.ctrl.getCuves().get(this.panelCreationTube.getCuve1()-1);}
-                catch (Exception e) {return false;}
+	public void setTitre()
+	{
+		switch (this.etape)
+		{
+			case 0: this.setTitle("Création des cuves"   ); break;
+			case 2: this.setTitle("Choix d'une action"   ); break;
+			case 3: this.setTitle("Création d'un tube"   ); break;
+			case 4: this.setTitle("Choix d'une structure"); break;
+		}
+	}
 
-                try {cuve2 = this.ctrl.getCuves().get(this.panelCreationTube.getCuve2()-1);}
-                catch (Exception e) {return false;}
+	public void setPanelsAdequats()
+	{
+		this.getContentPane().removeAll();
+		
+		switch (this.etape) 
+		{
+			case 0: 
+				this.panelNbCuves = new PanelNbCuves("");    
+				this.add(this.panelNbCuves, BorderLayout.CENTER); 
+				break;
+			case 1:
+				this.panelCreerCuves = new PanelCreerCuve("", this.compteur);
+				this.add(this.panelCreerCuves, BorderLayout.CENTER);
+				break;
+			case 2:
+				this.panelChoixCreation = new PanelChoixCreationTube(this);
+				this.add(this.panelChoixCreation);
+				this.revalidate();
+				return;
+			case 3:
+				if (this.cptTubes > (this.nbCuves*(this.nbCuves-1))/2) 
+				{
+					this.setEtape(FramePrincipale.MENU_TUBE); 
+					this.maj(); 
+					return;
+				}
 
-                if (this.ctrl.creerTube(cuve1, cuve2, this.panelCreationTube.getEpaisseur()))
-                {
-                    this.cptTubes++;
-                    this.setEtape(FramePrincipale.MENU_TUBE);
-                    return true;
-                }
+				this.panelCreationTube = new PanelCreationTube("");
+				this.add(this.panelCreationTube, BorderLayout.CENTER);
+				break;
+			case 4:
+				this.panelChoixStructure = new PanelChoixStructure(this);
+				this.add(this.panelChoixStructure);
+				this.revalidate();
+				return;
+			default:
+				this.add(new JLabel("Fichiers générés, vous pouvez quitter le programme", JLabel.CENTER), BorderLayout.CENTER);
+				this.revalidate();
+				return;
+		}
 
-                return false;
-                
-        }
-        return true;
-    }
+		this.add(this.panelValider, BorderLayout.SOUTH);
+		this.revalidate();
+		this.repaint();
+	}
 
-    public void maj() 
-    {
-        //Passe à l'étape suivante et affiche le contenu adéquat
-        this.etape++;
-        this.setTitre();
-        this.setPanelsAdequats();
-    }
+	public boolean verification()
+	{
+		boolean condition;
+		Cuve cuve1, cuve2;
 
-    public void erreur() 
-    {
-        this.getContentPane().removeAll();
-        
-        //Recréation des panels avec les messages d'erreur
-        switch (this.etape) 
-        {
-            case 0: 
-                this.panelNbCuves = new PanelNbCuves("Valeur Invalide ! Car : " + this.msgErreur);    
-                this.add(this.panelNbCuves, BorderLayout.CENTER); 
-                break;
-            case 1:
-                this.panelCreerCuves = new PanelCreerCuve("Valeurs Invalides ! Car : " + this.msgErreur, this.compteur);
-                this.add(this.panelCreerCuves);
-                break;
-            case 3:
-                this.panelCreationTube = new PanelCreationTube("Valeurs Invalides ! Car : " + this.msgErreur);
-                this.add(this.panelCreationTube);
-                break;
-        }
+		//Vérifications des valeurs nécessaires pour passer à l'étape suivante
+		switch (this.etape) 
+		{
+			case 0: this.nbCuves = this.panelNbCuves.getNbCuves(); return this.nbCuves > -1 && this.nbCuves <= 26;
 
-        
-        this.add(this.panelValider, BorderLayout.SOUTH);
-        this.revalidate();
-    }
+			case 1: condition =  (this.panelCreerCuves.getCapacite() != -1 &&
+								  this.panelCreerCuves.getPosX()     != -1 &&
+								  this.panelCreerCuves.getPosY()     != -1 &&
+								  this.ctrl.creerCuve(this.panelCreerCuves.getCapacite(), 
+													  this.panelCreerCuves.getPosX(), 
+													  this.panelCreerCuves.getPosY(), 
+													  this.panelCreerCuves.getPosInfo()));
+					if (condition) {this.compteur++;} else {return false;}
+					if (this.compteur <= this.nbCuves) {this.etape--;}
+					return condition;
+			case 3: 
+				try {cuve1 = this.ctrl.getCuves().get(this.panelCreationTube.getCuve1()-1);}
+				catch (Exception e) {return false;}
 
-    public void generer(char structure)
-    {
-        this.ctrl.generer(structure);
-    }
+				try {cuve2 = this.ctrl.getCuves().get(this.panelCreationTube.getCuve2()-1);}
+				catch (Exception e) {return false;}
 
-    public void setEtape(int etape)
-    {
-        if (etape < -1 || etape > 3) {return;}
+				if (this.ctrl.creerTube(cuve1, cuve2, this.panelCreationTube.getEpaisseur()))
+				{
+					this.cptTubes++;
+					this.setEtape(FramePrincipale.MENU_TUBE);
+					return true;
+				}
 
-        this.etape = etape;
-    }
+				return false;
 
-    public void setErreur (String e)
-    {
-        this.msgErreur = e;
-    }
+		}
+		return true;
+	}
+
+	public void maj() 
+	{
+		//Passe à l'étape suivante et affiche le contenu adéquat
+		this.etape++;
+		this.setTitre();
+		this.setPanelsAdequats();
+	}
+
+	public void erreur() 
+	{
+		this.getContentPane().removeAll();
+
+		//Recréation des panels avec les messages d'erreur
+		switch (this.etape) 
+		{
+			case 0: 
+				this.panelNbCuves = new PanelNbCuves("Valeur Invalide ! Car : " + this.msgErreur);    
+				this.add(this.panelNbCuves, BorderLayout.CENTER); 
+				break;
+			case 1:
+				this.panelCreerCuves = new PanelCreerCuve("Valeurs Invalides ! Car : " + this.msgErreur, this.compteur);
+				this.add(this.panelCreerCuves);
+				break;
+			case 3:
+				this.panelCreationTube = new PanelCreationTube("Valeurs Invalides ! Car : " + this.msgErreur);
+				this.add(this.panelCreationTube);
+				break;
+		}
+
+		this.add(this.panelValider, BorderLayout.SOUTH);
+		this.revalidate();
+	}
+
+	public void generer(char structure)
+	{
+		this.ctrl.generer(structure);
+	}
+
+	public void setEtape(int etape)
+	{
+		if (etape < -1 || etape > 3) {return;}
+
+		this.etape = etape;
+	}
+
+	public void setErreur (String e)
+	{
+		this.msgErreur = e;
+	}
 }

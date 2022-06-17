@@ -16,9 +16,9 @@ public class FrameReseau extends JFrame
 	private JScrollPane      scrollPane;
 
 	public FrameReseau(Controleur ctrl)
-	{		
+	{
 		Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		
+
 		int x = (int) tailleEcran.getWidth ();		
 		int y = (int) tailleEcran.getHeight();
 
@@ -39,9 +39,8 @@ public class FrameReseau extends JFrame
 		this.add(this.scrollPane      , BorderLayout.CENTER);
 		this.add(this.panelBtnPasser  , BorderLayout.SOUTH);
 		this.add(this.panelContenuCuve, BorderLayout.EAST);
-		
-		this.setVisible(true);
 
+		this.setVisible(true);
 	}
 
 	public void majIhm()

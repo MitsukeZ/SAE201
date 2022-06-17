@@ -12,33 +12,31 @@ public class Generateur
 		PrintWriter pw = null;
 
 		/*-- Création du fichier des cuves --*/
-		
+
 		try
-		{	
+		{
 			pw = new PrintWriter ( new File ( "reseau.data"), "utf-8" );
-		}	
+		}
 		catch (Exception e){e.printStackTrace(); return;}
 
 		for (Cuve cuve : tCuve)
-		{
 			pw.println(cuve.getCapacite() + "\t" + cuve.getPosX() + "\t" + cuve.getPosY() + "\t" + cuve.getPosInfo());
-		}
 
 		/*-- Création du fichier des tubes  --*/
 
 		double[][] tabLien = new double[tCuve.size()][tCuve.size()];
 
 		//Génération de la matrice des coûts
-		
+
 		for (Tube tube : tTube)
 		{
 			tabLien[tube.getCuve1().getIdentifiant() - 'A'][tube.getCuve2().getIdentifiant() - 'A'] = tube.getEpaisseur();
-					
+
 			tabLien[tube.getCuve2().getIdentifiant() - 'A'][tube.getCuve1().getIdentifiant() - 'A'] = tube.getEpaisseur();
 		}
 
 		//Écriture dans le fichier tube.data selon la structure choisie
-		
+
 		switch (structure)
 		{
 			case 'L':
@@ -46,10 +44,8 @@ public class Generateur
 				pw.println("liste d'adjacence");
 
 				for (Tube tube : tTube)
-				{
 					pw.println(tube.getCuve1().getIdentifiant() + "\t" + tube.getCuve2().getIdentifiant() + "\t" + tube.getEpaisseur());
-				}
-				
+
 				break;
 
 			case 'M':
@@ -67,7 +63,7 @@ public class Generateur
 
 					pw.println(ligne);
 				}
-				
+
 				break;
 
 			case 'O':
@@ -85,9 +81,9 @@ public class Generateur
 
 					pw.println(ligne);
 				}
-				
+
 				break;
-		
+
 			default:
 				break;
 		}

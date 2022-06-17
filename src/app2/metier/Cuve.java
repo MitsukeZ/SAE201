@@ -5,7 +5,7 @@ public class Cuve
 	//caractère auto-incrémenté allant de A à Z
 	private static char identifiants = 'A';
 	private        char identifiant;
-	
+
 	private int    capacite;
 	private double contenu;
 	private int    posX;
@@ -16,13 +16,12 @@ public class Cuve
 	private Cuve(int capacite, int posX, int posY, String posInfo)
 	{
 		this.identifiant = Cuve.identifiants++;
-		
+
 		this.capacite    = capacite;
 		this.contenu     = 0;
 		this.posX        = posX;
 		this.posY        = posY;
 		this.posInfo     = posInfo;
-		
 	}
 	
 	//factory qui permet de créer des objets Cuve null si les conditions ne sont pas remplis
@@ -37,7 +36,7 @@ public class Cuve
 
 		if ( !posInfo.equals("HAUT"  ) && !posInfo.equals("BAS"   ) && 
 			 !posInfo.equals("GAUCHE") && !posInfo.equals("DROITE") ) return null;			 //cas si la position des informations ne fait pas partie de HAUT, BAS, GAUCHE, DROITE
-		
+
 		return new Cuve ( capacite, posX, posY, posInfo);
 	}
 

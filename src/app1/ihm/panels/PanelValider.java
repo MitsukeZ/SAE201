@@ -10,30 +10,31 @@ import java.awt.event.ActionEvent;
 
 public class PanelValider extends JPanel implements ActionListener
 {
-    private FramePrincipale frame;
-    private JButton btnValider;
+	private FramePrincipale frame;
+	private JButton btnValider;
 
-    public PanelValider(FramePrincipale frame) {
-        this.frame = frame;
+	public PanelValider(FramePrincipale frame)
+	{
+		this.frame = frame;
 
-        //Création des composants
-        this.btnValider = new JButton("Valider");
-        this.btnValider.addActionListener(this);
+		//Création des composants
+		this.btnValider = new JButton("Valider");
+		this.btnValider.addActionListener(this);
 
-        //Ajout des composants
-        this.add(this.btnValider);
-    }
+		//Ajout des composants
+		this.add(this.btnValider);
+	}
 
-    public void actionPerformed(ActionEvent e)
-    {
-        if (e.getSource() != this.btnValider) {return;}
+	public void actionPerformed(ActionEvent e)
+	{
+		if (e.getSource() != this.btnValider) {return;}
 
-        if (this.frame.verification()) {
-            this.frame.maj();
-            return;
-        }
+		if (this.frame.verification())
+		{
+			this.frame.maj();
+			return;
+		}
 
-        this.frame.erreur();
-        
-    }
+		this.frame.erreur();
+	}
 }

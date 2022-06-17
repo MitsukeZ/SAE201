@@ -8,11 +8,11 @@ import app1.Controleur;
 public class FormulaireConsole 
 {
 	private Controleur ctrl;
-	
+
 	public FormulaireConsole(Controleur ctrl)
 	{
 		this.ctrl = ctrl;
-		
+
 		//Variables
 		int nbCuves = 0, nbTubes = 0, capaciteTmp, posXTmp, posYTmp, cuve1, cuve2, nbTubesMax;
 		double epaisseur;
@@ -45,7 +45,7 @@ public class FormulaireConsole
 
 			System.out.print("Veuillez entrer la position des informations de la Cuve "+ i +" : ");
 			positionInfo = Clavier.lireString();
-			
+
 			if (!this.ctrl.creerCuve(capaciteTmp, posXTmp, posYTmp, positionInfo)) 
 			{
 				System.out.println("Les valeurs saisies sont invalides ! Veuillez réessayer.");
@@ -54,7 +54,7 @@ public class FormulaireConsole
 		}
 
 		nbTubesMax = (nbCuves*(nbCuves-1))/2; //Formule permettant de connaitre le nombre d'arêtes d'un graphe complet
-		                                                                    //Utile pour que l'utilisateur ne créé pas trop de tubes et soit bloqué dans la console
+		                                      //Utile pour que l'utilisateur ne créé pas trop de tubes et soit bloqué dans la console
 		do 
 		{
 			System.out.print("Souhaitez-vous creer un tube (O/N) : ");
@@ -81,7 +81,7 @@ public class FormulaireConsole
 		{
 			System.out.print("Veuillez entrer le type de structure (L pour liste, M pour matrice, O pour matrice optimisee) : ");
 			structure = Clavier.lire_char();
-		} 
+		}
 		while (structure != 'L' && structure != 'M' && structure != 'O');
 
 		this.ctrl.generer(structure);
